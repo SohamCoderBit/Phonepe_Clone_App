@@ -420,7 +420,9 @@ fun WealthUnit() {
                 //Tax Saving Funds
                 DrawIconInRow(
                     SurfaceModifier = surfacemodifier,
-                    BoxModifier = boxmodifier,
+                    BoxModifier = boxmodifier.clickable {
+                        navController.navigateTo(Route = NavigationDestinations.TAXSAVINGFUND_ROUTE)
+                    },
                     IconSize = 45,
                     IconResource = R.drawable.piggy_bank,
                 )

@@ -1,0 +1,26 @@
+[
+  {
+    "FundProviderName": "Quant Tax Plan",
+    "FundSize": "4,605.77",
+    "Last3Year": "35.33",
+    "MinInvest": "500"
+  },
+  {
+    "FundProviderName": "Parag Parikh Tax Saver Fund",
+    "FundSize": "1,932,37",
+    "Last3Year": "25.26",
+    "MinInvest": "1000"
+  },
+  {
+    "FundProviderName": "Bandhan Tax Advantage (ELSS) Fund",
+    "FundSize": "5,073.13",
+    "Last3Year": "31.08",
+    "MinInvest": "500"
+  },
+  {
+    "FundProviderName": "SBI Long Term Equity Fund",
+    "FundSize": "15,586.52",
+    "Last3Year": "27.07",
+    "MinInvest": "500"
+  }
+]

@@ -8,7 +8,7 @@ import com.example.phonepeclone.Data.TopCompaniesFundRepository
 class TopCompaniesViewModel : ViewModel(){
 
     private val fundProviderRepository:TopCompaniesFundRepository = TopCompaniesFundRepository()
-    private var internalName:String = "Soham"
+    private var internalName:String = "ICICI Prudential Bluechip Fund"
     private var loanFundProviderList:List<FundBillers>? = null
 
     fun getString():String
@@ -24,7 +24,7 @@ class TopCompaniesViewModel : ViewModel(){
     fun getFundProvidersList(context: Context ):List<FundBillers>{
         if(loanFundProviderList == null)
         {
-            loanFundProviderList = fundProviderRepository.parseJson(context = context , FilePath = "FundBillersList.json")
+            loanFundProviderList = fundProviderRepository.parseJson(context = context)
         }
         return loanFundProviderList as List<FundBillers>
     }

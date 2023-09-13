@@ -4,21 +4,29 @@ import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
+
+inline fun <reified T> parseJson(context: Context, FilePath: String): List<T> {
+    return try {
+        val jsonFile = context.assets.open(FilePath)
+        val size = jsonFile.available()
+        val buffer = ByteArray(size)
+        jsonFile.read(buffer)
+        jsonFile.close()
+        val jsonString = String(buffer, Charsets.UTF_8)
+        val gson = Gson()
+        gson.fromJson(jsonString, object : TypeToken<List<T>>() {}.type)
+    } catch (e: Exception) {
+        e.printStackTrace()
+        emptyList()
+    }
+}
+
+
 class LoanPaymentRepository {
-    fun parseJson(context: Context, FilePath: String): List<LoanBiller> {
-        return try {
-            val jsonFile = context.assets.open(FilePath)
-            val size = jsonFile.available()
-            val buffer = ByteArray(size)
-            jsonFile.read(buffer)
-            jsonFile.close()
-            val jsonString = String(buffer, Charsets.UTF_8)
-            val gson = Gson()
-            gson.fromJson(jsonString, object : TypeToken<List<LoanBiller>>() {}.type)
-        } catch (e: Exception) {
-            e.printStackTrace()
-            emptyList()
-        }
+    private var loanBillerList: List<LoanBiller>? = null
+    fun parseJson(context: Context): List<LoanBiller> {
+        loanBillerList = parseJson(context = context, "LoanBillersList.json")
+        return loanBillerList as List<LoanBiller>
     }
 }
 

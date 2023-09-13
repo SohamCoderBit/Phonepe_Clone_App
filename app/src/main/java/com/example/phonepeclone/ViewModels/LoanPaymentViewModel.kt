@@ -14,7 +14,7 @@ class LoanPaymentViewModel : ViewModel() {
 
     fun getParsedJson(context: Context):List<LoanBiller> {
         if (loanBillersList == null) {
-            loanBillersList = loanPaymentRepository.parseJson(context = context , FilePath = "LoanBillersList.json")
+            loanBillersList = loanPaymentRepository.parseJson(context = context)
         }
         return loanBillersList as List<LoanBiller>
     }

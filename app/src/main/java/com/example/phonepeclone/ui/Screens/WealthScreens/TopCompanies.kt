@@ -41,7 +41,6 @@ import com.example.phonepeclone.ScrollableBoxs
 import com.example.phonepeclone.ViewModels.TopCompaniesViewModel
 import com.example.phonepeclone.navController
 import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
-import com.google.gson.Gson
 
 @Composable
 fun FundsSurface(
@@ -118,15 +117,15 @@ fun FundsSurface(
             Row {
                 Box(
                     modifier = Modifier
-                        .weight(0.8f)
+                        .weight(0.9f)
                         .height(70.dp),
-                    contentAlignment = Alignment.Center
+                    contentAlignment = Alignment.CenterStart
                 ) {
-                    Column {
+                    Column(modifier = Modifier.padding(start = 20.dp)) {
                         Text(text = "Last 3Y", fontSize = 13.sp, color = Color.White)
                         Row(modifier = Modifier.padding(top = 2.dp)) {
                             Text(
-                                text = FundProvider.Last3Year,
+                                text = FundProvider.Last3Year + "%",
                                 fontSize = 17.sp,
                                 color = Color.White
                             )
@@ -156,9 +155,9 @@ fun FundsSurface(
                     modifier = Modifier
                         .weight(1.3f)
                         .height(70.dp),
-                    contentAlignment = Alignment.Center
+                    contentAlignment = Alignment.CenterStart
                 ) {
-                    Column {
+                    Column(modifier = Modifier.padding(start = 25.dp)) {
                         Text(text = "Fund Size", color = Color.White)
                         Text(
                             text = "₹" + FundProvider.FundSize + "Cr",
@@ -291,8 +290,6 @@ fun TopCompaniesScreen(topCompaniesViewModel: TopCompaniesViewModel) {
                         }
                     )
                 }
-
-
         }
         BlueTopAppBar(Heading = "Top Companies")
     }

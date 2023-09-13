@@ -9,6 +9,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.phonepeclone.ViewModels.LoanPaymentViewModel
 import com.example.phonepeclone.ViewModels.MainScreenViewModel
+import com.example.phonepeclone.ViewModels.TaxSavingFundViewModel
 import com.example.phonepeclone.ViewModels.TopCompaniesViewModel
 import com.example.phonepeclone.ui.Screens.HomeUnitScreens.PhonepeWalletScreen
 import com.example.phonepeclone.ui.Screens.HomeUnitScreens.ReferAndGetButtonScreen
@@ -16,6 +17,7 @@ import com.example.phonepeclone.ui.Screens.HomeUnitScreens.RewardScreen
 import com.example.phonepeclone.ui.Screens.InsuranceScreens.InsuranceRenewalScreen
 import com.example.phonepeclone.ui.Screens.WealthScreens.DynamicScreen
 import com.example.phonepeclone.ui.Screens.WealthScreens.GoldScreen
+import com.example.phonepeclone.ui.Screens.WealthScreens.TaxSavingFundScreen
 import com.example.phonepeclone.ui.Screens.WealthScreens.TopCompaniesScreen
 import com.example.phonepeclone.ui.theme.Screens.InsuranceScreens.AccidentScreen
 import com.example.phonepeclone.ui.theme.Screens.InsuranceScreens.BikeScreen
@@ -59,6 +61,7 @@ object NavigationDestinations {
     const val TOPCOMPANIES_ROUTE = "TopCompaniesScreen"
     const val REWARDBUTTON_ROUTE = "RewardScreen"
     const val INSURANCERENEWAL_ROUTE = "InsuranceRenewalScreen"
+    const val TAXSAVINGFUND_ROUTE = "TaxSavingFundScreen"
 
     //Testing
     const val DYNAMICSCREEN_ROUTE = "DynamicScreen"
@@ -109,6 +112,8 @@ fun NavGraphInit(
 
     val topCompaniesViewModel: TopCompaniesViewModel = viewModel()
 
+    val taxSavingFundViewModel: TaxSavingFundViewModel = viewModel()
+
     NavHost(navController = navController, startDestination = StartDestination) {
 
         //Main View
@@ -148,6 +153,7 @@ fun NavGraphInit(
         //Wealth Screens
         composable(route = NavigationDestinations.GOLDSCREEN_ROUTE) { GoldScreen() }
         composable(route = NavigationDestinations.TOPCOMPANIES_ROUTE) { TopCompaniesScreen(topCompaniesViewModel) }
+        composable(route = NavigationDestinations.TAXSAVINGFUND_ROUTE) { TaxSavingFundScreen(taxSavingFundViewModel)}
 
 
         //Home Screen Buttons
