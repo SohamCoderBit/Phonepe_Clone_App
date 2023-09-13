@@ -1,0 +1,26 @@
+[
+  {
+    "FundProviderName": "ICICI Prudential Bluechip Fund",
+    "FundSize": "40,078.89",
+    "Last3Year": "24.19",
+    "MinInvest": "100"
+  },
+  {
+    "FundProviderName": "Kotak Bluechip Fund",
+    "FundSize": "6,369.86",
+    "Last3Year": "21.09",
+    "MinInvest": "100"
+  },
+  {
+    "FundProviderName": "Tata Large Cap Fund",
+    "FundSize": "1,593",
+    "Last3Year": "22.52",
+    "MinInvest": "150"
+  },
+  {
+    "FundProviderName": "Aditya Birla Sun Life Frontline",
+    "FundSize": "23,427.29",
+    "Last3Year": "22.54",
+    "MinInvest": "100"
+  }
+]

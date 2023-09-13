@@ -1,0 +1,264 @@
+package com.example.phonepeclone.ui.theme.Screens.TransferMoneyScreens
+
+import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.example.phonepeclone.BlueTopAppBar
+import com.example.phonepeclone.DrawIconInRow
+import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.NavigationDestinations
+import com.example.phonepeclone.R
+import com.example.phonepeclone.SearchBar
+import com.example.phonepeclone.SurfaceInView
+import com.example.phonepeclone.WriteLabelInRow
+import com.example.phonepeclone.navController
+import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
+
+@Composable
+fun SelfAccountScreen() {
+    Surface(
+        modifier = Modifier
+            .fillMaxSize(),
+        color = Color.White
+    ) {
+        BlueTopAppBar(Heading = "Self Account Transfer")
+
+        Box {
+            BottomAppBar(
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .height(60.dp)
+                    .clickable {
+                        navController.navigateTo(NavigationDestinations.ADDBANKSCREEN_ROUTE)
+                    },
+                containerColor = colorResource(id = R.color.bottom_nav)
+            ) {
+                Box(
+                    modifier = Modifier.fillMaxWidth(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "ADD BANK ACCOUNT",
+                        color = Color.White,
+                        textAlign = TextAlign.Center
+                    )
+                }
+
+            }
+        }
+    }
+}
+
+
+@Composable
+fun AddBankAccount() {
+
+    var searchtextfromuser by remember {
+        mutableStateOf("")
+    }
+    Surface(
+        modifier = Modifier
+            .fillMaxSize(),
+        color = colorResource(id = R.color.background)
+    ) {
+
+        val iconboxmodifier: Modifier = Modifier
+            .size(50.dp)
+            .clip(CircleShape)
+            .background(Color.White)
+
+        Column(
+            modifier = Modifier
+                .padding(top = 70.dp)
+                .verticalScroll(rememberScrollState())
+        ) {
+            searchtextfromuser = SearchBar(PlaceHolder = "Search any bank name")
+
+            SurfaceInView(Height = 370) {
+
+                Column {
+                    HeadingTextInSurfaceView(HeadingText = "Popular banks")
+
+                    //Icons of SBI , BOB , HDFC
+                    Row(modifier = Modifier.padding(top = 10.dp)) {
+                        val surfacemodifier: Modifier = Modifier.weight(1f)
+                        DrawIconInRow(
+                            SurfaceModifier = surfacemodifier,
+                            IconSize = 45,
+                            IconTint = Color.Unspecified,
+                            IconResource = R.drawable.sbi_logo,
+                            IconBoxModifier = iconboxmodifier
+                        )
+
+                        DrawIconInRow(
+                            SurfaceModifier = surfacemodifier,
+                            IconSize = 40,
+                            IconTint = Color.Unspecified,
+                            IconResource = R.drawable.bob_icon,
+                            IconBoxModifier = iconboxmodifier
+                        )
+
+                        DrawIconInRow(
+                            SurfaceModifier = surfacemodifier,
+                            IconSize = 35,
+                            IconTint = Color.Unspecified,
+                            IconResource = R.drawable.hdfc_icon,
+                            IconBoxModifier = iconboxmodifier
+                        )
+                    }
+
+                    Row(modifier = Modifier.padding(top = 10.dp)) {
+                        val surfacemodifier: Modifier = Modifier.weight(1f)
+                        WriteLabelInRow(modifier = surfacemodifier, label = "State Bank Of ...")
+
+                        WriteLabelInRow(modifier = surfacemodifier, label = "Bank Baroda")
+
+                        WriteLabelInRow(modifier = surfacemodifier, label = "HDFC Bank")
+                    }
+
+
+                    //Icons of AXIS , ICICI , BOI
+                    Row(modifier = Modifier.padding(top = 30.dp)) {
+                        val surfacemodifier: Modifier = Modifier.weight(1f)
+                        DrawIconInRow(
+                            SurfaceModifier = surfacemodifier,
+                            IconSize = 35,
+                            IconTint = Color.Unspecified,
+                            IconResource = R.drawable.axisbank,
+                            IconBoxModifier = iconboxmodifier
+                        )
+
+                        DrawIconInRow(
+                            SurfaceModifier = surfacemodifier,
+                            IconSize = 40,
+                            IconTint = Color.Unspecified,
+                            IconResource = R.drawable.icici_bank,
+                            IconBoxModifier = iconboxmodifier
+                        )
+
+                        DrawIconInRow(
+                            SurfaceModifier = surfacemodifier,
+                            IconSize = 35,
+                            IconTint = Color.Unspecified,
+                            IconResource = R.drawable.bank_of_india,
+                            IconBoxModifier = iconboxmodifier
+                        )
+                    }
+
+                    Row(modifier = Modifier.padding(top = 10.dp)) {
+                        val surfacemodifier: Modifier = Modifier.weight(1f)
+                        WriteLabelInRow(modifier = surfacemodifier, label = "Axis bank")
+
+                        WriteLabelInRow(modifier = surfacemodifier, label = "ICICI Bank")
+
+                        WriteLabelInRow(modifier = surfacemodifier, label = "Bank of India")
+                    }
+
+                    //Icons of Paytm , Kotak , Union
+                    Row(modifier = Modifier.padding(top = 30.dp)) {
+                        val surfacemodifier: Modifier = Modifier.weight(1f)
+                        DrawIconInRow(
+                            SurfaceModifier = surfacemodifier,
+                            IconSize = 40,
+                            IconTint = Color.Unspecified,
+                            IconResource = R.drawable.paytm_ns_big,
+                            IconBoxModifier = iconboxmodifier
+                        )
+
+                        DrawIconInRow(
+                            SurfaceModifier = surfacemodifier,
+                            IconSize = 40,
+                            IconTint = Color.Unspecified,
+                            IconResource = R.drawable.kotak_bank,
+                            IconBoxModifier = iconboxmodifier
+                        )
+
+                        DrawIconInRow(
+                            SurfaceModifier = surfacemodifier,
+                            IconSize = 35,
+                            IconTint = Color.Unspecified,
+                            IconResource = R.drawable.union_bank,
+                            IconBoxModifier = iconboxmodifier
+                        )
+                    }
+
+                    Row(modifier = Modifier.padding(top = 10.dp)) {
+                        val surfacemodifier: Modifier = Modifier.weight(1f)
+                        WriteLabelInRow(modifier = surfacemodifier, label = "Paytm Payme...")
+
+                        WriteLabelInRow(modifier = surfacemodifier, label = "Kotak Mahind...")
+
+                        WriteLabelInRow(modifier = surfacemodifier, label = "Union Bank Of...")
+                    }
+
+
+                }
+
+            }
+
+            SurfaceInView(Height = 1000) {
+
+                Column {
+                    HeadingTextInSurfaceView(HeadingText = "Other Banks")
+                }
+
+            }
+
+        }
+
+        BlueTopAppBar(Heading = "Select Bank", BackArrowClick = {
+            navController.getNavigationController()
+                ?.navigate(NavigationDestinations.HOMESCREEN_ROUTE) {
+                    popUpTo(NavigationDestinations.HOMESCREEN_ROUTE) {
+                        inclusive = true
+                        saveState = true
+                    }
+                }
+        })
+    }
+
+    BackHandler(true) {
+        navController.getNavigationController()
+            ?.navigate(NavigationDestinations.HOMESCREEN_ROUTE) {
+                popUpTo(NavigationDestinations.HOMESCREEN_ROUTE) {
+                    inclusive = true
+                    saveState = true
+                }
+            }
+    }
+}
+
+@Preview
+@Composable
+fun PreviewSelfScreen() {
+    PhonepeCloneTheme {
+        AddBankAccount()
+    }
+}

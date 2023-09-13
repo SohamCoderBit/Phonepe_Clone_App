@@ -1,0 +1,106 @@
+[
+  {
+    "BillerName": "Aadhar Housing Finance Limited",
+    "BillerType": "MFI"
+  },
+  {
+    "BillerName": "Agora Microfinance India LTD - MFI",
+    "BillerType": "MFI"
+  },
+  {
+    "BillerName": "Annapurna Finance Private Limited - MFI",
+    "BillerType": "MFI"
+  },
+  {
+    "BillerName": "Annapurna Finance Private Limited - MSME",
+    "BillerType": "MFI"
+  },
+  {
+    "BillerName": "Arohan Financial Sevices Ltd",
+    "BillerType": "MFI"
+  },
+  {
+    "BillerName": "Capri Global Capital Limited",
+    "BillerType": "GoldLoan"
+  },
+  {
+    "BillerName": "Hedge Finance Ltd",
+    "BillerType": "GoldLoan"
+  },
+  {
+    "BillerName": "Hindon Mercantile Limited - Mufin",
+    "BillerType": "GoldLoan"
+  },
+  {
+    "BillerName": "Adani Capital",
+    "BillerType": "VehicleLoan"
+  },
+  {
+    "BillerName": "Aeon Credit",
+    "BillerType": "VehicleLoan"
+  },
+  {
+    "BillerName": "Ambit Finvest Pvt Ltd",
+    "BillerType": "VehicleLoan"
+  },
+  {
+    "BillerName": "AU Small Finance Bank",
+    "BillerType": "SmallFinanceBank"
+  },
+  {
+    "BillerName": "Eqiuitas SFB - Microfinance Loan",
+    "BillerType": "SmallFinanceBank"
+  },
+  {
+    "BillerName": "Fincare Small Finance Bank",
+    "BillerType": "SmallFinanceBank"
+  },
+  {
+    "BillerName": "Bajaj Finance LTD",
+    "BillerType": "ConsumerLoan"
+  },
+  {
+    "BillerName": "CASHe",
+    "BillerType": "ConsumerLoan"
+  },
+  {
+    "BillerName": "DMI Finance",
+    "BillerType": "ConsumerLoan"
+  },
+  {
+    "BillerName": "AU Small Finance Bank",
+    "BillerType": "Bank"
+  },
+  {
+    "BillerName": "Axis Bank Limited - Retail Loan",
+    "BillerType": "Bank"
+  },
+  {
+    "BillerName": "Axis Finance Limited",
+    "BillerType": "Bank"
+  },
+  {
+    "BillerName": "DCB Bank Loan Redpayment",
+    "BillerType": "Bank"
+  },
+  {
+    "BillerName": "AAVAS FINANCIERS LIMITED",
+    "BillerType": "HomeLoan"
+  },
+  {
+    "BillerName": "Adani Housing Finance",
+    "BillerType": "HomeLoan"
+  },
+  {
+    "BillerName": "Altum Credo Home Finance",
+    "BillerType": "HomeLoan"
+  },
+  {
+    "BillerName": "Agriwise Finserv Limited",
+    "BillerType": "Others"
+  },
+  {
+    "BillerName": "Ashv Finance",
+    "BillerType": "Others"
+  }
+]
