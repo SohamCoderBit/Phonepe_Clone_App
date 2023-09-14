@@ -273,7 +273,7 @@ fun LoanPaymentScreen(loanPaymentViewModel: LoanPaymentViewModel) {
                                 .clip(RoundedCornerShape(percent = 20))
                                 .background(Color.White)
 
-                            loanPaymentViewModel.getParsedJson(LocalContext.current).forEach { item ->
+                            loanPaymentViewModel.getLoanBillersList(LocalContext.current).forEach { item ->
                                 if (item.BillerType.Index == index) {
                                     RowWithDividerElements(
                                         Content = item.BillerName,

@@ -14,6 +14,7 @@ import com.example.phonepeclone.ViewModels.TopCompaniesViewModel
 import com.example.phonepeclone.ui.Screens.HomeUnitScreens.PhonepeWalletScreen
 import com.example.phonepeclone.ui.Screens.HomeUnitScreens.ReferAndGetButtonScreen
 import com.example.phonepeclone.ui.Screens.HomeUnitScreens.RewardScreen
+import com.example.phonepeclone.ui.Screens.HomeUnitScreens.UPILiteScreen
 import com.example.phonepeclone.ui.Screens.InsuranceScreens.InsuranceRenewalScreen
 import com.example.phonepeclone.ui.Screens.WealthScreens.DynamicScreen
 import com.example.phonepeclone.ui.Screens.WealthScreens.GoldScreen
@@ -39,6 +40,7 @@ import com.example.phonepeclone.ui.theme.Screens.TransferMoneyScreens.SelfAccoun
 
 object NavigationDestinations {
     const val HOMESCREEN_ROUTE = "HomeScreen"
+    const val UPILITE_ROUTE = "UPILiteScreen"
     const val MOBILENUMBERSCREEN_ROUTE = "MobileNumberScreen"
     const val BANKSCREEN_ROUTE = "BankScreen"
     const val CHECKBALANCESCREEN_ROUTE = "CheckBalanceScreen"
@@ -143,6 +145,9 @@ fun NavGraphInit(
         composable(route = NavigationDestinations.DTHSCREEN_ROUTE) { DTHScreen() }
         composable(route = NavigationDestinations.GASCYLINDERSCREEN_ROUTE) { GasCylinderScreen() }
 
+
+        //UPI Lite
+        composable(route = NavigationDestinations.UPILITE_ROUTE) { UPILiteScreen() }
         //Insurance Screens
         composable(route = NavigationDestinations.BIKESCREEN_ROUTE) { BikeScreen() }
         composable(route = NavigationDestinations.HEALTHSCREEN_ROUTE) { HealthScreen() }
@@ -153,7 +158,7 @@ fun NavGraphInit(
         //Wealth Screens
         composable(route = NavigationDestinations.GOLDSCREEN_ROUTE) { GoldScreen() }
         composable(route = NavigationDestinations.TOPCOMPANIES_ROUTE) { TopCompaniesScreen(topCompaniesViewModel) }
-        composable(route = NavigationDestinations.TAXSAVINGFUND_ROUTE) { TaxSavingFundScreen(taxSavingFundViewModel)}
+        composable(route = NavigationDestinations.TAXSAVINGFUND_ROUTE) { TaxSavingFundScreen(taxSavingFundViewModel) }
 
 
         //Home Screen Buttons
@@ -163,7 +168,7 @@ fun NavGraphInit(
 
 
         //Testing
-        composable(route = NavigationDestinations.DYNAMICSCREEN_ROUTE){ DynamicScreen(topCompaniesViewModel)}
+        composable(route = NavigationDestinations.DYNAMICSCREEN_ROUTE) { DynamicScreen(topCompaniesViewModel) }
 
     }
 }

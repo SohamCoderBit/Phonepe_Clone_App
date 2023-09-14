@@ -10,12 +10,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.LocalTextStyle
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -39,7 +36,7 @@ import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
 @Composable
 fun BikeScreen() {
 
-    var textfromuser by remember {
+    var enteredBikeNumber by remember {
         mutableStateOf("")
     }
     Surface(
@@ -79,31 +76,7 @@ fun BikeScreen() {
                             .height(80.dp),
                         contentAlignment = Alignment.Center
                     ) {
-                        OutlinedTextField(
-                            modifier = Modifier
-                                .padding(start = 20.dp, end = 20.dp)
-                                .height(65.dp)
-                                .fillMaxWidth(),
-                            value = textfromuser,
-                            onValueChange = { textfromuser = it.take(10).uppercase() },
-                            colors = TextFieldDefaults.textFieldColors(
-                                textColor = Color.White,
-                                containerColor = Color(33, 24, 43, 255),
-                                focusedIndicatorColor = Color(163, 99, 235, 255),
-                                cursorColor = Color(163, 99, 235, 255)
-                            ),
-                            placeholder = {
-                                Text(
-                                    text = "Eg:KA01BD2525",
-                                    fontSize = 25.sp,
-                                    lineHeight = 20.sp
-                                )
-                            },
-                            maxLines = 1,
-                            textStyle = LocalTextStyle.current.copy(fontSize = 25.sp),
-                            shape = RoundedCornerShape(15),
-                            singleLine = true
-                        )
+                        enteredBikeNumber = textFieldCarAndBikeScreen()
                     }
 
 

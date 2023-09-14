@@ -34,11 +34,57 @@ import com.example.phonepeclone.R
 import com.example.phonepeclone.SurfaceInView
 import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
 
+
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CarScreen()
+fun textFieldCarAndBikeScreen():String
 {
+
     var textfromuser by remember {
+        mutableStateOf("")
+    }
+
+    OutlinedTextField(
+        modifier = Modifier
+            .padding(start = 20.dp, end = 20.dp)
+            .height(65.dp)
+            .fillMaxWidth(),
+        value = textfromuser,
+        onValueChange = {
+            if (it != " ") {
+                textfromuser = it.take(10).uppercase()
+            }
+        },
+        colors = TextFieldDefaults.textFieldColors(
+            textColor = Color.White,
+            containerColor = Color(33, 24, 43, 255),
+            focusedIndicatorColor = Color(163, 99, 235, 255),
+            cursorColor = Color(163, 99, 235, 255)
+        ),
+        placeholder = {
+            Text(
+                text = "Eg:KA01BD2525",
+                fontSize = 25.sp,
+                lineHeight = 20.sp
+            )
+        },
+        maxLines = 1,
+        textStyle = LocalTextStyle.current.copy(fontSize = 25.sp),
+        shape = RoundedCornerShape(15),
+        singleLine = true
+
+    )
+
+    return textfromuser
+}
+
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun CarScreen() {
+
+    var enteredCarNumber by remember {
         mutableStateOf("")
     }
     Surface(
@@ -71,32 +117,7 @@ fun CarScreen()
                             .height(80.dp),
                         contentAlignment = Alignment.Center
                     ) {
-                        OutlinedTextField(
-                            modifier = Modifier
-                                .padding(start = 20.dp, end = 20.dp)
-                                .height(65.dp)
-                                .fillMaxWidth(),
-                            value = textfromuser,
-                            onValueChange = { textfromuser = it.take(10).uppercase() },
-                            colors = TextFieldDefaults.textFieldColors(
-                                textColor = Color.White,
-                                containerColor = Color(33, 24, 43, 255),
-                                focusedIndicatorColor = Color(163, 99, 235, 255),
-                                cursorColor = Color(163, 99, 235, 255)
-                            ),
-                            placeholder = {
-                                Text(
-                                    text = "Eg:KA01BD2525",
-                                    fontSize = 25.sp,
-                                    lineHeight = 20.sp
-                                )
-                            },
-                            maxLines = 1,
-                            textStyle = LocalTextStyle.current.copy(fontSize = 25.sp),
-                            shape = RoundedCornerShape(15),
-                            singleLine = true
-
-                        )
+                        enteredCarNumber = textFieldCarAndBikeScreen()
                     }
 
 

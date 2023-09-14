@@ -12,7 +12,7 @@ class LoanPaymentViewModel : ViewModel() {
 
     private var loanBillersList: List<LoanBiller>? = null
 
-    fun getParsedJson(context: Context):List<LoanBiller> {
+    fun getLoanBillersList(context: Context):List<LoanBiller> {
         if (loanBillersList == null) {
             loanBillersList = loanPaymentRepository.parseJson(context = context)
         }

@@ -62,14 +62,14 @@ fun HomeScreenUnit(bottomnavItemList: List<BottomnavItem>) {
             var modifier: Modifier = Modifier
                 .height(90.dp)
                 .weight(1.1f)
-            ButtonsInView(modifier, 10, 5, R.drawable.wallet , OnClick = {
+            ButtonsInView(modifier, 10, 5, R.drawable.wallet, OnClick = {
                 navController.navigateTo(Route = NavigationDestinations.PHONEPEWALLETBUTTON_ROUTE)
             })
 
             modifier = Modifier
                 .height(90.dp)
                 .weight(1f)
-            ButtonsInView(modifier, 5, 5, R.drawable.gift , OnClick = {
+            ButtonsInView(modifier, 5, 5, R.drawable.gift, OnClick = {
                 navController.navigateTo(Route = NavigationDestinations.REWARDBUTTON_ROUTE)
             })
 
@@ -103,7 +103,8 @@ fun HomeScreenUnit(bottomnavItemList: List<BottomnavItem>) {
 
 
     //UPI Lite Button Main View
-    val modifier: Modifier = Modifier.clickable { println("Button Clicked") }
+    val modifier: Modifier =
+        Modifier.clickable { navController.navigateTo(Route = NavigationDestinations.UPILITE_ROUTE) }
     SurfaceInView(
         Height = 80,
         modifier = modifier,

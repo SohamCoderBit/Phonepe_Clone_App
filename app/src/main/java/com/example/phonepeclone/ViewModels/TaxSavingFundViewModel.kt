@@ -18,5 +18,4 @@ class TaxSavingFundViewModel : ViewModel() {
         }
         return taxSavingFundBillersList as List<FundBillers>
     }
-
 }

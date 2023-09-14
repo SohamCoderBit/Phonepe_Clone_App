@@ -235,7 +235,7 @@ fun BankScreen() {
 
     val tabRowItems = listOf(
         TabRowItem(
-            title = "Bank Account",
+            title = "Bank\nAccount",
             screen = { BankAccount() }
         ),
         TabRowItem(
@@ -303,7 +303,7 @@ fun BankScreen() {
                                     Text(
                                         text = item.title,
                                         maxLines = 2,
-                                        fontSize = 15.sp,
+                                        fontSize = 16.sp,
                                         color = if (pagerState.currentPage == index) Color(
                                             144,
                                             93,
