@@ -50,6 +50,40 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 
+/**
+ * Button with Full Width Size in SurfaceInView Function And
+ * It uses the modifier.fillMaxWidth() function
+ */
+@Composable
+fun FullPurpleButton(
+    ButtonPadding: PaddingValues,
+    ButtonLabel: String,
+    ButtonLabelFontSize: Int,
+    ButtonHeight:Int,
+    ButtonColor: Color,
+    ContentPadding: PaddingValues,
+    OnClick: () -> Unit
+) {
+    Button(
+        modifier = Modifier
+            .padding(ButtonPadding)
+            .fillMaxWidth()
+            .height(ButtonHeight.dp),
+        onClick = { OnClick() },
+        shape = RoundedCornerShape(50),
+        contentPadding = ContentPadding,
+        colors = ButtonDefaults.outlinedButtonColors(ButtonColor)
+    ) {
+        Text(
+            text = ButtonLabel,
+            textAlign = TextAlign.Center,
+            fontSize = ButtonLabelFontSize.sp,
+            color = Color.White,
+        )
+    }
+}
+
+
 @Composable
 fun SelectionButton(
     ButtonModifier: Modifier = Modifier,
@@ -136,7 +170,7 @@ fun textfield(
             cursorColor = Color(163, 99, 235, 255)
         ),
         placeholder = {
-            androidx.compose.material.Text(
+            Text(
                 text = placeHolder,
                 fontSize = 25.sp,
                 lineHeight = 20.sp,
@@ -144,11 +178,11 @@ fun textfield(
             )
         },
         maxLines = 1,
-        textStyle = androidx.compose.material.LocalTextStyle.current.copy(fontSize = 25.sp),
+        textStyle = LocalTextStyle.current.copy(fontSize = 25.sp),
         shape = RoundedCornerShape(15),
         singleLine = true,
         keyboardOptions = KeyboardOptions.Default.copy(
-            keyboardType = KeyboardType.Number
+            keyboardType = KeyboardType.Password
         ),
         isError = isError
     )
@@ -515,7 +549,9 @@ fun RowWithDividerElements(
         ) {
 
             Text(
-                modifier = Modifier.align(Alignment.CenterStart).padding(start = 5.dp),
+                modifier = Modifier
+                    .align(Alignment.CenterStart)
+                    .padding(start = 5.dp),
                 text = Content,
                 color = Color.White
             )
@@ -589,8 +625,7 @@ fun HeadingTextInSurfaceView(
 
 
 @Composable
-fun ScrollableBoxs(Label:String , StartPadding:Int = 10 , EndPadding:Int = 10)
-{
+fun ScrollableBoxs(Label: String, StartPadding: Int = 10, EndPadding: Int = 10) {
     Box(
         modifier = Modifier
             .padding(start = StartPadding.dp, end = EndPadding.dp)

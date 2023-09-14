@@ -38,6 +38,7 @@ import com.example.phonepeclone.Data.FundBillers
 import com.example.phonepeclone.NavigationDestinations
 import com.example.phonepeclone.R
 import com.example.phonepeclone.ScrollableBoxs
+import com.example.phonepeclone.ViewModels.DynamicScreenViewModel
 import com.example.phonepeclone.ViewModels.TopCompaniesViewModel
 import com.example.phonepeclone.navController
 import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
@@ -198,8 +199,7 @@ fun FundsFacilityBoxs(Label: String, StartPadding: Int, EndPadding: Int) {
 
 
 @Composable
-fun TopCompaniesScreen(topCompaniesViewModel: TopCompaniesViewModel) {
-
+fun TopCompaniesScreen(topCompaniesViewModel: TopCompaniesViewModel,dynamicScreenViewModel:DynamicScreenViewModel  ) {
     Surface(
         modifier = Modifier
             .fillMaxSize(),
@@ -285,7 +285,7 @@ fun TopCompaniesScreen(topCompaniesViewModel: TopCompaniesViewModel) {
                     FundsSurface(
                         FundProvider = fundBillers,
                         SurfaceOnClick = {
-                            topCompaniesViewModel.setString(fundBillers.FundProviderName)
+                            dynamicScreenViewModel.HeadingText.value = fundBillers.FundProviderName
                             navController.navigateTo(Route = NavigationDestinations.DYNAMICSCREEN_ROUTE)
                         }
                     )
@@ -299,7 +299,7 @@ fun TopCompaniesScreen(topCompaniesViewModel: TopCompaniesViewModel) {
 @Composable
 fun PreviewTopCompanies() {
     PhonepeCloneTheme {
-        TopCompaniesScreen(viewModel())
+        TopCompaniesScreen(viewModel() , viewModel())
     }
 }
 

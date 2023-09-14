@@ -125,6 +125,7 @@ fun PhonepeApplication(mainScreenViewModel: MainScreenViewModel) {
 
         //Wealth Screen Unit
         if (isUnitSelected(UnitSection.WEALTH)) {
+
             shouldExitToHome = true
             WealthUnit()
         }

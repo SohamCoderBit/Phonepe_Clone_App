@@ -8,8 +8,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
@@ -25,15 +23,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.phonepeclone.BlueTopAppBar
+import com.example.phonepeclone.FullPurpleButton
 import com.example.phonepeclone.R
 import com.example.phonepeclone.SurfaceInView
 import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
-
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -128,28 +125,25 @@ fun CarScreen() {
                             .fillMaxWidth(),
                         contentAlignment = Alignment.Center
                     ) {
-                        Button(
-                            modifier = Modifier
-                                .padding(start = 20.dp, end = 20.dp)
-                                .fillMaxWidth()
-                                .height(60.dp),
-                            onClick = { /*TODO*/ },
-                            shape = RoundedCornerShape(50),
-                            contentPadding = PaddingValues(
+                        FullPurpleButton(
+                            ButtonPadding = PaddingValues(
+                                start = 20.dp,
+                                end = 20.dp
+                            ),
+                            ButtonLabel = "SUBMIT",
+                            ButtonLabelFontSize = 18,
+                            ButtonColor = Color(163, 99, 235, 255),
+                            ButtonHeight = 60,
+                            ContentPadding = PaddingValues(
                                 start = 35.dp,
                                 end = 35.dp,
                                 top = 5.dp,
                                 bottom = 5.dp
                             ),
-                            colors = ButtonDefaults.outlinedButtonColors(Color(163, 99, 235, 255))
-                        ) {
-                            Text(
-                                text = "SUBMIT",
-                                textAlign = TextAlign.Center,
-                                lineHeight = 18.sp,
-                                color = Color.White,
-                            )
-                        }
+                            OnClick = {
+
+                            }
+                        )
                     }
 
                     Box(

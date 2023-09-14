@@ -140,8 +140,6 @@ fun InsuranceUnit() {
                         Text(text = "VIEW QUOTES", color = Color.White, fontSize = 14.sp)
                     }
                 }
-
-
             }
 
             //Heading Motor And Travel
@@ -308,7 +306,6 @@ fun PreviewInsuranceUnit() {
             ) {
                 InsuranceUnit()
             }
-
         }
     }
 }

@@ -32,12 +32,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.Observer
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.phonepeclone.BlueTopAppBar
 import com.example.phonepeclone.HeadingTextInSurfaceView
 import com.example.phonepeclone.R
 import com.example.phonepeclone.SurfaceInView
-import com.example.phonepeclone.ViewModels.TopCompaniesViewModel
+import com.example.phonepeclone.ViewModels.DynamicScreenViewModel
 import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
 
 @Composable
@@ -80,7 +81,10 @@ fun setIconConfiguration(isSelected: Boolean): IconConfig {
 }
 
 @Composable
-fun DynamicScreen(topCompaniesViewModel: TopCompaniesViewModel) {
+fun DynamicScreen(dynamicScreenViewModel:DynamicScreenViewModel) {
+    var heading = ""
+    val headingTextObserver = Observer<String> {newHeading -> heading = newHeading}
+    dynamicScreenViewModel.HeadingText.observeForever(headingTextObserver)
 
     var Type1 by remember {
         mutableStateOf(true)
@@ -124,7 +128,7 @@ fun DynamicScreen(topCompaniesViewModel: TopCompaniesViewModel) {
                         ) {
                             Column {
                                 Text(
-                                    text = topCompaniesViewModel.getString(),
+                                    text = heading,
                                     color = Color.White,
                                     fontSize = 16.sp
                                 )
@@ -175,7 +179,7 @@ fun DynamicScreen(topCompaniesViewModel: TopCompaniesViewModel) {
                                     indication = null,
                                     interactionSource = MutableInteractionSource()
                                 ) {
-                                    if(!Type1){
+                                    if (!Type1) {
                                         Type1 = true
                                         Type2 = !Type2
                                     }
@@ -199,7 +203,7 @@ fun DynamicScreen(topCompaniesViewModel: TopCompaniesViewModel) {
                                     indication = null,
                                     interactionSource = MutableInteractionSource()
                                 ) {
-                                    if(!Type2){
+                                    if (!Type2) {
                                         Type1 = !Type1
                                         Type2 = true
                                     }

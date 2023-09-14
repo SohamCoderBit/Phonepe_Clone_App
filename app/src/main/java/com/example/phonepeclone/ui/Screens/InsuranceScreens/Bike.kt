@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -27,12 +26,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.phonepeclone.BlueTopAppBar
+import com.example.phonepeclone.FullPurpleButton
 import com.example.phonepeclone.R
 import com.example.phonepeclone.SurfaceInView
 import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
 
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BikeScreen() {
 
@@ -80,7 +79,6 @@ fun BikeScreen() {
                     }
 
 
-
                     //Submit Button
                     Box(
                         modifier = Modifier
@@ -110,6 +108,27 @@ fun BikeScreen() {
                                 color = Color.White,
                             )
                         }
+
+                        FullPurpleButton(
+                            ButtonPadding = PaddingValues(
+                                start = 20.dp,
+                                end = 20.dp
+                            ),
+                            ButtonLabel = "SUBMIT",
+                            ButtonLabelFontSize = 18,
+                            ButtonColor = Color(163, 99, 235, 255),
+                            ButtonHeight = 60,
+                            ContentPadding = PaddingValues(
+                                start = 35.dp,
+                                end = 35.dp,
+                                top = 5.dp,
+                                bottom = 5.dp
+                            ),
+                            OnClick = {
+
+                            }
+                        )
+
                     }
 
                     Box(

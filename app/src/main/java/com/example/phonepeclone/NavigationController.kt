@@ -7,6 +7,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.phonepeclone.ViewModels.DynamicScreenViewModel
+import com.example.phonepeclone.ViewModels.InsuranceRenewalViewModel
 import com.example.phonepeclone.ViewModels.LoanPaymentViewModel
 import com.example.phonepeclone.ViewModels.MainScreenViewModel
 import com.example.phonepeclone.ViewModels.TaxSavingFundViewModel
@@ -116,6 +118,10 @@ fun NavGraphInit(
 
     val taxSavingFundViewModel: TaxSavingFundViewModel = viewModel()
 
+    val dynamicScreenViewModel:DynamicScreenViewModel = viewModel()
+
+    val insuranceRenewalViewModel:InsuranceRenewalViewModel = viewModel()
+
     NavHost(navController = navController, startDestination = StartDestination) {
 
         //Main View
@@ -153,11 +159,11 @@ fun NavGraphInit(
         composable(route = NavigationDestinations.HEALTHSCREEN_ROUTE) { HealthScreen() }
         composable(route = NavigationDestinations.CARSCREEN_ROUTE) { CarScreen() }
         composable(route = NavigationDestinations.ACCIDENTSCREEN_ROUTE) { AccidentScreen() }
-        composable(route = NavigationDestinations.INSURANCERENEWAL_ROUTE) { InsuranceRenewalScreen() }
+        composable(route = NavigationDestinations.INSURANCERENEWAL_ROUTE) { InsuranceRenewalScreen(insuranceRenewalViewModel) }
 
         //Wealth Screens
         composable(route = NavigationDestinations.GOLDSCREEN_ROUTE) { GoldScreen() }
-        composable(route = NavigationDestinations.TOPCOMPANIES_ROUTE) { TopCompaniesScreen(topCompaniesViewModel) }
+        composable(route = NavigationDestinations.TOPCOMPANIES_ROUTE) { TopCompaniesScreen(topCompaniesViewModel , dynamicScreenViewModel) }
         composable(route = NavigationDestinations.TAXSAVINGFUND_ROUTE) { TaxSavingFundScreen(taxSavingFundViewModel) }
 
 
@@ -168,7 +174,7 @@ fun NavGraphInit(
 
 
         //Testing
-        composable(route = NavigationDestinations.DYNAMICSCREEN_ROUTE) { DynamicScreen(topCompaniesViewModel) }
+        composable(route = NavigationDestinations.DYNAMICSCREEN_ROUTE) { DynamicScreen(dynamicScreenViewModel) }
 
     }
 }

@@ -362,6 +362,12 @@ fun LoanPaymentScreen(loanPaymentViewModel: LoanPaymentViewModel) {
                         val iconResource: Int =
                             if (categoryItem.isSelected.value) R.drawable.true_sign else R.drawable.radio_button
 
+                        val iconTint:Color =
+                            if(categoryItem.isSelected.value) Color.Unspecified else Color.White
+
+                        val iconSize:Int =
+                            if(categoryItem.isSelected.value) 24 else 28
+
                         Box(
                             modifier = Modifier
                                 .fillMaxHeight()
@@ -370,7 +376,7 @@ fun LoanPaymentScreen(loanPaymentViewModel: LoanPaymentViewModel) {
                         ) {
                             Icon(
                                 modifier = Modifier
-                                    .size(24.dp)
+                                    .size(iconSize.dp)
                                     .clickable(
                                         indication = null,
                                         interactionSource = MutableInteractionSource()
@@ -386,7 +392,7 @@ fun LoanPaymentScreen(loanPaymentViewModel: LoanPaymentViewModel) {
                                     },
                                 painter = painterResource(id = iconResource),
                                 contentDescription = null,
-                                tint = Color.Unspecified
+                                tint = iconTint
                             )
                         }
 
