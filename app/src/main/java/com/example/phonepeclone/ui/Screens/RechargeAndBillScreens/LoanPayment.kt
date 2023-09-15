@@ -27,12 +27,10 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -46,6 +44,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.phonepeclone.Data.CategoryItem
 import com.example.phonepeclone.HeadingTextInSurfaceView
 import com.example.phonepeclone.R
 import com.example.phonepeclone.RowWithDividerElements
@@ -57,70 +56,15 @@ import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
 import kotlinx.coroutines.launch
 
 
-data class CategoryItem(val Content: String, var isSelected: MutableState<Boolean>)
-
-
-
-
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun LoanPaymentScreen(loanPaymentViewModel: LoanPaymentViewModel) {
 
-    val categoryItemList = arrayListOf<CategoryItem>()
-
-    categoryItemList.add(
-        CategoryItem(
-            Content = "Microfianance Institutions (MFI)",
-            isSelected = rememberSaveable { mutableStateOf(false) }
-        )
-    )
-    categoryItemList.add(
-        CategoryItem(
-            Content = "Vehicle Loan",
-            isSelected = rememberSaveable { mutableStateOf(false) }
-        )
-    )
-    categoryItemList.add(
-        CategoryItem(
-            Content = "Gold Loan",
-            isSelected = rememberSaveable { mutableStateOf(false) }
-        )
-    )
-    categoryItemList.add(
-        CategoryItem(
-            Content = "Small Finance Bank",
-            isSelected = rememberSaveable { mutableStateOf(false) }
-        )
-    )
-    categoryItemList.add(
-        CategoryItem(
-            Content = "Consumer Loan",
-            isSelected = rememberSaveable { mutableStateOf(false) }
-        )
-    )
-    categoryItemList.add(
-        CategoryItem(
-            Content = "Bank",
-            isSelected = rememberSaveable { mutableStateOf(false) }
-        )
-    )
-    categoryItemList.add(
-        CategoryItem(
-            Content = "Home Loan",
-            isSelected = rememberSaveable { mutableStateOf(false) }
-        )
-    )
-    categoryItemList.add(
-        CategoryItem(
-            Content = "Others",
-            isSelected = rememberSaveable { mutableStateOf(false) }
-        )
-    )
-
+    val categoryItemList = loanPaymentViewModel.getCategoryItemList()
 
     fun listCheck(): Int {
         categoryItemList.forEachIndexed { index, _ ->
-            if (categoryItemList[index].isSelected.value) return index
+            if (loanPaymentViewModel.currentlySelectedCategory == categoryItemList[index].Content) return index
         }
         return -1
     }
@@ -159,6 +103,7 @@ fun LoanPaymentScreen(loanPaymentViewModel: LoanPaymentViewModel) {
             ) {
 
 
+                //Checking the list and getting the currentlyselected category item's index
                 val index: Int = listCheck()
                 val buttonLabel: String =
                     if (index == -1) "Filter by category" else categoryItemList[index].Content
@@ -224,15 +169,14 @@ fun LoanPaymentScreen(loanPaymentViewModel: LoanPaymentViewModel) {
                                 contentAlignment = Alignment.Center
                             ) {
 
+                                // if anything is selected then the CLEAR button will be shown therefore index != -1
                                 if (index != -1) {
                                     Text(
                                         modifier = Modifier.clickable(
                                             indication = null,
                                             interactionSource = MutableInteractionSource()
                                         ) {
-                                            categoryItemList.forEach { item ->
-                                                item.isSelected.value = false
-                                            }
+                                            loanPaymentViewModel.onSelectChange(CategoryItem(""))
                                         },
                                         text = "CLEAR",
                                         color = Color(140, 108, 181, 255)
@@ -273,23 +217,24 @@ fun LoanPaymentScreen(loanPaymentViewModel: LoanPaymentViewModel) {
                                 .clip(RoundedCornerShape(percent = 20))
                                 .background(Color.White)
 
-                            loanPaymentViewModel.getLoanBillersList(LocalContext.current).forEach { item ->
-                                if (item.BillerType.Index == index) {
-                                    RowWithDividerElements(
-                                        Content = item.BillerName,
-                                        IconSource = R.drawable.user_regular,
-                                        IconBoxModifier = iconboxmodifier
-                                    )
-                                } else {
-                                    if (index == -1) {
+                            loanPaymentViewModel.getLoanBillersList(LocalContext.current)
+                                .forEach { item ->
+                                    if (item.BillerType.Index == index) {
                                         RowWithDividerElements(
                                             Content = item.BillerName,
                                             IconSource = R.drawable.user_regular,
                                             IconBoxModifier = iconboxmodifier
                                         )
+                                    } else {
+                                        if (index == -1) {
+                                            RowWithDividerElements(
+                                                Content = item.BillerName,
+                                                IconSource = R.drawable.user_regular,
+                                                IconBoxModifier = iconboxmodifier
+                                            )
+                                        }
                                     }
                                 }
-                            }
                         }
                     }
                 }
@@ -333,8 +278,6 @@ fun LoanPaymentScreen(loanPaymentViewModel: LoanPaymentViewModel) {
                         tint = Color.White
                     )
                 }
-
-
             }
 
 
@@ -359,14 +302,15 @@ fun LoanPaymentScreen(loanPaymentViewModel: LoanPaymentViewModel) {
                         }
 
 
+                        val isCurrentlySelected = loanPaymentViewModel.currentlySelectedCategory == categoryItem.Content
                         val iconResource: Int =
-                            if (categoryItem.isSelected.value) R.drawable.true_sign else R.drawable.radio_button
+                            if (isCurrentlySelected) R.drawable.true_sign else R.drawable.radio_button
 
-                        val iconTint:Color =
-                            if(categoryItem.isSelected.value) Color.Unspecified else Color.White
+                        val iconTint: Color =
+                            if (isCurrentlySelected) Color.Unspecified else Color.White
 
-                        val iconSize:Int =
-                            if(categoryItem.isSelected.value) 24 else 28
+                        val iconSize: Int =
+                            if (isCurrentlySelected) 24 else 28
 
                         Box(
                             modifier = Modifier
@@ -381,10 +325,7 @@ fun LoanPaymentScreen(loanPaymentViewModel: LoanPaymentViewModel) {
                                         indication = null,
                                         interactionSource = MutableInteractionSource()
                                     ) {
-                                        categoryItemList.forEach { item ->
-                                            item.isSelected.value =
-                                                item.Content == categoryItem.Content
-                                        }
+                                        loanPaymentViewModel.onSelectChange(categoryItem = categoryItem)
 
                                         coroutineScope.launch {
                                             bottomsheetState.bottomSheetState.collapse()

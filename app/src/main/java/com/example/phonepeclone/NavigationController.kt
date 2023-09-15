@@ -18,10 +18,14 @@ import com.example.phonepeclone.ui.Screens.HomeUnitScreens.ReferAndGetButtonScre
 import com.example.phonepeclone.ui.Screens.HomeUnitScreens.RewardScreen
 import com.example.phonepeclone.ui.Screens.HomeUnitScreens.UPILiteScreen
 import com.example.phonepeclone.ui.Screens.InsuranceScreens.InsuranceRenewalScreen
+import com.example.phonepeclone.ui.Screens.InsuranceScreens.TermLifeScreen
+import com.example.phonepeclone.ui.Screens.WealthScreens.BestSIPFundsScreen
 import com.example.phonepeclone.ui.Screens.WealthScreens.DynamicScreen
 import com.example.phonepeclone.ui.Screens.WealthScreens.GoldScreen
+import com.example.phonepeclone.ui.Screens.WealthScreens.HighReturnsScreen
 import com.example.phonepeclone.ui.Screens.WealthScreens.TaxSavingFundScreen
 import com.example.phonepeclone.ui.Screens.WealthScreens.TopCompaniesScreen
+import com.example.phonepeclone.ui.Screens.WealthScreens.TrendingThemesScreen
 import com.example.phonepeclone.ui.theme.Screens.InsuranceScreens.AccidentScreen
 import com.example.phonepeclone.ui.theme.Screens.InsuranceScreens.BikeScreen
 import com.example.phonepeclone.ui.theme.Screens.InsuranceScreens.CarScreen
@@ -60,12 +64,20 @@ object NavigationDestinations {
     const val ADDBANKSCREEN_ROUTE = "AddBankAccount"
     const val SELFACCOUNT_ROUTE = "SelfAccountScreen"
     const val GOLDSCREEN_ROUTE = "GoldScreen"
+
     const val REFERANDGETBUTTON_ROUTE = "ReferAndGetButtonScreen"
     const val PHONEPEWALLETBUTTON_ROUTE = "PhonepeWalletScreen"
-    const val TOPCOMPANIES_ROUTE = "TopCompaniesScreen"
     const val REWARDBUTTON_ROUTE = "RewardScreen"
+
     const val INSURANCERENEWAL_ROUTE = "InsuranceRenewalScreen"
+
     const val TAXSAVINGFUND_ROUTE = "TaxSavingFundScreen"
+    const val HIGHRETURNFUND_ROUTE =  "HighReturnsScreen"
+    const val TOPCOMPANIES_ROUTE = "TopCompaniesScreen"
+    const val BESTSIPFUNDS_ROUTE = "BestSIPFundsScreen"
+    const val TRENDINGTHEME_ROUTE = "TrendingThemesScreen"
+
+    const val TERMLIFE_ROUTE = "TermLifeScreen"
 
     //Testing
     const val DYNAMICSCREEN_ROUTE = "DynamicScreen"
@@ -118,18 +130,14 @@ fun NavGraphInit(
 
     val taxSavingFundViewModel: TaxSavingFundViewModel = viewModel()
 
-    val dynamicScreenViewModel:DynamicScreenViewModel = viewModel()
+    val dynamicScreenViewModel: DynamicScreenViewModel = viewModel()
 
-    val insuranceRenewalViewModel:InsuranceRenewalViewModel = viewModel()
+    val insuranceRenewalViewModel: InsuranceRenewalViewModel = viewModel()
 
     NavHost(navController = navController, startDestination = StartDestination) {
 
         //Main View
-        composable(route = NavigationDestinations.HOMESCREEN_ROUTE) {
-            PhonepeApplication(
-                mainScreenViewModel
-            )
-        }
+        composable(route = NavigationDestinations.HOMESCREEN_ROUTE) { PhonepeApplication(mainScreenViewModel)}
 
         /**
          * Below the term Screens means Each Icon's Screens Associated to that Specific Icon OR Buttons
@@ -160,11 +168,16 @@ fun NavGraphInit(
         composable(route = NavigationDestinations.CARSCREEN_ROUTE) { CarScreen() }
         composable(route = NavigationDestinations.ACCIDENTSCREEN_ROUTE) { AccidentScreen() }
         composable(route = NavigationDestinations.INSURANCERENEWAL_ROUTE) { InsuranceRenewalScreen(insuranceRenewalViewModel) }
+        composable(route = NavigationDestinations.TERMLIFE_ROUTE) { TermLifeScreen() }
 
         //Wealth Screens
         composable(route = NavigationDestinations.GOLDSCREEN_ROUTE) { GoldScreen() }
-        composable(route = NavigationDestinations.TOPCOMPANIES_ROUTE) { TopCompaniesScreen(topCompaniesViewModel , dynamicScreenViewModel) }
+        composable(route = NavigationDestinations.TOPCOMPANIES_ROUTE) { TopCompaniesScreen(topCompaniesViewModel, dynamicScreenViewModel) }
         composable(route = NavigationDestinations.TAXSAVINGFUND_ROUTE) { TaxSavingFundScreen(taxSavingFundViewModel) }
+        composable(route = NavigationDestinations.HIGHRETURNFUND_ROUTE){ HighReturnsScreen(topCompaniesViewModel, dynamicScreenViewModel)   }
+        composable(route = NavigationDestinations.BESTSIPFUNDS_ROUTE){  BestSIPFundsScreen(topCompaniesViewModel , dynamicScreenViewModel)  }
+        composable(route = NavigationDestinations.TRENDINGTHEME_ROUTE){ TrendingThemesScreen(topCompaniesViewModel , dynamicScreenViewModel)}
+
 
 
         //Home Screen Buttons

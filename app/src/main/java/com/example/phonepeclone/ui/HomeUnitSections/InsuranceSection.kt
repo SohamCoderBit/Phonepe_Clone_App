@@ -118,7 +118,9 @@ fun InsuranceSection(SeeAllButtonOnClick: () -> Unit) {
             //Term Life
             DrawIconInRow(
                 SurfaceModifier = surfacemodifier,
-                BoxModifier = boxmodifier,
+                BoxModifier = boxmodifier.clickable {
+                    navController.navigateTo(Route = NavigationDestinations.TERMLIFE_ROUTE)
+                },
                 IconSize = 45,
                 IconResource = R.drawable.hands
             )

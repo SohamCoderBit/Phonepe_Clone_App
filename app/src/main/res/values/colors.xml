@@ -17,4 +17,6 @@
     <color name="Pinless">#b3aabd</color>
     <color name="TMS_Icon">#8a55c4</color>
     <color name="icon_tint">#905dc6</color>
+    <color name="button_purple">#895eb9</color>
+    <color name="button_green">#27b564</color>
 </resources>

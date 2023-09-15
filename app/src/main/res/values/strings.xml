@@ -2,6 +2,9 @@
     <string name="app_name">PhonepeClone</string>
     <string name="fund_advertise">Benefit from India\'s high growth potential These funds invest in the top 100 companies in India</string>
     <string name="tax_saving_fund_advertise">Best way to save tax &amp; grow your money.Get potentially higher returns than other tax saving investments.</string>
+    <string name="high_return_fund_advertise">Funds that have delievered high returns over last 3 years, Ideal for long term investment</string>
+    <string name="best_sip_fund_advertise">Grow your money with Best SIP Funds.Ideal for long term investment.</string>
+    <string name="trending_themes_advertise">Benefit from the high growth of businesses in top-performing sectors and themes </string>
     <string name="T_an_C_Agreement">by continuing , you agree to</string>
     <string name="Phonepe_T_an_C"> Phonepe T&amp;C</string>
 </resources>

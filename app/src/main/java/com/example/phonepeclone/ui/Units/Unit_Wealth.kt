@@ -459,15 +459,17 @@ fun WealthUnit() {
             Row(modifier = Modifier.padding(top = 15.dp)) {
                 val surfacemodifier: Modifier = Modifier.weight(1f)
 
-                //Gold
+                //Best SIP Funds
                 DrawIconInRow(
                     SurfaceModifier = surfacemodifier,
-                    BoxModifier = boxmodifier,
+                    BoxModifier = boxmodifier.clickable {
+                        navController.navigateTo(Route = NavigationDestinations.BESTSIPFUNDS_ROUTE)
+                    },
                     IconSize = 45,
                     IconResource = R.drawable.growth_846173,
                 )
 
-                //Top Companies
+                //3-in-1 Funds
                 DrawIconInRow(
                     SurfaceModifier = surfacemodifier,
                     BoxModifier = boxmodifier,
@@ -475,18 +477,22 @@ fun WealthUnit() {
                     IconResource = R.drawable.arrow_4161661,
                 )
 
-                //Tax Saving Funds
+                //Trending Themes
                 DrawIconInRow(
                     SurfaceModifier = surfacemodifier,
-                    BoxModifier = boxmodifier,
+                    BoxModifier = boxmodifier.clickable {
+                        navController.navigateTo(Route = NavigationDestinations.TRENDINGTHEME_ROUTE)
+                    },
                     IconSize = 45,
                     IconResource = R.drawable.bulb,
                 )
 
-                //Start with ₹100
+                //High Return Funds
                 DrawIconInRow(
                     SurfaceModifier = surfacemodifier,
-                    BoxModifier = boxmodifier,
+                    BoxModifier = boxmodifier.clickable {
+                        navController.navigateTo(Route = NavigationDestinations.HIGHRETURNFUND_ROUTE)
+                    },
                     IconSize = 45,
                     IconResource = R.drawable.high_return_funds,
                 )

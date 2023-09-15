@@ -1,6 +1,6 @@
 package com.example.phonepeclone.ui.Screens.HomeUnitScreens
 
-import androidx.compose.foundation.border
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
@@ -29,7 +29,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -52,27 +51,40 @@ import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
 
 
 @Composable
-fun SetAmountInTextFieldButton(AmountLabel: String, onClick: () -> Unit) {
+fun ClickableSurface(
+    Label: String,
+    LabelColor:Color = Color(148, 110, 197, 255),
+    RoundedCornerPercentage: Int = 20,
+    SurfaceColor: Color = Color.Transparent,
+    SurfaceBorderColor:Color = Color(148, 110, 197, 255),
+    SurfaceWidth:Int = 90,
+    SurfaceHeight:Int = 45,
+    onClick: () -> Unit
+) {
 
-    Box(
+    Surface(
         modifier = Modifier
             .padding(end = 10.dp)
-            .width(90.dp)
-            .height(45.dp)
-            .clip(RoundedCornerShape(20))
-            .border(1.dp, Color(148, 110, 197, 255), RoundedCornerShape(20))
+            .width(SurfaceWidth.dp)
+            .height(SurfaceHeight.dp)
             .clickable(
                 indication = null,
                 interactionSource = MutableInteractionSource()
-            ) { onClick() },
-        contentAlignment = Alignment.Center
+            ) {
+                onClick() },
+        color = SurfaceColor,
+        shape = RoundedCornerShape(RoundedCornerPercentage),
+        border = BorderStroke(1.dp, SurfaceBorderColor)
     ) {
-        Text(
-            text = "₹$AmountLabel",
-            color = Color(148, 110, 197, 255),
-            fontSize = 15.sp,
-            fontWeight = FontWeight.Medium
-        )
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            Text(
+                text = Label,
+                color = LabelColor,
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Medium
+            )
+        }
+
     }
 }
 
@@ -134,16 +146,16 @@ fun UPILiteScreen() {
                     )
 
                     Row(modifier = Modifier.padding(start = 15.dp, bottom = 15.dp)) {
-                        SetAmountInTextFieldButton(AmountLabel = "200") {
+                        ClickableSurface(Label = "₹200") {
                             moneyAmountFromUser = "200"
                         }
 
-                        SetAmountInTextFieldButton(AmountLabel = "1,000") {
-                            moneyAmountFromUser = "1,000"
+                        ClickableSurface(Label = "₹1000") {
+                            moneyAmountFromUser = "1000"
                         }
 
-                        SetAmountInTextFieldButton(AmountLabel = "2,000") {
-                            moneyAmountFromUser = "2,000"
+                        ClickableSurface(Label = "₹2000") {
+                            moneyAmountFromUser = "2000"
                         }
                     }
 

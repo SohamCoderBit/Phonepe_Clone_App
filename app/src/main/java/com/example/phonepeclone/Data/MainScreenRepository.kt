@@ -60,3 +60,8 @@ class MainScreenRepository {
     }
 
 }
+
+class OneSelectable{
+
+}
+
