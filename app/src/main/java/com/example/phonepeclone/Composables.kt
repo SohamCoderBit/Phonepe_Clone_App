@@ -3,6 +3,7 @@ package com.example.phonepeclone
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -62,8 +63,169 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.phonepeclone.Data.FundBillers
 import com.example.phonepeclone.ui.Screens.WealthScreens.FundsFacilityBoxs
 
+
+
+@Composable
+fun FundsSurface(
+    FundProvider: FundBillers,
+    SurfaceOnClick: () -> Unit = {},
+    MoreDetailesOnClick: () -> Unit = {}
+) {
+    Surface(
+        modifier = Modifier
+            .padding(top = 10.dp, start = 10.dp, end = 10.dp)
+            .fillMaxWidth()
+            .height(190.dp)
+            .clickable { SurfaceOnClick() },
+        shape = RoundedCornerShape(10),
+        color = Color(33, 24, 43, 255)
+    ) {
+
+        Column {
+
+            Row {
+
+                Box(
+                    modifier = Modifier
+                        .weight(1.2f)
+                        .height(80.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Image(
+                        modifier = Modifier
+                            .height(60.dp),
+                        painter = painterResource(id = R.mipmap.icici_fund_foreground),
+                        contentDescription = null
+                    )
+                }
+
+                Box(
+                    modifier = Modifier
+                        .weight(3f)
+                        .height(80.dp),
+                    contentAlignment = Alignment.CenterStart
+                ) {
+                    Column {
+                        androidx.compose.material.Text(
+                            text = FundProvider.FundProviderName,
+                            color = Color.White,
+                            fontSize = 16.sp
+                        )
+                        androidx.compose.material.Text(
+                            text = "Equity : Large Cap",
+                            color = Color.White
+                        )
+                    }
+                }
+
+                Box(
+                    modifier = Modifier
+                        .weight(0.8f)
+                        .height(80.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    androidx.compose.material3.Icon(
+                        modifier = Modifier
+                            .height(15.dp),
+                        painter = painterResource(id = R.drawable.chevron_right_solid),
+                        contentDescription = null,
+                        tint = Color.White
+                    )
+                }
+            }
+
+            androidx.compose.material.Divider(
+                modifier = Modifier.padding(start = 20.dp, end = 20.dp),
+                thickness = 2.dp,
+                color = Color(46, 37, 56, 255)
+            )
+
+            Row {
+                Box(
+                    modifier = Modifier
+                        .weight(0.9f)
+                        .height(70.dp),
+                    contentAlignment = Alignment.CenterStart
+                ) {
+                    Column(modifier = Modifier.padding(start = 20.dp)) {
+                        androidx.compose.material.Text(
+                            text = "Last 3Y",
+                            fontSize = 13.sp,
+                            color = Color.White
+                        )
+                        Row(modifier = Modifier.padding(top = 2.dp)) {
+                            androidx.compose.material.Text(
+                                text = FundProvider.Last3Year + "%",
+                                fontSize = 17.sp,
+                                color = Color.White
+                            )
+                            androidx.compose.material.Text(
+                                modifier = Modifier.padding(top = 8.dp),
+                                text = " p.a",
+                                fontSize = 10.sp,
+                                color = Color.White
+                            )
+                        }
+                    }
+                }
+
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(70.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Column {
+                        androidx.compose.material.Text(text = "Min Invest.", color = Color.White)
+                        androidx.compose.material.Text(
+                            text = FundProvider.MinInvest,
+                            fontSize = 17.sp,
+                            color = Color.White
+                        )
+                    }
+                }
+
+                Box(
+                    modifier = Modifier
+                        .weight(1.3f)
+                        .height(70.dp),
+                    contentAlignment = Alignment.CenterStart
+                ) {
+                    Column(modifier = Modifier.padding(start = 25.dp)) {
+                        androidx.compose.material.Text(text = "Fund Size", color = Color.White)
+                        androidx.compose.material.Text(
+                            text = "₹" + FundProvider.FundSize + "Cr",
+                            fontSize = 17.sp,
+                            color = Color.White
+                        )
+                    }
+                }
+            }
+
+            Box(
+                modifier = Modifier
+                    .padding(start = 20.dp, end = 20.dp)
+                    .fillMaxWidth()
+
+            ) {
+                androidx.compose.material.Text(
+                    modifier = Modifier.clickable(
+                        indication = null,
+                        interactionSource = MutableInteractionSource()
+                    ) {
+                        MoreDetailesOnClick()
+                    },
+                    text = "More Details",
+                    color = Color(146, 111, 198, 255),
+                    fontWeight = FontWeight.Medium
+                )
+            }
+        }
+    }
+}
 
 @Composable
 fun FundsScreenLayout(

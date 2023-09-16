@@ -3,6 +3,7 @@ package com.example.phonepeclone.ui.Screens.WealthScreens
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import com.example.phonepeclone.FundsScreenLayout
+import com.example.phonepeclone.FundsSurface
 import com.example.phonepeclone.NavigationDestinations
 import com.example.phonepeclone.R
 import com.example.phonepeclone.ViewModels.DynamicScreenViewModel
