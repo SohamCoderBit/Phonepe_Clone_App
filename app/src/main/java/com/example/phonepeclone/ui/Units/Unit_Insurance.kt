@@ -158,7 +158,7 @@ fun InsuranceUnit() {
                 DrawIconInRow(
                     SurfaceModifier = surfacemodifier,
                     BoxModifier = boxmodifier.clickable {
-                        navController.navigateTo(Route = NavigationDestinations.BIKESCREEN_ROUTE)
+                        navController.navigateTo(Route = NavigationDestinations.BIKE_SCREEN_ROUTE)
                     },
                     IconSize = 55,
                     IconTint = Color(144, 93, 198, 255),
@@ -169,7 +169,7 @@ fun InsuranceUnit() {
                 DrawIconInRow(
                     SurfaceModifier = surfacemodifier,
                     BoxModifier = boxmodifier.clickable {
-                        navController.navigateTo(Route = NavigationDestinations.CARSCREEN_ROUTE)
+                        navController.navigateTo(Route = NavigationDestinations.CAR_SCREEN_ROUTE)
                     },
                     IconSize = 55,
                     IconResource = R.drawable.hatchback_5035167
@@ -233,7 +233,7 @@ fun InsuranceUnit() {
                 DrawIconInRow(
                     SurfaceModifier = surfacemodifier,
                     BoxModifier = boxmodifier.clickable {
-                        navController.navigateTo(Route = NavigationDestinations.HEALTHSCREEN_ROUTE)
+                        navController.navigateTo(Route = NavigationDestinations.HEALTH_SCREEN_ROUTE)
                     },
                     IconSize = 45,
                     IconResource = R.drawable.heart_logo,
@@ -259,7 +259,7 @@ fun InsuranceUnit() {
                 DrawIconInRow(
                     SurfaceModifier = surfacemodifier,
                     BoxModifier = boxmodifier.clickable {
-                        navController.navigateTo(Route = NavigationDestinations.ACCIDENTSCREEN_ROUTE)
+                        navController.navigateTo(Route = NavigationDestinations.ACCIDENT_SCREEN_ROUTE)
                     },
                     IconSize = 45,
                     IconResource = R.drawable.patient_469444,

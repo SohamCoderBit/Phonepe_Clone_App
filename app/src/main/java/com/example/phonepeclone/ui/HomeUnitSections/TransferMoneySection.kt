@@ -109,7 +109,7 @@ fun TransferMoneysection() {
             IconTint = Color.White,
             IconResource = R.drawable.user_regular,
             IconDecription = "To Mobile Number",
-            ClickEventAction = { navController.navigateTo(Route = NavigationDestinations.MOBILENUMBERSCREEN_ROUTE) }
+            ClickEventAction = { navController.navigateTo(Route = NavigationDestinations.MOBILE_NUMBER_SCREEN_ROUTE) }
         )
 
         //To Bank
@@ -122,7 +122,7 @@ fun TransferMoneysection() {
             IconTint = Color.White,
             IconResource = R.drawable.building_columns_solid,
             IconDecription = "To Bank/UPI ID",
-            ClickEventAction = { navController.navigateTo(Route = NavigationDestinations.BANKSCREEN_ROUTE) }
+            ClickEventAction = { navController.navigateTo(Route = NavigationDestinations.BANK_SCREEN_ROUTE) }
         )
 
         //To Self Account
@@ -135,7 +135,7 @@ fun TransferMoneysection() {
             IconTint = Color.White,
             IconResource = R.drawable.arrow_down_to_arc,
             IconDecription = "To Self Account",
-            ClickEventAction = { navController.navigateTo(Route = NavigationDestinations.SELFACCOUNT_ROUTE) }
+            ClickEventAction = { navController.navigateTo(Route = NavigationDestinations.SELF_ACCOUNT_ROUTE) }
         )
 
         //Check Balance
@@ -148,7 +148,7 @@ fun TransferMoneysection() {
             IconTint = Color.White,
             IconResource = R.drawable.money_bill_solid,
             IconDecription = "Check Balance",
-            ClickEventAction = { navController.navigateTo(Route = NavigationDestinations.CHECKBALANCESCREEN_ROUTE) }
+            ClickEventAction = { navController.navigateTo(Route = NavigationDestinations.CHECK_BALANCE_SCREEN_ROUTE) }
         )
     }
 

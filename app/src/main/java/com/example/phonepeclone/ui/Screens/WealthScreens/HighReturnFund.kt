@@ -38,7 +38,7 @@ fun HighReturnsScreen(
                         FundProvider = fundBillers,
                         SurfaceOnClick = {
                             dynamicScreenViewModel.HeadingText.value = fundBillers.FundProviderName
-                            navController.navigateTo(Route = NavigationDestinations.DYNAMICSCREEN_ROUTE)
+                            navController.navigateTo(Route = NavigationDestinations.DYNAMIC_SCREEN_ROUTE)
                         }
                     )
                 }

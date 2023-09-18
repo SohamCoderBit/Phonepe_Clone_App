@@ -13,10 +13,16 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Divider
+import androidx.compose.material.LocalTextStyle
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -28,6 +34,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -35,6 +42,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.phonepeclone.BlueTopAppBar
+import com.example.phonepeclone.ClickableSurface
 import com.example.phonepeclone.HeadingTextInSurfaceView
 import com.example.phonepeclone.R
 import com.example.phonepeclone.SurfaceInView
@@ -80,6 +88,7 @@ fun setIconConfiguration(isSelected: Boolean): IconConfig {
     return IconConfig(IconSource = R.drawable.radio_button, IconTint = Color.White)
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DynamicScreen(dynamicScreenViewModel:DynamicScreenViewModel) {
     var heading = ""
@@ -94,6 +103,10 @@ fun DynamicScreen(dynamicScreenViewModel:DynamicScreenViewModel) {
         mutableStateOf(false)
     }
 
+    var investmentAmount by remember {
+        mutableStateOf("100")
+    }
+
     Surface(
         modifier = Modifier
             .fillMaxSize(),
@@ -101,11 +114,11 @@ fun DynamicScreen(dynamicScreenViewModel:DynamicScreenViewModel) {
     ) {
 
         Column(modifier = Modifier.padding(top = 70.dp)) {
-            SurfaceInView(Height = 300) {
-
+            SurfaceInView(Height = 450) {
                 Column {
                     Row {
 
+                        //Biller Icon
                         Box(
                             modifier = Modifier
                                 .weight(1f)
@@ -120,6 +133,7 @@ fun DynamicScreen(dynamicScreenViewModel:DynamicScreenViewModel) {
                             )
                         }
 
+                        //Biller Name
                         Box(
                             modifier = Modifier
                                 .weight(3f)
@@ -135,6 +149,7 @@ fun DynamicScreen(dynamicScreenViewModel:DynamicScreenViewModel) {
                             }
                         }
 
+                        //Info Icon
                         Box(
                             modifier = Modifier
                                 .weight(0.8f)
@@ -166,6 +181,7 @@ fun DynamicScreen(dynamicScreenViewModel:DynamicScreenViewModel) {
                         HeadingTextColor = Color.LightGray
                     )
 
+                    //Investment Type
                     Row(modifier = Modifier.height(50.dp)) {
 
                         val boxModifier: Modifier = Modifier
@@ -225,6 +241,72 @@ fun DynamicScreen(dynamicScreenViewModel:DynamicScreenViewModel) {
                             .padding(start = 10.dp, end = 10.dp, top = 10.dp),
                         color = Color(42, 33, 52, 255)
                     )
+
+                    HeadingTextInSurfaceView(
+                        HeadingText = "Investment Amount",
+                        SurfacePadding = PaddingValues(start = 10.dp, top = 10.dp),
+                        TextFontSize = 12,
+                        HeadingTextFontWeight = FontWeight.Light,
+                        HeadingTextColor = Color.LightGray
+                    )
+
+
+                    OutlinedTextField(
+                        modifier = Modifier
+                            .padding(start = 15.dp, end = 15.dp, top = 10.dp, bottom = 10.dp)
+                            .height(65.dp)
+                            .fillMaxWidth(),
+                        value = investmentAmount,
+                        onValueChange = {
+                            investmentAmount = it
+                        },
+                        colors = TextFieldDefaults.textFieldColors(
+                            textColor = Color.White,
+                            containerColor = Color.Transparent,
+                            cursorColor = Color(163, 99, 235, 255)
+                        ),
+                        placeholder = {},
+                        maxLines = 1,
+                        textStyle = LocalTextStyle.current.copy(fontSize = 25.sp),
+                        shape = RoundedCornerShape(15),
+                        singleLine = true,
+                        keyboardOptions = KeyboardOptions.Default.copy(
+                            keyboardType = KeyboardType.NumberPassword
+                        ),
+                        leadingIcon = {
+                           Icon(
+                                modifier = Modifier.size(30.dp),
+                                painter = painterResource(
+                                    id = R.drawable.rupee_logo
+                                ),
+                                contentDescription = null,
+                                tint = Color.White
+                            )
+                        }
+                    )
+
+
+                    HeadingTextInSurfaceView(
+                        HeadingText = "Popular amounts",
+                        SurfacePadding = PaddingValues(start = 10.dp, top = 10.dp , bottom = 10.dp),
+                        TextFontSize = 12,
+                        HeadingTextColor = Color.LightGray
+                    )
+
+                    //Popular Amount
+                    Row(modifier = Modifier.padding(start = 15.dp, bottom = 15.dp)) {
+                        ClickableSurface(Label = "₹200" , SurfaceHeight = 35 , SurfaceWidth =  70) {
+                            investmentAmount = "200"
+                        }
+
+                        ClickableSurface(Label = "₹500" , SurfaceHeight = 35 , SurfaceWidth =  70) {
+                            investmentAmount = "500"
+                        }
+
+                        ClickableSurface(Label = "₹1000" , SurfaceHeight = 35 , SurfaceWidth =  70) {
+                            investmentAmount = "1000"
+                        }
+                    }
                 }
             }
         }

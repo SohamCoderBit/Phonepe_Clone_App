@@ -26,17 +26,21 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.phonepeclone.BlueTopAppBar
 import com.example.phonepeclone.DrawIconInRow
 import com.example.phonepeclone.HeadingTextInSurfaceView
 import com.example.phonepeclone.NavigationDestinations
 import com.example.phonepeclone.R
+import com.example.phonepeclone.RowWithDividerElements
 import com.example.phonepeclone.SearchBar
 import com.example.phonepeclone.SurfaceInView
+import com.example.phonepeclone.ViewModels.AddBankAccountVIewModel
 import com.example.phonepeclone.WriteLabelInRow
 import com.example.phonepeclone.navController
 import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
@@ -56,7 +60,7 @@ fun SelfAccountScreen() {
                     .align(Alignment.BottomCenter)
                     .height(60.dp)
                     .clickable {
-                        navController.navigateTo(NavigationDestinations.ADDBANKSCREEN_ROUTE)
+                        navController.navigateTo(NavigationDestinations.ADD_BANK_SCREEN_ROUTE)
                     },
                 containerColor = colorResource(id = R.color.bottom_nav)
             ) {
@@ -78,7 +82,7 @@ fun SelfAccountScreen() {
 
 
 @Composable
-fun AddBankAccount() {
+fun AddBankAccount(addBankAccountViewModel: AddBankAccountVIewModel) {
 
     var searchtextfromuser by remember {
         mutableStateOf("")
@@ -227,6 +231,16 @@ fun AddBankAccount() {
 
                 Column {
                     HeadingTextInSurfaceView(HeadingText = "Other Banks")
+
+                    addBankAccountViewModel.getBanksList(LocalContext.current).forEach { banks ->
+                        RowWithDividerElements(
+                            Content = banks.BankName,
+                            IconSource = R.drawable.building_columns_solid,
+                            IconBoxModifier = iconboxmodifier,
+                            IconTint = Color.LightGray
+                        )
+                    }
+
                 }
 
             }
@@ -235,8 +249,8 @@ fun AddBankAccount() {
 
         BlueTopAppBar(Heading = "Select Bank", BackArrowClick = {
             navController.getNavigationController()
-                ?.navigate(NavigationDestinations.HOMESCREEN_ROUTE) {
-                    popUpTo(NavigationDestinations.HOMESCREEN_ROUTE) {
+                ?.navigate(NavigationDestinations.HOME_SCREEN_ROUTE) {
+                    popUpTo(NavigationDestinations.HOME_SCREEN_ROUTE) {
                         inclusive = true
                         saveState = true
                     }
@@ -246,8 +260,8 @@ fun AddBankAccount() {
 
     BackHandler(true) {
         navController.getNavigationController()
-            ?.navigate(NavigationDestinations.HOMESCREEN_ROUTE) {
-                popUpTo(NavigationDestinations.HOMESCREEN_ROUTE) {
+            ?.navigate(NavigationDestinations.HOME_SCREEN_ROUTE) {
+                popUpTo(NavigationDestinations.HOME_SCREEN_ROUTE) {
                     inclusive = true
                     saveState = true
                 }
@@ -259,6 +273,6 @@ fun AddBankAccount() {
 @Composable
 fun PreviewSelfScreen() {
     PhonepeCloneTheme {
-        AddBankAccount()
+        AddBankAccount(viewModel())
     }
 }

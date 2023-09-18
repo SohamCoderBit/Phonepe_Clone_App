@@ -55,7 +55,7 @@ fun InsuranceSection(SeeAllButtonOnClick: () -> Unit) {
             DrawIconInRow(
                 SurfaceModifier = surfacemodifier,
                 BoxModifier = boxmodifier.clickable {
-                    navController.navigateTo(Route = NavigationDestinations.BIKESCREEN_ROUTE)
+                    navController.navigateTo(Route = NavigationDestinations.BIKE_SCREEN_ROUTE)
                 },
                 IconSize = 55,
                 IconResource = R.drawable.motorcycle_svgrepo_com
@@ -65,7 +65,7 @@ fun InsuranceSection(SeeAllButtonOnClick: () -> Unit) {
             DrawIconInRow(
                 SurfaceModifier = surfacemodifier,
                 BoxModifier = boxmodifier.clickable {
-                    navController.navigateTo(Route = NavigationDestinations.CARSCREEN_ROUTE)
+                    navController.navigateTo(Route = NavigationDestinations.CAR_SCREEN_ROUTE)
                 },
                 IconSize = 55,
                 IconResource = R.drawable.hatchback_5035167
@@ -75,7 +75,7 @@ fun InsuranceSection(SeeAllButtonOnClick: () -> Unit) {
             DrawIconInRow(
                 SurfaceModifier = surfacemodifier,
                 BoxModifier = boxmodifier.clickable {
-                    navController.navigateTo(Route = NavigationDestinations.HEALTHSCREEN_ROUTE)
+                    navController.navigateTo(Route = NavigationDestinations.HEALTH_SCREEN_ROUTE)
                 },
                 IconSize = 45,
                 IconResource = R.drawable.heart_logo
@@ -85,7 +85,7 @@ fun InsuranceSection(SeeAllButtonOnClick: () -> Unit) {
             DrawIconInRow(
                 SurfaceModifier = surfacemodifier,
                 BoxModifier = boxmodifier.clickable {
-                    navController.navigateTo(Route = NavigationDestinations.ACCIDENTSCREEN_ROUTE)
+                    navController.navigateTo(Route = NavigationDestinations.ACCIDENT_SCREEN_ROUTE)
                 },
                 IconSize = 50,
                 IconResource = R.drawable.patient_469444
@@ -119,7 +119,7 @@ fun InsuranceSection(SeeAllButtonOnClick: () -> Unit) {
             DrawIconInRow(
                 SurfaceModifier = surfacemodifier,
                 BoxModifier = boxmodifier.clickable {
-                    navController.navigateTo(Route = NavigationDestinations.TERMLIFE_ROUTE)
+                    navController.navigateTo(Route = NavigationDestinations.TERM_LIFE_ROUTE)
                 },
                 IconSize = 45,
                 IconResource = R.drawable.hands
@@ -138,7 +138,7 @@ fun InsuranceSection(SeeAllButtonOnClick: () -> Unit) {
             DrawIconInRow(
                 SurfaceModifier = surfacemodifier,
                 BoxModifier = boxmodifier.clickable {
-                    navController.navigateTo(Route = NavigationDestinations.INSURANCERENEWAL_ROUTE)
+                    navController.navigateTo(Route = NavigationDestinations.INSURANCE_RENEWAL_ROUTE)
                 },
                 IconSize = 50,
                 IconResource = R.drawable.reshot_icon_repeat_egdzcp9q2s

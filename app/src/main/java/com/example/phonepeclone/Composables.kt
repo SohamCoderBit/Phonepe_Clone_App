@@ -69,6 +69,46 @@ import com.example.phonepeclone.ui.Screens.WealthScreens.FundsFacilityBoxs
 
 
 @Composable
+fun ClickableSurface(
+    Label: String,
+    LabelColor:Color = Color(148, 110, 197, 255),
+    RoundedCornerPercentage: Int = 20,
+    SurfaceColor: Color = Color.Transparent,
+    SurfaceBorderColor:Color = Color(148, 110, 197, 255),
+    SurfaceWidth:Int = 90,
+    SurfaceHeight:Int = 45,
+    onClick: () -> Unit
+) {
+
+    Surface(
+        modifier = Modifier
+            .padding(end = 10.dp)
+            .width(SurfaceWidth.dp)
+            .height(SurfaceHeight.dp)
+            .clickable(
+                indication = null,
+                interactionSource = MutableInteractionSource()
+            ) {
+                onClick()
+            },
+        color = SurfaceColor,
+        shape = RoundedCornerShape(RoundedCornerPercentage),
+        border = BorderStroke(1.dp, SurfaceBorderColor)
+    ) {
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            androidx.compose.material.Text(
+                text = Label,
+                color = LabelColor,
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Medium
+            )
+        }
+
+    }
+}
+
+
+@Composable
 fun FundsSurface(
     FundProvider: FundBillers,
     SurfaceOnClick: () -> Unit = {},
@@ -487,6 +527,7 @@ fun SelectionButton(
 fun textfield(
     placeHolder: String,
     placeHolderColor: Color = Color(0xAACCCCCC),
+    checkError : (String) -> Boolean
 ): String {
 
     var textfromuser by remember {
@@ -505,9 +546,9 @@ fun textfield(
         value = textfromuser,
         onValueChange = {
             textfromuser = it
-            if (it != "") {
-                isError = it.toInt() > 101 || it.toInt() < 18
-            }
+            isError = checkError(it)
+            if(it == "") isError = true
+
         },
         colors = TextFieldDefaults.textFieldColors(
             textColor = Color.White,
@@ -527,8 +568,8 @@ fun textfield(
         shape = RoundedCornerShape(15),
         singleLine = true,
         keyboardOptions = KeyboardOptions.Default.copy(
-            keyboardType = KeyboardType.Password
-        ),
+            keyboardType = KeyboardType.NumberPassword
+            ),
         isError = isError
     )
 

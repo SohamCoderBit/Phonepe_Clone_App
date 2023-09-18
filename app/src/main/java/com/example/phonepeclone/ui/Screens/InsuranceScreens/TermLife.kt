@@ -21,11 +21,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.phonepeclone.BlueTopAppBar
 import com.example.phonepeclone.BottomAppBarAsButton
+import com.example.phonepeclone.ClickableSurface
 import com.example.phonepeclone.HeadingTextInSurfaceView
 import com.example.phonepeclone.R
 import com.example.phonepeclone.SurfaceInView
 import com.example.phonepeclone.animatedLabelTextField
-import com.example.phonepeclone.ui.Screens.HomeUnitScreens.ClickableSurface
 import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
 
 
@@ -138,6 +138,7 @@ fun TermLifeScreen() {
                         HeadingText = "Smoked / consumed tobacco in last 12 months ?",
                         SurfacePadding = PaddingValues(start = 20.dp, top = 20.dp)
                     )
+
                     Row(modifier = Modifier.padding(start = 20.dp, top = 10.dp)) {
                         ChoiceList.forEach { choiceItem ->
 

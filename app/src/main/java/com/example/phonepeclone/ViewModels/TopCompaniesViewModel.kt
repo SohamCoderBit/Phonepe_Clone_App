@@ -11,16 +11,6 @@ class TopCompaniesViewModel : ViewModel(){
     private var internalName:String = "ICICI Prudential Bluechip Fund"
     private var loanFundProviderList:List<FundBillers>? = null
 
-    fun getString():String
-    {
-        return internalName
-    }
-
-    fun setString(NewName:String)
-    {
-        internalName =  NewName
-    }
-
     fun getFundProvidersList(context: Context ):List<FundBillers>{
         if(loanFundProviderList == null)
         {

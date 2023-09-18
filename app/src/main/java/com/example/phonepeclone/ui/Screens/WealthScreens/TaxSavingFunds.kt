@@ -31,7 +31,7 @@ fun TaxSavingFundScreen(taxSavingFundViewModel: TaxSavingFundViewModel) {
                     FundsSurface(
                         FundProvider = fundBillers,
                         SurfaceOnClick = {
-                            navController.navigateTo(Route = NavigationDestinations.DYNAMICSCREEN_ROUTE)
+                            navController.navigateTo(Route = NavigationDestinations.DYNAMIC_SCREEN_ROUTE)
                         }
                     )
                 }

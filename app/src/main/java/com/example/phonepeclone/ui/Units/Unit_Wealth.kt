@@ -401,7 +401,7 @@ fun WealthUnit() {
                 DrawIconInRow(
                     SurfaceModifier = surfacemodifier,
                     BoxModifier = boxmodifier.clickable {
-                        navController.navigateTo(Route = NavigationDestinations.GOLDSCREEN_ROUTE)
+                        navController.navigateTo(Route = NavigationDestinations.GOLD_SCREEN_ROUTE)
                     },
                     IconSize = 45,
                     IconResource = R.drawable.gold_inget,
@@ -411,7 +411,7 @@ fun WealthUnit() {
                 DrawIconInRow(
                     SurfaceModifier = surfacemodifier,
                     BoxModifier = boxmodifier.clickable {
-                        navController.navigateTo(Route = NavigationDestinations.TOPCOMPANIES_ROUTE)
+                        navController.navigateTo(Route = NavigationDestinations.TOP_COMPANIES_ROUTE)
                     },
                     IconSize = 45,
                     IconResource = R.drawable.fluctuation,
@@ -421,7 +421,7 @@ fun WealthUnit() {
                 DrawIconInRow(
                     SurfaceModifier = surfacemodifier,
                     BoxModifier = boxmodifier.clickable {
-                        navController.navigateTo(Route = NavigationDestinations.TAXSAVINGFUND_ROUTE)
+                        navController.navigateTo(Route = NavigationDestinations.TAX_SAVING_FUND_ROUTE)
                     },
                     IconSize = 45,
                     IconResource = R.drawable.piggy_bank,
@@ -463,7 +463,7 @@ fun WealthUnit() {
                 DrawIconInRow(
                     SurfaceModifier = surfacemodifier,
                     BoxModifier = boxmodifier.clickable {
-                        navController.navigateTo(Route = NavigationDestinations.BESTSIPFUNDS_ROUTE)
+                        navController.navigateTo(Route = NavigationDestinations.BEST_SIP_FUNDS_ROUTE)
                     },
                     IconSize = 45,
                     IconResource = R.drawable.growth_846173,
@@ -481,7 +481,7 @@ fun WealthUnit() {
                 DrawIconInRow(
                     SurfaceModifier = surfacemodifier,
                     BoxModifier = boxmodifier.clickable {
-                        navController.navigateTo(Route = NavigationDestinations.TRENDINGTHEME_ROUTE)
+                        navController.navigateTo(Route = NavigationDestinations.TRENDING_THEME_ROUTE)
                     },
                     IconSize = 45,
                     IconResource = R.drawable.bulb,
@@ -491,7 +491,7 @@ fun WealthUnit() {
                 DrawIconInRow(
                     SurfaceModifier = surfacemodifier,
                     BoxModifier = boxmodifier.clickable {
-                        navController.navigateTo(Route = NavigationDestinations.HIGHRETURNFUND_ROUTE)
+                        navController.navigateTo(Route = NavigationDestinations.HIGH_RETURN_FUND_ROUTE)
                     },
                     IconSize = 45,
                     IconResource = R.drawable.high_return_funds,

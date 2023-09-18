@@ -74,11 +74,6 @@ fun MobileNumberScreen() {
         mutableStateOf("")
     }
 
-    Surface(
-        modifier = Modifier
-            .fillMaxSize(),
-        color = colorResource(id = R.color.background)
-    ) {
 
         val sheetState = rememberBottomSheetState(
             initialValue = BottomSheetValue.Collapsed
@@ -230,9 +225,6 @@ fun MobileNumberScreen() {
 
             }
         }
-
-
-    }
 }
 
 

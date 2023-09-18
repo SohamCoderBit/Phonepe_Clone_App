@@ -1,8 +1,5 @@
 package com.example.phonepeclone.ui.Screens.HomeUnitScreens
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -12,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Icon
@@ -35,7 +31,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
@@ -43,50 +38,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.phonepeclone.BlueTopAppBar
+import com.example.phonepeclone.ClickableSurface
 import com.example.phonepeclone.FullPurpleButton
 import com.example.phonepeclone.HeadingTextInSurfaceView
 import com.example.phonepeclone.R
 import com.example.phonepeclone.SurfaceInView
 import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
-
-
-@Composable
-fun ClickableSurface(
-    Label: String,
-    LabelColor:Color = Color(148, 110, 197, 255),
-    RoundedCornerPercentage: Int = 20,
-    SurfaceColor: Color = Color.Transparent,
-    SurfaceBorderColor:Color = Color(148, 110, 197, 255),
-    SurfaceWidth:Int = 90,
-    SurfaceHeight:Int = 45,
-    onClick: () -> Unit
-) {
-
-    Surface(
-        modifier = Modifier
-            .padding(end = 10.dp)
-            .width(SurfaceWidth.dp)
-            .height(SurfaceHeight.dp)
-            .clickable(
-                indication = null,
-                interactionSource = MutableInteractionSource()
-            ) {
-                onClick() },
-        color = SurfaceColor,
-        shape = RoundedCornerShape(RoundedCornerPercentage),
-        border = BorderStroke(1.dp, SurfaceBorderColor)
-    ) {
-        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            Text(
-                text = Label,
-                color = LabelColor,
-                fontSize = 15.sp,
-                fontWeight = FontWeight.Medium
-            )
-        }
-
-    }
-}
 
 
 @OptIn(ExperimentalMaterial3Api::class)

@@ -52,9 +52,6 @@ import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
 data class MemberListItem(val Label: String, var isSelected: MutableState<Boolean>)
 
 
-
-
-
 @Composable
 fun CounterTextArea(UpdateTheCount: (Int) -> Unit, LowerBound: Int, UpperBound: Int) {
 
@@ -62,15 +59,16 @@ fun CounterTextArea(UpdateTheCount: (Int) -> Unit, LowerBound: Int, UpperBound: 
         mutableIntStateOf(LowerBound)
     }
 
+    val purpleColor = Color(144, 93, 198, 255)
     Row(
         modifier = Modifier.padding(end = 10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
 
         val minusSignColor: Color =
-            if (counterState == LowerBound) Color.LightGray else Color(144, 93, 198, 255)
+            if (counterState == LowerBound) Color.LightGray else purpleColor
         val plusSignColor: Color =
-            if (counterState == UpperBound) Color.LightGray else Color(144, 93, 198, 255)
+            if (counterState == UpperBound) Color.LightGray else purpleColor
 
         //Minus Sign
         Icon(
@@ -82,7 +80,6 @@ fun CounterTextArea(UpdateTheCount: (Int) -> Unit, LowerBound: Int, UpperBound: 
                 ) {
                     if (counterState != LowerBound)
                         counterState--
-
                 },
             painter = painterResource(id = R.drawable.minus_sign),
             contentDescription = null,
@@ -213,6 +210,7 @@ fun HealthScreen() {
     )
 
 
+    //Counting How many True Values Are in the list
     var clickCount by remember {
         mutableIntStateOf(0)
     }
@@ -268,22 +266,16 @@ fun HealthScreen() {
                     ) {
                         val modifier = Modifier.weight(1f)
 
+                        val selectedBorderColor = Color(76, 132, 103, 255)
+                        val normalBorderColor = Color(74, 65, 86, 255)
+
+                        val selectedSurfaceColor = Color(40, 51, 48, 255)
                         //Drawing the Memeber List
                         memeberList.forEach { item ->
                             val borderColor: Color =
-                                if (item.isSelected.value) Color(76, 132, 103, 255) else Color(
-                                    74,
-                                    65,
-                                    86,
-                                    255
-                                )
+                                if (item.isSelected.value) selectedBorderColor else normalBorderColor
                             val surfaceColor: Color =
-                                if (item.isSelected.value) Color(
-                                    40,
-                                    51,
-                                    48,
-                                    255
-                                ) else Color.Transparent
+                                if (item.isSelected.value) selectedSurfaceColor else Color.Transparent
 
                             Surface(
                                 modifier = modifier
@@ -328,7 +320,6 @@ fun HealthScreen() {
                         }
                     }
 
-
                     //If Two are selected
                     if (checkIfSelected(Members.MySelf) && checkIfSelected(Members.Spouse)) {
 
@@ -339,7 +330,9 @@ fun HealthScreen() {
                             SurfacePadding = PaddingValues(start = 15.dp, top = 20.dp)
                         )
 
-                        age = textfield(placeHolder = "Eg:35")
+                        age = textfield(placeHolder = "Eg:35", checkError = {
+                                it != "" && ( it.toInt() > 101 || it.toInt() < 18 )
+                        })
                     }
 
 
@@ -352,7 +345,9 @@ fun HealthScreen() {
                             SurfacePadding = PaddingValues(start = 15.dp, top = 20.dp)
                         )
 
-                        age = textfield(placeHolder = "Eg:56")
+                        age = textfield(placeHolder = "Eg:56", checkError = {
+                                it != "" && ( it.toInt() > 101 || it.toInt() < 18 )
+                        })
                     }
 
 
@@ -365,7 +360,9 @@ fun HealthScreen() {
                             SurfacePadding = PaddingValues(start = 15.dp, top = 20.dp)
                         )
 
-                        age = textfield(placeHolder = "Eg:56")
+                        age = textfield(placeHolder = "Eg:56", checkError = {
+                            it != "" && ( it.toInt() > 101 || it.toInt() < 18 )
+                        })
 
                     }
 
@@ -383,7 +380,7 @@ fun HealthScreen() {
                     }
 
                     //PinCode TextField
-                    pinCode = textfield(placeHolder = "Eg:560102")
+                    pinCode = textfield(placeHolder = "Eg:560102", checkError = { it.length < 6 })
 
 
                     //Childern Count Store Variable
@@ -427,7 +424,9 @@ fun HealthScreen() {
                                 HeadingTextFontWeight = FontWeight.Normal,
                                 SurfacePadding = PaddingValues(start = 15.dp, top = 20.dp)
                             )
-                            AgesPI[i - 1].value = textfield(placeHolder = "Eg: 56")
+                            AgesPI[i - 1].value = textfield(placeHolder = "Eg: 56", checkError = {
+                                it != "" && ( it.toInt() > 101 || it.toInt() < 18 )
+                            })
                         }
                     }
 
