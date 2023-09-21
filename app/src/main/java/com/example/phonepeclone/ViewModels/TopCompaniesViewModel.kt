@@ -8,7 +8,6 @@ import com.example.phonepeclone.Data.TopCompaniesFundRepository
 class TopCompaniesViewModel : ViewModel(){
 
     private val fundProviderRepository:TopCompaniesFundRepository = TopCompaniesFundRepository()
-    private var internalName:String = "ICICI Prudential Bluechip Fund"
     private var loanFundProviderList:List<FundBillers>? = null
 
     fun getFundProvidersList(context: Context ):List<FundBillers>{

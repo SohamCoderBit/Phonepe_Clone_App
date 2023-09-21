@@ -42,7 +42,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.phonepeclone.BlueTopAppBar
+import com.example.phonepeclone.BlueTopAppBarScrollStateManaged
 import com.example.phonepeclone.HeadingTextInSurfaceView
 import com.example.phonepeclone.R
 import com.example.phonepeclone.SurfaceInView
@@ -268,14 +268,14 @@ fun HealthScreen() {
 
                         val selectedBorderColor = Color(76, 132, 103, 255)
                         val normalBorderColor = Color(74, 65, 86, 255)
-
                         val selectedSurfaceColor = Color(40, 51, 48, 255)
                         //Drawing the Memeber List
                         memeberList.forEach { item ->
+                            val isSelected = item.isSelected.value
                             val borderColor: Color =
-                                if (item.isSelected.value) selectedBorderColor else normalBorderColor
+                                if (isSelected) selectedBorderColor else normalBorderColor
                             val surfaceColor: Color =
-                                if (item.isSelected.value) selectedSurfaceColor else Color.Transparent
+                                if (isSelected) selectedSurfaceColor else Color.Transparent
 
                             Surface(
                                 modifier = modifier
@@ -331,7 +331,7 @@ fun HealthScreen() {
                         )
 
                         age = textfield(placeHolder = "Eg:35", checkError = {
-                                it != "" && ( it.toInt() > 101 || it.toInt() < 18 )
+                            it != "" && (it.toInt() > 101 || it.toInt() < 18)
                         })
                     }
 
@@ -346,7 +346,7 @@ fun HealthScreen() {
                         )
 
                         age = textfield(placeHolder = "Eg:56", checkError = {
-                                it != "" && ( it.toInt() > 101 || it.toInt() < 18 )
+                            it != "" && (it.toInt() > 101 || it.toInt() < 18)
                         })
                     }
 
@@ -361,7 +361,7 @@ fun HealthScreen() {
                         )
 
                         age = textfield(placeHolder = "Eg:56", checkError = {
-                            it != "" && ( it.toInt() > 101 || it.toInt() < 18 )
+                            it != "" && (it.toInt() > 101 || it.toInt() < 18)
                         })
 
                     }
@@ -381,7 +381,6 @@ fun HealthScreen() {
 
                     //PinCode TextField
                     pinCode = textfield(placeHolder = "Eg:560102", checkError = { it.length < 6 })
-
 
                     //Childern Count Store Variable
                     var childernCount by remember {
@@ -425,7 +424,7 @@ fun HealthScreen() {
                                 SurfacePadding = PaddingValues(start = 15.dp, top = 20.dp)
                             )
                             AgesPI[i - 1].value = textfield(placeHolder = "Eg: 56", checkError = {
-                                it != "" && ( it.toInt() > 101 || it.toInt() < 18 )
+                                it != "" && (it.toInt() > 101 || it.toInt() < 18)
                             })
                         }
                     }
@@ -476,10 +475,11 @@ fun HealthScreen() {
         }
 
 
-        if (scrollState.value > 7) {
-            BlueTopAppBar(Heading = "Health Insurance")
-        }
+        BlueTopAppBarScrollStateManaged(Heading = "Health Insurance", scrollstate = { scrollState.value.toFloat() })
     }
+
+
+
 }
 
 

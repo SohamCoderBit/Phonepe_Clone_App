@@ -9,22 +9,22 @@ import com.example.phonepeclone.ViewModels.DynamicScreenViewModel
 import com.example.phonepeclone.ViewModels.TopCompaniesViewModel
 
 @Composable
-fun BestSIPFundsScreen(
+fun ThreeInOneScreen(
     topCompaniesViewModel: TopCompaniesViewModel,
     dynamicScreenViewModel: DynamicScreenViewModel
-) {
-
-    val heading = "BEST SIP FUNDS"
-    val semiHeading = "Invest in Funds with strong SIP Performance"
-    val paragraphStringID = R.string.best_sip_fund_advertise
+)
+{
+    val heading = " 3-IN-1 FUNDS"
+    val semiHeading = "A mix of Equity , Debt and Gold in one fund"
+    val paragraphStringID = R.string.three_in_one_fund_advertise
     val ButtonRowList = arrayListOf<String>()
-    ButtonRowList.add("High Growth")
+    ButtonRowList.add("For Beginners")
+    ButtonRowList.add("Diversified")
     ButtonRowList.add("No Lock-in")
     ButtonRowList.add("Long Term")
-    ButtonRowList.add("For Beginners")
 
     FundsScreenLayout(
-        TopBarHeading = heading,
+        TopBarHeading = "3-in-1 Funds",
         Heading = heading,
         SemiHeading = semiHeading,
         ParaGraphStringID = paragraphStringID,
@@ -39,6 +39,6 @@ fun BestSIPFundsScreen(
                         }
                     )
                 }
-        })
+        }
+    )
 }
-

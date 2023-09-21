@@ -38,9 +38,7 @@ import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
 @Composable
 fun CheckBalanceScreen() {
     Surface(
-        modifier = Modifier
-            .fillMaxSize(),
-        color = colorResource(id = R.color.background)
+        modifier = Modifier.fillMaxSize(), color = colorResource(id = R.color.background)
     ) {
 
         Column(modifier = Modifier.padding(top = 70.dp)) {
@@ -90,16 +88,12 @@ fun CheckBalanceScreen() {
                                     .height(25.dp),
                                 onClick = { /*TODO*/ },
                                 contentPadding = PaddingValues(
-                                    start = 10.dp,
-                                    end = 10.dp
+                                    start = 10.dp, end = 10.dp
                                 ),
                                 shape = RoundedCornerShape(50),
                                 colors = ButtonDefaults.outlinedButtonColors(
                                     Color(
-                                        163,
-                                        99,
-                                        239,
-                                        255
+                                        163, 99, 239, 255
                                     )
                                 )
                             ) {
@@ -116,9 +110,7 @@ fun CheckBalanceScreen() {
             }
 
             SurfaceInView(Height = 90) {
-                Row(
-                    modifier = Modifier.clickable {}
-                ) {
+                Row(modifier = Modifier.clickable {}) {
                     Box(
                         modifier = Modifier
                             .weight(0.7f)
@@ -126,8 +118,7 @@ fun CheckBalanceScreen() {
                         contentAlignment = Alignment.CenterEnd
                     ) {
                         Icon(
-                            modifier = Modifier
-                                .size(40.dp),
+                            modifier = Modifier.size(40.dp),
                             painter = painterResource(id = R.drawable.list_file_81296),
                             contentDescription = null,
                             tint = Color(144, 93, 198, 255)
@@ -164,8 +155,7 @@ fun CheckBalanceScreen() {
                         contentAlignment = Alignment.Center
                     ) {
                         Icon(
-                            modifier = Modifier
-                                .size(15.dp),
+                            modifier = Modifier.size(15.dp),
                             painter = painterResource(id = R.drawable.chevron_right_solid),
                             contentDescription = null,
                             tint = Color.White
@@ -183,11 +173,11 @@ fun CheckBalanceScreen() {
                     )
 
                     //UPI Lite
-                    Row(
-                        modifier = Modifier
-                            .padding(top = 10.dp)
-                            .clickable {}
-                    ) {
+                    Row(modifier = Modifier
+                        .padding(top = 10.dp)
+                        .clickable {
+                        })
+                    {
                         Box(
                             modifier = Modifier
                                 .weight(1f)
@@ -195,8 +185,7 @@ fun CheckBalanceScreen() {
                             contentAlignment = Alignment.Center
                         ) {
                             Icon(
-                                modifier = Modifier
-                                    .size(50.dp),
+                                modifier = Modifier.size(50.dp),
                                 painter = painterResource(id = R.drawable.upi_ar21),
                                 contentDescription = null,
                                 tint = Color.Unspecified
@@ -211,8 +200,7 @@ fun CheckBalanceScreen() {
                         ) {
                             Column {
                                 Text(
-                                    text = "UPI Lite",
-                                    color = Color.White
+                                    text = "UPI Lite", color = Color.White
                                 )
                             }
                         }
@@ -224,8 +212,7 @@ fun CheckBalanceScreen() {
                             contentAlignment = Alignment.Center
                         ) {
                             Icon(
-                                modifier = Modifier
-                                    .size(15.dp),
+                                modifier = Modifier.size(15.dp),
                                 painter = painterResource(id = R.drawable.chevron_right_solid),
                                 contentDescription = null,
                                 tint = Color.White
@@ -241,9 +228,9 @@ fun CheckBalanceScreen() {
                     )
 
                     //Phonepe Wallet
-                    Row(
-                        modifier = Modifier.clickable {}
-                    ) {
+                    Row(modifier = Modifier.clickable {
+
+                    }) {
                         Box(
                             modifier = Modifier
                                 .weight(1f)
@@ -251,8 +238,7 @@ fun CheckBalanceScreen() {
                             contentAlignment = Alignment.Center
                         ) {
                             Icon(
-                                modifier = Modifier
-                                    .size(40.dp),
+                                modifier = Modifier.size(40.dp),
                                 painter = painterResource(id = R.drawable.wallet),
                                 contentDescription = null,
                                 tint = Color(144, 93, 198, 255)
@@ -267,8 +253,7 @@ fun CheckBalanceScreen() {
                         ) {
                             Column {
                                 Text(
-                                    text = "Phonepe Wallet",
-                                    color = Color.White
+                                    text = "Phonepe Wallet", color = Color.White
                                 )
                             }
                         }
@@ -280,8 +265,7 @@ fun CheckBalanceScreen() {
                             contentAlignment = Alignment.Center
                         ) {
                             Icon(
-                                modifier = Modifier
-                                    .size(15.dp),
+                                modifier = Modifier.size(15.dp),
                                 painter = painterResource(id = R.drawable.chevron_right_solid),
                                 contentDescription = null,
                                 tint = Color.White

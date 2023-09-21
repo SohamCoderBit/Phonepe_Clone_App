@@ -1,4 +1,4 @@
-package com.example.phonepeclone.ui.theme.Units
+package com.example.phonepeclone.ui.Units
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -14,8 +14,9 @@ import androidx.compose.ui.unit.sp
 import com.example.phonepeclone.SurfaceInView
 
 
+
 @Composable
-fun StoreUnit() {
+fun HistoryUnit() {
 
     Column(
         modifier = Modifier
@@ -26,11 +27,13 @@ fun StoreUnit() {
         SurfaceInView(Height = 300) {
             Text(
                 modifier = Modifier.padding(top = 40.dp),
-                text = "Store Unit",
+                text = "History Unit",
                 color = Color.White,
                 fontSize = 30.sp,
                 textAlign = TextAlign.Center
             )
         }
     }
+
+
 }

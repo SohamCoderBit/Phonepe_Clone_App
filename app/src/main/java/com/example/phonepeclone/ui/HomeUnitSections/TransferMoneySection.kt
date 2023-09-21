@@ -25,9 +25,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.phonepeclone.NavigationDestinations
+import com.example.phonepeclone.Home
 import com.example.phonepeclone.R
-import com.example.phonepeclone.navController
+import com.example.phonepeclone.mainNavController
 
 
 @Composable
@@ -109,7 +109,7 @@ fun TransferMoneysection() {
             IconTint = Color.White,
             IconResource = R.drawable.user_regular,
             IconDecription = "To Mobile Number",
-            ClickEventAction = { navController.navigateTo(Route = NavigationDestinations.MOBILE_NUMBER_SCREEN_ROUTE) }
+            ClickEventAction = { mainNavController.navigateTo(Route = Home.MOBILE_NUMBER_SCREEN) }
         )
 
         //To Bank
@@ -122,7 +122,7 @@ fun TransferMoneysection() {
             IconTint = Color.White,
             IconResource = R.drawable.building_columns_solid,
             IconDecription = "To Bank/UPI ID",
-            ClickEventAction = { navController.navigateTo(Route = NavigationDestinations.BANK_SCREEN_ROUTE) }
+            ClickEventAction = { mainNavController.navigateTo(Route = Home.BANK_SCREEN) }
         )
 
         //To Self Account
@@ -135,7 +135,7 @@ fun TransferMoneysection() {
             IconTint = Color.White,
             IconResource = R.drawable.arrow_down_to_arc,
             IconDecription = "To Self Account",
-            ClickEventAction = { navController.navigateTo(Route = NavigationDestinations.SELF_ACCOUNT_ROUTE) }
+            ClickEventAction = { mainNavController.navigateTo(Route = Home.SELF_ACCOUNT_SCREEN) }
         )
 
         //Check Balance
@@ -148,7 +148,7 @@ fun TransferMoneysection() {
             IconTint = Color.White,
             IconResource = R.drawable.money_bill_solid,
             IconDecription = "Check Balance",
-            ClickEventAction = { navController.navigateTo(Route = NavigationDestinations.CHECK_BALANCE_SCREEN_ROUTE) }
+            ClickEventAction = { mainNavController.navigateTo(Route = Home.CHECK_BALANCE_SCREEN) }
         )
     }
 

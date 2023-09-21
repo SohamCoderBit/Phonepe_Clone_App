@@ -1,88 +1,30 @@
 package com.example.phonepeclone
 
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.expandHorizontally
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
+import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.phonepeclone.ViewModels.AddBankAccountVIewModel
-import com.example.phonepeclone.ViewModels.DynamicScreenViewModel
-import com.example.phonepeclone.ViewModels.InsuranceRenewalViewModel
-import com.example.phonepeclone.ViewModels.LoanPaymentViewModel
-import com.example.phonepeclone.ViewModels.MainScreenViewModel
-import com.example.phonepeclone.ViewModels.TaxSavingFundViewModel
-import com.example.phonepeclone.ViewModels.TopCompaniesViewModel
-import com.example.phonepeclone.ui.Screens.HomeUnitScreens.PhonepeWalletScreen
-import com.example.phonepeclone.ui.Screens.HomeUnitScreens.ReferAndGetButtonScreen
-import com.example.phonepeclone.ui.Screens.HomeUnitScreens.RewardScreen
+import androidx.navigation.navigation
 import com.example.phonepeclone.ui.Screens.HomeUnitScreens.UPILiteScreen
-import com.example.phonepeclone.ui.Screens.InsuranceScreens.InsuranceRenewalScreen
-import com.example.phonepeclone.ui.Screens.InsuranceScreens.TermLifeScreen
-import com.example.phonepeclone.ui.Screens.WealthScreens.BestSIPFundsScreen
-import com.example.phonepeclone.ui.Screens.WealthScreens.DynamicScreen
-import com.example.phonepeclone.ui.Screens.WealthScreens.GoldScreen
-import com.example.phonepeclone.ui.Screens.WealthScreens.HighReturnsScreen
-import com.example.phonepeclone.ui.Screens.WealthScreens.TaxSavingFundScreen
-import com.example.phonepeclone.ui.Screens.WealthScreens.TopCompaniesScreen
-import com.example.phonepeclone.ui.Screens.WealthScreens.TrendingThemesScreen
-import com.example.phonepeclone.ui.theme.Screens.InsuranceScreens.AccidentScreen
+import com.example.phonepeclone.ui.Screens.InsuranceScreens.TravelScreen
+import com.example.phonepeclone.ui.Units.HistoryUnit
 import com.example.phonepeclone.ui.theme.Screens.InsuranceScreens.BikeScreen
 import com.example.phonepeclone.ui.theme.Screens.InsuranceScreens.CarScreen
 import com.example.phonepeclone.ui.theme.Screens.InsuranceScreens.HealthScreen
-import com.example.phonepeclone.ui.theme.Screens.RechargeAndBillScreens.CreditCardBillPayment
-import com.example.phonepeclone.ui.theme.Screens.RechargeAndBillScreens.DTHScreen
-import com.example.phonepeclone.ui.theme.Screens.RechargeAndBillScreens.ElectricityScreen
-import com.example.phonepeclone.ui.theme.Screens.RechargeAndBillScreens.GasCylinderScreen
-import com.example.phonepeclone.ui.theme.Screens.RechargeAndBillScreens.LoanPaymentScreen
-import com.example.phonepeclone.ui.theme.Screens.RechargeAndBillScreens.MobileRechargeScreen
-import com.example.phonepeclone.ui.theme.Screens.RechargeAndBillScreens.RentPaymentScreen
-import com.example.phonepeclone.ui.theme.Screens.TransferMoneyScreens.AddBankAccount
 import com.example.phonepeclone.ui.theme.Screens.TransferMoneyScreens.BankScreen
 import com.example.phonepeclone.ui.theme.Screens.TransferMoneyScreens.CheckBalanceScreen
 import com.example.phonepeclone.ui.theme.Screens.TransferMoneyScreens.MobileNumberScreen
 import com.example.phonepeclone.ui.theme.Screens.TransferMoneyScreens.SelfAccountScreen
+import com.example.phonepeclone.ui.theme.Units.HomeScreenUnit
+import com.example.phonepeclone.ui.theme.Units.InsuranceUnit
+import com.example.phonepeclone.ui.theme.Units.StoreUnit
+import com.example.phonepeclone.ui.theme.Units.WealthUnit
 
-
-object NavigationDestinations {
-    const val HOME_SCREEN_ROUTE = "HomeScreen"
-    const val UPI_LITE_ROUTE = "UPILiteScreen"
-    const val MOBILE_NUMBER_SCREEN_ROUTE = "MobileNumberScreen"
-    const val BANK_SCREEN_ROUTE = "BankScreen"
-    const val CHECK_BALANCE_SCREEN_ROUTE = "CheckBalanceScreen"
-    const val ELECTRICITY_SCREEN_ROUTE = "ElectricityScreen"
-    const val RENT_PAYMENT_SCREEN_ROUTE = "RentPaymentScreen"
-    const val LOAN_PAYMENT_SCREEN_ROUTE = "LoanPaymentScreen"
-    const val MOBILE_RECHARGE_SCREEN_ROUTE = "MobileRechargeScreen"
-    const val DTH_SCREEN_ROUTE = "DTHScreen"
-    const val GAS_CYLINDER_SCREEN_ROUTE = "GasCylinderScreen"
-    const val BIKE_SCREEN_ROUTE = "BikeScreen"
-    const val HEALTH_SCREEN_ROUTE = "HealthScreen"
-    const val CREDIT_CARD_BILL_PAYMENT_SCREEN_ROUTE = "CreditCardBillPayment"
-    const val CAR_SCREEN_ROUTE = "CarScreen"
-    const val ACCIDENT_SCREEN_ROUTE = "AccidentScreen"
-    const val ADD_BANK_SCREEN_ROUTE = "AddBankAccount"
-    const val SELF_ACCOUNT_ROUTE = "SelfAccountScreen"
-    const val GOLD_SCREEN_ROUTE = "GoldScreen"
-
-    const val REFER_AND_GET_BUTTON_ROUTE = "ReferAndGetButtonScreen"
-    const val PHONEPE_WALLET_BUTTON_ROUTE = "PhonepeWalletScreen"
-    const val REWARD_BUTTON_ROUTE = "RewardScreen"
-
-    const val INSURANCE_RENEWAL_ROUTE = "InsuranceRenewalScreen"
-
-    const val TAX_SAVING_FUND_ROUTE = "TaxSavingFundScreen"
-    const val HIGH_RETURN_FUND_ROUTE =  "HighReturnsScreen"
-    const val TOP_COMPANIES_ROUTE = "TopCompaniesScreen"
-    const val BEST_SIP_FUNDS_ROUTE = "BestSIPFundsScreen"
-    const val TRENDING_THEME_ROUTE = "TrendingThemesScreen"
-
-    const val TERM_LIFE_ROUTE = "TermLifeScreen"
-
-    //Testing
-    const val DYNAMIC_SCREEN_ROUTE = "DynamicScreen"
-}
 
 /**
  * Basic Implementation of [NavigationController] class. this class's object is referenced in all the files now
@@ -91,14 +33,10 @@ object NavigationDestinations {
 
 class NavigationController {
 
-    private var navigationController: NavController? = null
+    private var navigationController: NavHostController? = null
 
-    fun setNavigationController(controller: NavController) {
+    fun setNavigationController(controller: NavHostController) {
         navigationController = controller
-    }
-
-    fun getNavigationController(): NavController? {
-        return navigationController
     }
 
     /**
@@ -118,79 +56,138 @@ class NavigationController {
 
 
 @Composable
-fun NavGraphInit(
-    navController: NavHostController = rememberNavController(),
-    StartDestination: String = NavigationDestinations.HOME_SCREEN_ROUTE
+fun BottomNavGraph(
+    navController: NavHostController? = rememberNavController(),
+    StartDestination: String = BottomNav.HOME
 ) {
 
-    val mainScreenViewModel: MainScreenViewModel = viewModel()
+    if (navController != null) {
+        NavHost(
+            navController = navController,
+            startDestination = StartDestination,
+            enterTransition = { EnterTransition.None },
+            exitTransition = { ExitTransition.None }) {
+            composable(route = BottomNav.HOME) {
+                HomeScreenUnit()
+            }
 
-    val loanPaymentViewModel: LoanPaymentViewModel = viewModel()
+            composable(route = BottomNav.INSURANCE) {
+                InsuranceUnit()
+            }
 
-    val topCompaniesViewModel: TopCompaniesViewModel = viewModel()
+            composable(route = BottomNav.WEALTH) {
+                WealthUnit()
+            }
 
-    val taxSavingFundViewModel: TaxSavingFundViewModel = viewModel()
+            composable(route = BottomNav.HISTORY) {
+                HistoryUnit()
+            }
 
-    val dynamicScreenViewModel: DynamicScreenViewModel = viewModel()
-
-    val insuranceRenewalViewModel: InsuranceRenewalViewModel = viewModel()
-
-    val addBankAccountVIewModel: AddBankAccountVIewModel = viewModel()
-
-    NavHost(navController = navController, startDestination = StartDestination) {
-
-        //Main View
-        composable(route = NavigationDestinations.HOME_SCREEN_ROUTE) { PhonepeApplication(mainScreenViewModel)}
-
-        /**
-         * Below the term Screens means Each Icon's Screens Associated to that Specific Icon OR Buttons
-         */
-
-        //Tranfer Money Screens
-        composable(route = NavigationDestinations.MOBILE_NUMBER_SCREEN_ROUTE) { MobileNumberScreen() }
-        composable(route = NavigationDestinations.ADD_BANK_SCREEN_ROUTE) { AddBankAccount(addBankAccountVIewModel) }
-        composable(route = NavigationDestinations.SELF_ACCOUNT_ROUTE) { SelfAccountScreen() }
-        composable(route = NavigationDestinations.BANK_SCREEN_ROUTE) { BankScreen() }
-        composable(route = NavigationDestinations.CHECK_BALANCE_SCREEN_ROUTE) { CheckBalanceScreen() }
-
-        //Recharge And Pay Bills Screens
-        composable(route = NavigationDestinations.CREDIT_CARD_BILL_PAYMENT_SCREEN_ROUTE) { CreditCardBillPayment() }
-        composable(route = NavigationDestinations.ELECTRICITY_SCREEN_ROUTE) { ElectricityScreen() }
-        composable(route = NavigationDestinations.RENT_PAYMENT_SCREEN_ROUTE) { RentPaymentScreen() }
-        composable(route = NavigationDestinations.LOAN_PAYMENT_SCREEN_ROUTE) { LoanPaymentScreen(loanPaymentViewModel) }
-        composable(route = NavigationDestinations.MOBILE_RECHARGE_SCREEN_ROUTE) { MobileRechargeScreen() }
-        composable(route = NavigationDestinations.DTH_SCREEN_ROUTE) { DTHScreen() }
-        composable(route = NavigationDestinations.GAS_CYLINDER_SCREEN_ROUTE) { GasCylinderScreen() }
-
-
-        //UPI Lite
-        composable(route = NavigationDestinations.UPI_LITE_ROUTE) { UPILiteScreen() }
-        //Insurance Screens
-        composable(route = NavigationDestinations.BIKE_SCREEN_ROUTE) { BikeScreen() }
-        composable(route = NavigationDestinations.HEALTH_SCREEN_ROUTE) { HealthScreen() }
-        composable(route = NavigationDestinations.CAR_SCREEN_ROUTE) { CarScreen() }
-        composable(route = NavigationDestinations.ACCIDENT_SCREEN_ROUTE) { AccidentScreen() }
-        composable(route = NavigationDestinations.INSURANCE_RENEWAL_ROUTE) { InsuranceRenewalScreen(insuranceRenewalViewModel) }
-        composable(route = NavigationDestinations.TERM_LIFE_ROUTE) { TermLifeScreen() }
-
-        //Wealth Screens
-        composable(route = NavigationDestinations.GOLD_SCREEN_ROUTE) { GoldScreen() }
-        composable(route = NavigationDestinations.TOP_COMPANIES_ROUTE) { TopCompaniesScreen(topCompaniesViewModel, dynamicScreenViewModel) }
-        composable(route = NavigationDestinations.TAX_SAVING_FUND_ROUTE) { TaxSavingFundScreen(taxSavingFundViewModel) }
-        composable(route = NavigationDestinations.HIGH_RETURN_FUND_ROUTE){ HighReturnsScreen(topCompaniesViewModel, dynamicScreenViewModel)   }
-        composable(route = NavigationDestinations.BEST_SIP_FUNDS_ROUTE){  BestSIPFundsScreen(topCompaniesViewModel , dynamicScreenViewModel)  }
-        composable(route = NavigationDestinations.TRENDING_THEME_ROUTE){ TrendingThemesScreen(topCompaniesViewModel , dynamicScreenViewModel)}
-
-
-
-        //Home Screen Buttons
-        composable(route = NavigationDestinations.REFER_AND_GET_BUTTON_ROUTE) { ReferAndGetButtonScreen() }
-        composable(route = NavigationDestinations.PHONEPE_WALLET_BUTTON_ROUTE) { PhonepeWalletScreen() }
-        composable(route = NavigationDestinations.REWARD_BUTTON_ROUTE) { RewardScreen() }
-
-
-        //Testing
-        composable(route = NavigationDestinations.DYNAMIC_SCREEN_ROUTE) { DynamicScreen(dynamicScreenViewModel) }
+            composable(route = BottomNav.STORE) {
+                StoreUnit()
+            }
+        }
 
     }
+}
+
+@Composable
+fun MainNavGraph(
+    navController: NavHostController? = rememberNavController(),
+    StartDestination: String = Home.ROUTE
+) {
+    if (navController != null) {
+        NavHost(
+            navController = navController,
+            startDestination = StartDestination,
+            enterTransition = { expandHorizontally { 20 } },
+            exitTransition = { ExitTransition.None }
+        )
+        {
+            HomeGraph()
+            InsuranceGraph()
+        }
+    }
+}
+
+fun NavGraphBuilder.HomeGraph() {
+    navigation(startDestination = "NullScreen", route = Home.ROUTE)
+    {
+        composable(route = "NullScreen") {}
+        composable(route = Home.MOBILE_NUMBER_SCREEN,) { MobileNumberScreen() }
+        composable(route = Home.BANK_SCREEN) { BankScreen() }
+        composable(route = Home.CHECK_BALANCE_SCREEN,) { CheckBalanceScreen() }
+        composable(route = Home.UPI_LITE_SCREEN) { UPILiteScreen() }
+        composable(route = Home.SELF_ACCOUNT_SCREEN) { SelfAccountScreen() }
+    }
+
+}
+
+fun NavGraphBuilder.InsuranceGraph() {
+    navigation(startDestination = Insurance.SCREEN, route = Insurance.ROUTE)
+    {
+        composable(route = Insurance.SCREEN) {}
+        composable(route = Insurance.HEALTH_SCREEN) { HealthScreen() }
+        composable(route = Insurance.CAR_SCREEN) { CarScreen() }
+        composable(route = Insurance.BIKE_SCREEN) { BikeScreen() }
+        composable(route = Insurance.TRAVEL_SCREEN) { TravelScreen() }
+    }
+}
+
+
+object BottomNav {
+    const val HOME = "Home"
+    const val INSURANCE = "Insurance"
+    const val STORE = "Store"
+    const val WEALTH = "Wealth"
+    const val HISTORY = "History"
+
+}
+
+
+object Home {
+    const val ROUTE = "Home"
+    const val SCREEN = "HomeScreen"
+    const val MOBILE_NUMBER_SCREEN = "MobileNumberScreen"
+    const val ADD_BANK_SCREEN = "AddBankAccount"
+    const val SELF_ACCOUNT_SCREEN = "SelfAccountScreen"
+    const val BANK_SCREEN = "BankScreen"
+    const val CHECK_BALANCE_SCREEN = "CheckBalanceScreen"
+    const val UPI_LITE_SCREEN = "UPILite"
+}
+
+object Insurance {
+    const val ROUTE = "Insurance"
+    const val SCREEN = "InsuranceScreen"
+    const val BIKE_SCREEN = "BikeScreen"
+    const val CAR_SCREEN = "CarScreen"
+    const val TRAVEL_SCREEN = "TravelScreen"
+    const val HEALTH_SCREEN = "HealthScreen"
+}
+
+object Wealth {
+    const val ROUTE = "Wealth"
+    const val SCREEN = "WealthScreen"
+    const val TAX_SAVING_FUND_SCREEN = "TaxSavingFundScreen"
+    const val HIGH_RETURN_FUND_SCREEN = "HighReturnsScreen"
+    const val TOP_COMPANIES_SCREEN = "TopCompaniesScreen"
+    const val BEST_SIP_FUNDS_SCREEN = "BestSIPFundsScreen"
+    const val TRENDING_THEME_SCREEN = "TrendingThemesScreen"
+    const val START_WITH_100_SCREEN = "StartWithScreen"
+    const val THREE_IN_ONE_SCREEN = "ThreeInOneScreen"
+    const val LARGE_CAP_FUND_SCREEN = "LargeCapFundsScreen"
+    const val MID_CAP_FUND_SCREEN = "MidCapFundsScreen"
+    const val SMALL_CAP_SCREEN = "SmallCapFundsScreen"
+    const val INDEX_FUND_SCREEN = "IndexFundsScreen"
+    const val GOLD_SCREEN = "GoldScreen"
+}
+
+object History {
+    const val ROUTE = "History"
+    const val SCREEN = "HistoryScreen"
+}
+
+object Store {
+    const val ROUTE = "Store"
+    const val SCREEN = "StoreScreen"
 }

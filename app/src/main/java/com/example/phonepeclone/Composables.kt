@@ -61,22 +61,25 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.phonepeclone.Data.FundBillers
 import com.example.phonepeclone.ui.Screens.WealthScreens.FundsFacilityBoxs
 
 
-
+/**
+ * Usually to input the Amount of the label to textfield , Used in UPI Lite Screen
+ */
 @Composable
 fun ClickableSurface(
     Label: String,
-    LabelColor:Color = Color(148, 110, 197, 255),
+    LabelColor: Color = Color(148, 110, 197, 255),
     RoundedCornerPercentage: Int = 20,
     SurfaceColor: Color = Color.Transparent,
-    SurfaceBorderColor:Color = Color(148, 110, 197, 255),
-    SurfaceWidth:Int = 90,
-    SurfaceHeight:Int = 45,
+    SurfaceBorderColor: Color = Color(148, 110, 197, 255),
+    SurfaceWidth: Int = 90,
+    SurfaceHeight: Int = 45,
     onClick: () -> Unit
 ) {
 
@@ -96,7 +99,7 @@ fun ClickableSurface(
         border = BorderStroke(1.dp, SurfaceBorderColor)
     ) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            androidx.compose.material.Text(
+            Text(
                 text = Label,
                 color = LabelColor,
                 fontSize = 15.sp,
@@ -108,6 +111,9 @@ fun ClickableSurface(
 }
 
 
+/**
+ * Fund Provider Surface Displaying the Last 3 Year and Etc. Used in Many Screens
+ */
 @Composable
 fun FundsSurface(
     FundProvider: FundBillers,
@@ -149,12 +155,12 @@ fun FundsSurface(
                     contentAlignment = Alignment.CenterStart
                 ) {
                     Column {
-                        androidx.compose.material.Text(
+                        Text(
                             text = FundProvider.FundProviderName,
                             color = Color.White,
                             fontSize = 16.sp
                         )
-                        androidx.compose.material.Text(
+                        Text(
                             text = "Equity : Large Cap",
                             color = Color.White
                         )
@@ -167,7 +173,7 @@ fun FundsSurface(
                         .height(80.dp),
                     contentAlignment = Alignment.Center
                 ) {
-                    androidx.compose.material3.Icon(
+                    Icon(
                         modifier = Modifier
                             .height(15.dp),
                         painter = painterResource(id = R.drawable.chevron_right_solid),
@@ -177,7 +183,7 @@ fun FundsSurface(
                 }
             }
 
-            androidx.compose.material.Divider(
+            Divider(
                 modifier = Modifier.padding(start = 20.dp, end = 20.dp),
                 thickness = 2.dp,
                 color = Color(46, 37, 56, 255)
@@ -191,18 +197,18 @@ fun FundsSurface(
                     contentAlignment = Alignment.CenterStart
                 ) {
                     Column(modifier = Modifier.padding(start = 20.dp)) {
-                        androidx.compose.material.Text(
+                        Text(
                             text = "Last 3Y",
                             fontSize = 13.sp,
                             color = Color.White
                         )
                         Row(modifier = Modifier.padding(top = 2.dp)) {
-                            androidx.compose.material.Text(
+                            Text(
                                 text = FundProvider.Last3Year + "%",
                                 fontSize = 17.sp,
                                 color = Color.White
                             )
-                            androidx.compose.material.Text(
+                            Text(
                                 modifier = Modifier.padding(top = 8.dp),
                                 text = " p.a",
                                 fontSize = 10.sp,
@@ -219,8 +225,8 @@ fun FundsSurface(
                     contentAlignment = Alignment.Center
                 ) {
                     Column {
-                        androidx.compose.material.Text(text = "Min Invest.", color = Color.White)
-                        androidx.compose.material.Text(
+                        Text(text = "Min Invest.", color = Color.White)
+                        Text(
                             text = FundProvider.MinInvest,
                             fontSize = 17.sp,
                             color = Color.White
@@ -235,8 +241,8 @@ fun FundsSurface(
                     contentAlignment = Alignment.CenterStart
                 ) {
                     Column(modifier = Modifier.padding(start = 25.dp)) {
-                        androidx.compose.material.Text(text = "Fund Size", color = Color.White)
-                        androidx.compose.material.Text(
+                        Text(text = "Fund Size", color = Color.White)
+                        Text(
                             text = "₹" + FundProvider.FundSize + "Cr",
                             fontSize = 17.sp,
                             color = Color.White
@@ -251,7 +257,7 @@ fun FundsSurface(
                     .fillMaxWidth()
 
             ) {
-                androidx.compose.material.Text(
+                Text(
                     modifier = Modifier.clickable(
                         indication = null,
                         interactionSource = MutableInteractionSource()
@@ -267,6 +273,11 @@ fun FundsSurface(
     }
 }
 
+
+/**
+ * Layout of the Funds Related Screen Which Displays the Fund's Information , Direct call to this function will
+ * make the whole screen, Used in Wealth Screen
+ */
 @Composable
 fun FundsScreenLayout(
     TopBarHeading: String,
@@ -316,7 +327,7 @@ fun FundsScreenLayout(
                                 )
 
                                 Text(
-                                    modifier = Modifier.padding(start = 15.dp, bottom = 5.dp),
+                                    modifier = Modifier.padding(start = 15.dp, bottom = 10.dp),
                                     text = SemiHeading,
                                     fontSize = 20.sp,
                                     color = Color.White,
@@ -326,7 +337,8 @@ fun FundsScreenLayout(
                                     modifier = Modifier.padding(start = 15.dp),
                                     text = stringResource(id = ParaGraphStringID),
                                     color = Color.White,
-                                    lineHeight = 18.sp
+                                    fontSize = 12.sp,
+                                    lineHeight = 17.sp
                                 )
                             }
                         }
@@ -363,6 +375,10 @@ fun FundsScreenLayout(
 }
 
 
+/**
+ * Custom Made textfield in which the label goes up when focused , and placeholder can also be set
+ * it. returns the string enter by the user
+ */
 @Composable
 fun animatedLabelTextField(
     BoxPadding: PaddingValues,
@@ -374,9 +390,11 @@ fun animatedLabelTextField(
         mutableStateOf("")
     }
 
+    val labelUpperOffset = 23
+    val labelLowerOffset = 0
     val purpleColor: Color = colorResource(id = R.color.button_purple)
     var isFocused by remember { mutableStateOf(false) }
-    val labelOffset by animateDpAsState(targetValue = if (isFocused || !textFromUser.isEmpty()) 23.dp else 0.dp)
+    val labelOffset by animateDpAsState(targetValue = if (isFocused || !textFromUser.isEmpty()) labelUpperOffset.dp else labelLowerOffset.dp)
     val fontSize by animateFloatAsState(targetValue = if (isFocused || !textFromUser.isEmpty()) 13f else 20f)
     val BorderColor = if (isFocused) purpleColor else Color(157, 149, 162, 255)
 
@@ -395,7 +413,11 @@ fun animatedLabelTextField(
             fontSize = fontSize.sp
         )
 
-        if (isFocused && textFromUser.isEmpty()) {
+        /**
+         * when the label goes up by 70% the placeholder will be displayed when the isFocused
+         * variable is true and the textfield is empty
+         */
+        if (isFocused && textFromUser.isEmpty() && labelOffset >= (labelUpperOffset * 0.7).dp) {
             Text(
                 text = PlaceHolder,
                 color = Color(159, 144, 174, 255),
@@ -469,6 +491,10 @@ fun FullPurpleButton(
 }
 
 
+/**
+ * Small Selection Button which usually used in the button which will trigger the
+ * bottom modal sheet
+ */
 @Composable
 fun SelectionButton(
     ButtonModifier: Modifier = Modifier,
@@ -527,7 +553,7 @@ fun SelectionButton(
 fun textfield(
     placeHolder: String,
     placeHolderColor: Color = Color(0xAACCCCCC),
-    checkError : (String) -> Boolean
+    checkError: (String) -> Boolean
 ): String {
 
     var textfromuser by remember {
@@ -547,7 +573,7 @@ fun textfield(
         onValueChange = {
             textfromuser = it
             isError = checkError(it)
-            if(it == "") isError = true
+            if (it == "") isError = true
 
         },
         colors = TextFieldDefaults.textFieldColors(
@@ -569,14 +595,16 @@ fun textfield(
         singleLine = true,
         keyboardOptions = KeyboardOptions.Default.copy(
             keyboardType = KeyboardType.NumberPassword
-            ),
+        ),
         isError = isError
     )
 
     return textfromuser
 }
 
-
+/**
+ * Search Bar Made out of the outlinedtextfield Composable function
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchBar(PlaceHolder: String): String {
@@ -623,6 +651,9 @@ fun SearchBar(PlaceHolder: String): String {
 }
 
 
+/**
+ * Top App Bar Usual Search bar , the Search bar will be in the Top App Bar
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun topAppBarWithSearchBar(PlaceHolder: String): String {
@@ -664,7 +695,7 @@ fun topAppBarWithSearchBar(PlaceHolder: String): String {
                                 interactionSource = MutableInteractionSource()
                             )
                             {
-                                navController.goBack()
+                                mainNavController.goBack()
                             },
                         painter = painterResource(id = R.drawable.back_button),
                         contentDescription = null,
@@ -684,6 +715,9 @@ fun topAppBarWithSearchBar(PlaceHolder: String): String {
     return searchtextfromuser
 }
 
+/**
+ * Special Function for the Phonepe Wallet , Reward , Refer & Get Buttons
+ */
 @Composable
 fun ButtonsInView(modifier: Modifier, Start: Int, End: Int, IconID: Int, OnClick: () -> Unit = {}) {
 
@@ -709,6 +743,9 @@ fun ButtonsInView(modifier: Modifier, Start: Int, End: Int, IconID: Int, OnClick
     }
 }
 
+/**
+ * Rounded Corner Surface Used in all app with predefined Height
+ */
 @Composable
 fun SurfaceInView(
     Height: Int = 90,
@@ -728,7 +765,31 @@ fun SurfaceInView(
     }
 }
 
+/**
+ * Rounded Corner Surface Used in all app with Dynamic Height , we can put much things without worrying
+ * the specifying the height
+ */
+@Composable
+fun SurfaceInView(
+    modifier: Modifier = Modifier,
+    surfaceColor: Color = colorResource(id = R.color.scrollable_view),
+    InternalContent: @Composable () -> Unit,
+) {
+    Surface(
+        color = surfaceColor,
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(top = 10.dp, start = 10.dp, end = 10.dp),
+        shape = RoundedCornerShape(15.dp)
+    ) {
+        InternalContent()
+    }
+}
 
+/**
+ * This Function is used in sections in Home Screen Like
+ * (Recharge  & Pay Bill Section) To ust Draw the icon not the label
+ */
 @Composable
 fun DrawIconInRow(
     SurfaceModifier: Modifier,
@@ -784,7 +845,7 @@ fun DrawIconInRow(
 
 /**
  * To Write the label beneath Icons in Sections in Home Screen.
- * Use parameter [label] to Write
+ * Use parameter [label] to Write , this function is used all across the app
  */
 @Composable
 fun WriteLabelInRow(modifier: Modifier, label: String) {
@@ -806,8 +867,12 @@ fun WriteLabelInRow(modifier: Modifier, label: String) {
 }
 
 
+/**
+ * See All Button in the Sections or in the screens ,  we have to make the custom boxmodifier with a clickable function
+ * attached to it and then pass it to the this function
+ */
 @Composable
-fun SeeAllButton(modifier: Modifier, boxmodifier: Modifier) {
+fun SeeAllButton(modifier: Modifier, boxmodifier: Modifier , onClick: () -> Unit = {}) {
 
     Surface(
         modifier = modifier
@@ -831,7 +896,7 @@ fun SeeAllButton(modifier: Modifier, boxmodifier: Modifier) {
                         .clip(RoundedCornerShape(15.dp))
                         .background(colorResource(id = R.color.TMS_Icon))
                         .clickable {
-                            println("See All Button Clicked")
+                            onClick()
                         },
                     contentAlignment = Alignment.Center
                 ) {
@@ -893,6 +958,9 @@ fun BottomAppBarAsButton(Content: @Composable () -> Unit = {}, OnClick: () -> Un
 }
 
 
+/**
+ * The Row And The divider beneath row
+ */
 @Composable
 fun RowWithDividerElements(
     Content: String,
@@ -956,8 +1024,12 @@ fun RowWithDividerElements(
 }
 
 
+/**
+ * Blue Top App Bar Used Across the all App
+ */
 @Composable
-fun BlueTopAppBar(Heading: String, BackArrowClick: () -> Unit = { navController.goBack() }) {
+fun BlueTopAppBar(Heading: String, BackArrowClick: () -> Unit = { mainNavController.goBack() }) {
+
     Box {
         TopAppBar(
             backgroundColor = colorResource(id = R.color.top_nav),
@@ -985,6 +1057,51 @@ fun BlueTopAppBar(Heading: String, BackArrowClick: () -> Unit = { navController.
 
 
 /**
+ * elevation in this functioni set to 0 because it provide the shadow around
+ * it when the color is transparent in the top app bar.
+ *
+ * Issue = The Content inside this function recompose too
+ * many times but not the topappbar but topappbar's content
+ */
+@Composable
+fun BlueTopAppBarScrollStateManaged(Heading:String , scrollstate : () -> Float , BackArrowClick: () -> Unit = { mainNavController.goBack() })
+{
+    val showTopAppBar: Boolean = scrollstate() > 7
+    val topAppBarColor = if(showTopAppBar) colorResource(id = R.color.top_nav) else Color.Transparent
+
+    Box{
+        TopAppBar(
+            modifier = Modifier.height(70.dp),
+            backgroundColor = topAppBarColor,
+            elevation = 0.dp
+        ) {
+            Icon(
+                modifier = Modifier
+                    .padding(start = 15.dp, end = 30.dp)
+                    .size(20.dp)
+                    .clickable(
+                        indication = null,
+                        interactionSource = MutableInteractionSource()
+                    ) {
+                        BackArrowClick()
+                    },
+                painter = painterResource(id = R.drawable.back_button),
+                contentDescription = null,
+                tint = Color.White
+            )
+            if(showTopAppBar){
+                Text(text = Heading, fontSize = 22.sp, color = Color.White)
+            }
+
+        }
+    }
+
+
+}
+
+
+
+/**
  * Heading Text Usually inside the function SurfaceInView Function Calls
  */
 @Composable
@@ -993,6 +1110,7 @@ fun HeadingTextInSurfaceView(
     HeadingTextColor: Color = Color.White,
     TextFontSize: Int = 16,
     HeadingTextFontWeight: FontWeight = FontWeight.Medium,
+    HeadingTextLineHeight: TextUnit = TextUnit.Unspecified,
     SurfacePadding: PaddingValues = PaddingValues(start = 20.dp, top = 10.dp)
 ) {
     Surface(
@@ -1004,12 +1122,16 @@ fun HeadingTextInSurfaceView(
             text = HeadingText,
             color = HeadingTextColor,
             fontSize = TextFontSize.sp,
-            fontWeight = HeadingTextFontWeight
+            fontWeight = HeadingTextFontWeight,
+            lineHeight = HeadingTextLineHeight
         )
     }
 }
 
 
+/**
+ * Small Boxs Used in Many Wealtht Unit Screens , Use this in the row with scroll applied
+ */
 @Composable
 fun ScrollableBoxs(Label: String, StartPadding: Int = 10, EndPadding: Int = 10) {
     Box(
@@ -1047,3 +1169,50 @@ fun ScrollableBoxs(Label: String, StartPadding: Int = 10, EndPadding: Int = 10) 
 }
 
 
+@Composable
+fun ThreeBoxRow(
+    firstBoxContent: @Composable () -> Unit,
+    secondBoxContent: @Composable () -> Unit,
+    thirdBoxContent: @Composable () -> Unit,
+    boxWeightList : List<Float>,
+    alignmentList: List<Alignment>
+) {
+
+
+    if (alignmentList.size > 3 || boxWeightList.size > 3) {
+        throw IllegalArgumentException("Alignment List is greate than three in FUNCTION :: ThreeBoxRow()")
+    }
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(80.dp)
+    )
+    {
+
+        Box(
+            modifier = Modifier
+                .weight(boxWeightList[0])
+                .fillMaxHeight(), contentAlignment = alignmentList[0]
+        ) {
+            firstBoxContent()
+        }
+
+        Box(
+            modifier = Modifier
+                .weight(boxWeightList[1])
+                .fillMaxHeight(), contentAlignment = alignmentList[1]
+        ) {
+            secondBoxContent()
+        }
+
+        Box(
+            modifier = Modifier
+                .weight(boxWeightList[2])
+                .fillMaxHeight(), contentAlignment = alignmentList[2]
+        ) {
+            thirdBoxContent()
+        }
+
+    }
+}

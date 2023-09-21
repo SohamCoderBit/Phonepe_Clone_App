@@ -6,12 +6,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.phonepeclone.FundsScreenLayout
 import com.example.phonepeclone.FundsSurface
-import com.example.phonepeclone.NavigationDestinations
 import com.example.phonepeclone.R
 import com.example.phonepeclone.ScrollableBoxs
 import com.example.phonepeclone.ViewModels.DynamicScreenViewModel
 import com.example.phonepeclone.ViewModels.TopCompaniesViewModel
-import com.example.phonepeclone.navController
 import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
 
 
@@ -49,14 +47,12 @@ fun TopCompaniesScreen(
                         FundProvider = fundBillers,
                         SurfaceOnClick = {
                             dynamicScreenViewModel.HeadingText.value = fundBillers.FundProviderName
-                            navController.navigateTo(Route = NavigationDestinations.DYNAMIC_SCREEN_ROUTE)
+
                         }
                     )
                 }
         }
     )
-
-
 }
 
 @Preview

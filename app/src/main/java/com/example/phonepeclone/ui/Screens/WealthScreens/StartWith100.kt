@@ -5,17 +5,23 @@ import androidx.compose.ui.platform.LocalContext
 import com.example.phonepeclone.FundsScreenLayout
 import com.example.phonepeclone.FundsSurface
 import com.example.phonepeclone.R
-import com.example.phonepeclone.ViewModels.TaxSavingFundViewModel
+import com.example.phonepeclone.ViewModels.DynamicScreenViewModel
+import com.example.phonepeclone.ViewModels.TopCompaniesViewModel
 
 @Composable
-fun TaxSavingFundScreen(taxSavingFundViewModel: TaxSavingFundViewModel) {
-
-    val heading = "TAX SAVING FUNDS"
-    val semiHeading = "Invest and save tax up to 46,800"
-    val paragraphStringID = R.string.tax_saving_fund_advertise
+fun StartWithScreen(
+    topCompaniesViewModel: TopCompaniesViewModel,
+    dynamicScreenViewModel: DynamicScreenViewModel
+)
+{
+    val heading = "START WITH 100"
+    val semiHeading = "Top mutual funds to invest with just 100"
+    val paragraphStringID = R.string.start_with_100_advertise
     val ButtonRowList = arrayListOf<String>()
     ButtonRowList.add("High Growth")
-    ButtonRowList.add("3 year Lock-in")
+    ButtonRowList.add("No Lock-in")
+    ButtonRowList.add("Long Term")
+    ButtonRowList.add("For Beginners")
 
     FundsScreenLayout(
         TopBarHeading = heading,
@@ -24,11 +30,13 @@ fun TaxSavingFundScreen(taxSavingFundViewModel: TaxSavingFundViewModel) {
         ParaGraphStringID = paragraphStringID,
         SmallBoxsRow = ButtonRowList,
         Content = {
-            taxSavingFundViewModel.getTaxSavingFundBillersList(LocalContext.current)
+            topCompaniesViewModel.getFundProvidersList(LocalContext.current)
                 .forEach { fundBillers ->
                     FundsSurface(
                         FundProvider = fundBillers,
                         SurfaceOnClick = {
+                            dynamicScreenViewModel.HeadingText.value = fundBillers.FundProviderName
+
                         }
                     )
                 }

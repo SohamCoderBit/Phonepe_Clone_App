@@ -1,6 +1,5 @@
 package com.example.phonepeclone.ui.theme.Screens.TransferMoneyScreens
 
-import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -35,14 +34,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.phonepeclone.BlueTopAppBar
 import com.example.phonepeclone.DrawIconInRow
 import com.example.phonepeclone.HeadingTextInSurfaceView
-import com.example.phonepeclone.NavigationDestinations
 import com.example.phonepeclone.R
 import com.example.phonepeclone.RowWithDividerElements
 import com.example.phonepeclone.SearchBar
 import com.example.phonepeclone.SurfaceInView
 import com.example.phonepeclone.ViewModels.AddBankAccountVIewModel
 import com.example.phonepeclone.WriteLabelInRow
-import com.example.phonepeclone.navController
 import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
 
 @Composable
@@ -60,7 +57,6 @@ fun SelfAccountScreen() {
                     .align(Alignment.BottomCenter)
                     .height(60.dp)
                     .clickable {
-                        navController.navigateTo(NavigationDestinations.ADD_BANK_SCREEN_ROUTE)
                     },
                 containerColor = colorResource(id = R.color.bottom_nav)
             ) {
@@ -247,25 +243,7 @@ fun AddBankAccount(addBankAccountViewModel: AddBankAccountVIewModel) {
 
         }
 
-        BlueTopAppBar(Heading = "Select Bank", BackArrowClick = {
-            navController.getNavigationController()
-                ?.navigate(NavigationDestinations.HOME_SCREEN_ROUTE) {
-                    popUpTo(NavigationDestinations.HOME_SCREEN_ROUTE) {
-                        inclusive = true
-                        saveState = true
-                    }
-                }
-        })
-    }
-
-    BackHandler(true) {
-        navController.getNavigationController()
-            ?.navigate(NavigationDestinations.HOME_SCREEN_ROUTE) {
-                popUpTo(NavigationDestinations.HOME_SCREEN_ROUTE) {
-                    inclusive = true
-                    saveState = true
-                }
-            }
+        BlueTopAppBar(Heading = "Select Bank", BackArrowClick = {})
     }
 }
 

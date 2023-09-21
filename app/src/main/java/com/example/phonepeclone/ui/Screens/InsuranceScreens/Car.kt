@@ -71,7 +71,7 @@ fun textFieldCarAndBikeScreen():String
         maxLines = 1,
         textStyle = LocalTextStyle.current.copy(fontSize = 25.sp),
         keyboardOptions = KeyboardOptions.Default.copy(
-            keyboardType = KeyboardType.NumberPassword
+            keyboardType = KeyboardType.Password
         ),
         shape = RoundedCornerShape(15),
         singleLine = true

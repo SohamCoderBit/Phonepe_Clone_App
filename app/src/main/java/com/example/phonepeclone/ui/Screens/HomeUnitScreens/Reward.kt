@@ -237,9 +237,9 @@ fun RewardScreen() {
         sheetBackgroundColor = Color(33, 24, 43, 255),
         //Sheet Content
         sheetContent = {
-//            if (currentlySelctedSheetButton == choiceSelectionList[0].ButtonName) {
-//                choiceSelectionList[0].Screen()
-//            }
+            if (currentlySelctedSheetButton == choiceSelectionList[0].ButtonName) {
+                choiceSelectionList[0].Screen()
+            }
             if (currentlySelctedSheetButton == choiceSelectionList[1].ButtonName) {
                 choiceSelectionList[1].Screen()
             }
@@ -302,6 +302,10 @@ fun RewardScreen() {
                                     onClick = {
                                         currentlySelctedSheetButton =
                                             choiceSelectionList[1].ButtonName
+
+                                        coroutineScope.launch {
+                                            scaffoldState.bottomSheetState.expand()
+                                        }
                                     },
                                     buttonLabel = "Filter",
                                     buttonBackGroundColor = Color.Transparent,

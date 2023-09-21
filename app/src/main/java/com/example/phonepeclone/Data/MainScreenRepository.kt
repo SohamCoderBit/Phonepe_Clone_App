@@ -1,13 +1,12 @@
 package com.example.phonepeclone.Data
 
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
+import com.example.phonepeclone.BottomNav
 import com.example.phonepeclone.R
 
 data class BottomnavItem(
     val label: String,
     val icon: Int,
-    var isSelected: MutableState<Boolean>
+    val route : String
 )
 
 class MainScreenRepository {
@@ -20,7 +19,7 @@ class MainScreenRepository {
             BottomnavItem(
                 label = "Home",
                 icon = R.drawable.house_solid,
-                isSelected = mutableStateOf(true)
+                route = BottomNav.HOME
 
             )
         )
@@ -28,7 +27,7 @@ class MainScreenRepository {
             BottomnavItem(
                 label = "Store",
                 icon = R.drawable.bag_shopping_solid,
-                isSelected = mutableStateOf(false)
+                route = BottomNav.STORE
 
             )
         )
@@ -36,7 +35,7 @@ class MainScreenRepository {
             BottomnavItem(
                 label = "Insurance",
                 icon = R.drawable.reshot_icon_shield_checkmark_qezhvp8s34,
-                isSelected = mutableStateOf(false)
+                route = BottomNav.INSURANCE
 
             )
         )
@@ -44,7 +43,7 @@ class MainScreenRepository {
             BottomnavItem(
                 label = "Wealth",
                 icon = R.drawable.indian_rupee_sign_solid,
-                isSelected = mutableStateOf(false)
+                route = BottomNav.WEALTH
 
             )
         )
@@ -52,7 +51,7 @@ class MainScreenRepository {
             BottomnavItem(
                 label = "History",
                 icon = R.drawable.folder_solid,
-                isSelected = mutableStateOf(false)
+                route = BottomNav.HISTORY
             )
         )
 

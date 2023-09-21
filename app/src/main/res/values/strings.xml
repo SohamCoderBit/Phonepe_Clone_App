@@ -1,10 +1,19 @@
 <resources>
     <string name="app_name">PhonepeClone</string>
+
     <string name="fund_advertise">Benefit from India\'s high growth potential These funds invest in the top 100 companies in India</string>
     <string name="tax_saving_fund_advertise">Best way to save tax &amp; grow your money.Get potentially higher returns than other tax saving investments.</string>
     <string name="high_return_fund_advertise">Funds that have delievered high returns over last 3 years, Ideal for long term investment</string>
     <string name="best_sip_fund_advertise">Grow your money with Best SIP Funds.Ideal for long term investment.</string>
     <string name="trending_themes_advertise">Benefit from the high growth of businesses in top-performing sectors and themes </string>
+    <string name="start_with_100_advertise">Start smal build big ideal for investors who are looking to start small</string>
+    <string name="three_in_one_fund_advertise">Get a mix of 3 different asset classes with these funds. Ideal for diversification and mitigating risk</string>
+
+    <string name="large_cap_fund_advertise">Benefit from India\'s high growth potential These funds invest in the top 100 companies in india</string>
+    <string name="mid_cap_fund_advertise">Benefit from high growth potential of mid sized companies.Get higher returns at high risk</string>
+    <string name="small_cap_fund_advertise">Get higher returns at high risk. These funds invest in smaller companies with very high growth potential</string>
+    <string name="index_fund_advertise">Benefit from India\'s high growth potential. These funds invest in top indices in top indices such as Nifty &amp; Sensex</string>
+
     <string name="T_an_C_Agreement">by continuing , you agree to</string>
     <string name="Phonepe_T_an_C"> Phonepe T&amp;C</string>
 </resources>

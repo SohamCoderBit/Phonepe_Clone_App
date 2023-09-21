@@ -23,12 +23,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.phonepeclone.DrawIconInRow
 import com.example.phonepeclone.HeadingTextInSurfaceView
-import com.example.phonepeclone.NavigationDestinations
 import com.example.phonepeclone.R
 import com.example.phonepeclone.SeeAllButton
 import com.example.phonepeclone.SurfaceInView
 import com.example.phonepeclone.WriteLabelInRow
-import com.example.phonepeclone.navController
 import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
 
 
@@ -48,7 +46,7 @@ fun RechargePayBillSectionIcon() {
         DrawIconInRow(
             SurfaceModifier = surfacemodifier,
             BoxModifier = boxmodifier.clickable {
-                navController.navigateTo(Route = NavigationDestinations.MOBILE_RECHARGE_SCREEN_ROUTE)
+
             },
             IconSize = 45,
             IconResource = R.drawable.mobile,
@@ -58,7 +56,7 @@ fun RechargePayBillSectionIcon() {
         DrawIconInRow(
             SurfaceModifier = surfacemodifier,
             BoxModifier = boxmodifier.clickable {
-                navController.navigateTo(Route = NavigationDestinations.DTH_SCREEN_ROUTE)
+
             },
             IconSize = 45,
             IconResource = R.drawable.dth_recharge,
@@ -68,7 +66,7 @@ fun RechargePayBillSectionIcon() {
         DrawIconInRow(
             SurfaceModifier = surfacemodifier,
             BoxModifier = boxmodifier.clickable {
-                navController.navigateTo(Route = NavigationDestinations.ELECTRICITY_SCREEN_ROUTE)
+
             },
             IconSize = 45,
             IconResource = R.drawable.bulb,
@@ -78,7 +76,7 @@ fun RechargePayBillSectionIcon() {
         DrawIconInRow(
             SurfaceModifier = surfacemodifier,
             BoxModifier = boxmodifier.clickable {
-                navController.navigateTo(Route = NavigationDestinations.CREDIT_CARD_BILL_PAYMENT_SCREEN_ROUTE)
+
             },
             IconSize = 45,
             IconResource = R.drawable.credit_card,
@@ -112,7 +110,7 @@ fun RechargePayBillSectionIcon() {
         DrawIconInRow(
             SurfaceModifier = surfacemodifier,
             BoxModifier = boxmodifier.clickable() {
-                navController.navigateTo(Route = NavigationDestinations.RENT_PAYMENT_SCREEN_ROUTE)
+
             },
             IconSize = 50,
             IconResource = R.drawable.building,
@@ -122,8 +120,6 @@ fun RechargePayBillSectionIcon() {
         DrawIconInRow(
             SurfaceModifier = surfacemodifier,
             BoxModifier = boxmodifier.clickable {
-                navController.navigateTo(Route = NavigationDestinations.LOAN_PAYMENT_SCREEN_ROUTE)
-
             },
             IconSize = 45,
             IconResource = R.drawable.rupee,
@@ -134,14 +130,15 @@ fun RechargePayBillSectionIcon() {
         DrawIconInRow(
             SurfaceModifier = surfacemodifier,
             BoxModifier = boxmodifier.clickable {
-                navController.navigateTo(Route = NavigationDestinations.GAS_CYLINDER_SCREEN_ROUTE)
             },
             IconSize = 50,
             IconResource = R.drawable.gas_cylinder,
         )
 
         //See All Button
-        SeeAllButton(modifier = surfacemodifier, boxmodifier = boxmodifier)
+        SeeAllButton(modifier = surfacemodifier, boxmodifier = boxmodifier , onClick = {
+        })
+
     }
 
     Row(modifier = Modifier.padding(top = 5.dp)) {

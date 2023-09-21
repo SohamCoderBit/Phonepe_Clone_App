@@ -24,12 +24,12 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.phonepeclone.BottomNav
 import com.example.phonepeclone.DrawIconInRow
 import com.example.phonepeclone.HeadingTextInSurfaceView
-import com.example.phonepeclone.NavigationDestinations
 import com.example.phonepeclone.R
 import com.example.phonepeclone.WriteLabelInRow
-import com.example.phonepeclone.navController
+import com.example.phonepeclone.bottomBarNavController
 
 
 @Composable
@@ -55,7 +55,7 @@ fun InsuranceSection(SeeAllButtonOnClick: () -> Unit) {
             DrawIconInRow(
                 SurfaceModifier = surfacemodifier,
                 BoxModifier = boxmodifier.clickable {
-                    navController.navigateTo(Route = NavigationDestinations.BIKE_SCREEN_ROUTE)
+
                 },
                 IconSize = 55,
                 IconResource = R.drawable.motorcycle_svgrepo_com
@@ -65,7 +65,7 @@ fun InsuranceSection(SeeAllButtonOnClick: () -> Unit) {
             DrawIconInRow(
                 SurfaceModifier = surfacemodifier,
                 BoxModifier = boxmodifier.clickable {
-                    navController.navigateTo(Route = NavigationDestinations.CAR_SCREEN_ROUTE)
+
                 },
                 IconSize = 55,
                 IconResource = R.drawable.hatchback_5035167
@@ -75,7 +75,7 @@ fun InsuranceSection(SeeAllButtonOnClick: () -> Unit) {
             DrawIconInRow(
                 SurfaceModifier = surfacemodifier,
                 BoxModifier = boxmodifier.clickable {
-                    navController.navigateTo(Route = NavigationDestinations.HEALTH_SCREEN_ROUTE)
+
                 },
                 IconSize = 45,
                 IconResource = R.drawable.heart_logo
@@ -85,7 +85,7 @@ fun InsuranceSection(SeeAllButtonOnClick: () -> Unit) {
             DrawIconInRow(
                 SurfaceModifier = surfacemodifier,
                 BoxModifier = boxmodifier.clickable {
-                    navController.navigateTo(Route = NavigationDestinations.ACCIDENT_SCREEN_ROUTE)
+
                 },
                 IconSize = 50,
                 IconResource = R.drawable.patient_469444
@@ -119,7 +119,7 @@ fun InsuranceSection(SeeAllButtonOnClick: () -> Unit) {
             DrawIconInRow(
                 SurfaceModifier = surfacemodifier,
                 BoxModifier = boxmodifier.clickable {
-                    navController.navigateTo(Route = NavigationDestinations.TERM_LIFE_ROUTE)
+
                 },
                 IconSize = 45,
                 IconResource = R.drawable.hands
@@ -128,7 +128,9 @@ fun InsuranceSection(SeeAllButtonOnClick: () -> Unit) {
             //Travel Insurance
             DrawIconInRow(
                 SurfaceModifier = surfacemodifier,
-                BoxModifier = boxmodifier,
+                BoxModifier = boxmodifier.clickable {
+
+                },
                 IconSize = 55,
                 IconResource = R.drawable.reshot_icon_travel_abroad_uhrq52ydg4
             )
@@ -138,7 +140,7 @@ fun InsuranceSection(SeeAllButtonOnClick: () -> Unit) {
             DrawIconInRow(
                 SurfaceModifier = surfacemodifier,
                 BoxModifier = boxmodifier.clickable {
-                    navController.navigateTo(Route = NavigationDestinations.INSURANCE_RENEWAL_ROUTE)
+
                 },
                 IconSize = 50,
                 IconResource = R.drawable.reshot_icon_repeat_egdzcp9q2s
@@ -166,7 +168,7 @@ fun InsuranceSection(SeeAllButtonOnClick: () -> Unit) {
                                 .size(45.dp)
                                 .clip(RoundedCornerShape(15.dp))
                                 .background(colorResource(id = R.color.TMS_Icon))
-                                .clickable { SeeAllButtonOnClick() },
+                                .clickable { bottomBarNavController.navigateTo(Route = BottomNav.INSURANCE) },
                             contentAlignment = Alignment.Center
                         ) {
                             Icon(
