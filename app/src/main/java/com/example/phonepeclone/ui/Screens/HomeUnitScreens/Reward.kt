@@ -13,13 +13,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.BottomSheetScaffold
-import androidx.compose.material.BottomSheetValue
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
+import androidx.compose.material.ModalBottomSheetLayout
+import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.material.Text
-import androidx.compose.material.rememberBottomSheetScaffoldState
-import androidx.compose.material.rememberBottomSheetState
+import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -190,12 +189,7 @@ fun RewardScreen() {
     val buttonBackgroundColor: Color =
         if (!favouriteButtonClicked) Color.Transparent else Color(40, 51, 48, 255)
 
-    val sheetState = rememberBottomSheetState(
-        initialValue = BottomSheetValue.Collapsed
-    )
-    val scaffoldState = rememberBottomSheetScaffoldState(
-        bottomSheetState = sheetState
-    )
+    val sheetState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
     var currentlySelectedChoice by remember {
         mutableStateOf("Preference")
     }
@@ -211,12 +205,12 @@ fun RewardScreen() {
             SortByScreen(
                 onClose = {
                     coroutineScope.launch {
-                        scaffoldState.bottomSheetState.collapse()
+                        sheetState.hide()
                     }
                 },
                 eachChoiceAttachedSelectionClick = {
                     coroutineScope.launch {
-                        scaffoldState.bottomSheetState.collapse()
+                        sheetState.hide()
                     }
                 },
                 updateTheCurrentlySelected = {
@@ -231,9 +225,8 @@ fun RewardScreen() {
         })
     )
 
-    BottomSheetScaffold(
-        scaffoldState = scaffoldState,
-        sheetPeekHeight = 0.dp,
+    ModalBottomSheetLayout(
+        sheetState = sheetState,
         sheetBackgroundColor = Color(33, 24, 43, 255),
         //Sheet Content
         sheetContent = {
@@ -251,7 +244,7 @@ fun RewardScreen() {
                 .background(colorResource(id = R.color.background))
                 .clickable(indication = null, interactionSource = MutableInteractionSource()) {
                     coroutineScope.launch {
-                        scaffoldState.bottomSheetState.collapse()
+                        sheetState.hide()
                     }
                 },
             contentAlignment = Alignment.TopCenter
@@ -279,7 +272,11 @@ fun RewardScreen() {
                                         currentlySelctedSheetButton =
                                             choiceSelectionList[0].ButtonName
                                         coroutineScope.launch {
-                                            scaffoldState.bottomSheetState.expand()
+                                            if (sheetState.isVisible) {
+                                                sheetState.hide()
+                                            } else {
+                                                sheetState.show()
+                                            }
                                         }
                                     },
                                     buttonLabel = currentlySelectedChoice,
@@ -304,7 +301,11 @@ fun RewardScreen() {
                                             choiceSelectionList[1].ButtonName
 
                                         coroutineScope.launch {
-                                            scaffoldState.bottomSheetState.expand()
+                                            if (sheetState.isVisible) {
+                                                sheetState.hide()
+                                            } else {
+                                                sheetState.show()
+                                            }
                                         }
                                     },
                                     buttonLabel = "Filter",

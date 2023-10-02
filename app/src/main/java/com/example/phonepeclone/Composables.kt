@@ -7,7 +7,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -23,13 +22,15 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Icon
 import androidx.compose.material.TopAppBar
 import androidx.compose.material3.BottomAppBar
@@ -61,6 +62,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -285,7 +287,7 @@ fun FundsScreenLayout(
     SemiHeading: String,
     ParaGraphStringID: Int,
     SmallBoxsRow: List<String>,
-    Content: @Composable () -> Unit
+    FundProviderList: List<FundBillers>,
 ) {
     Surface(
         modifier = Modifier
@@ -293,81 +295,85 @@ fun FundsScreenLayout(
         color = colorResource(id = R.color.background)
     ) {
 
-        Column(
+        LazyColumn(
             modifier = Modifier
                 .padding(top = 70.dp)
-                .verticalScroll(rememberScrollState())
         ) {
 
-            Box(
-                modifier = Modifier
-                    .height(200.dp)
-                    .fillMaxWidth()
-                    .background(colorResource(id = R.color.scrollable_view))
-            ) {
+            item {
+                Box(
+                    modifier = Modifier
+                        .height(210.dp)
+                        .fillMaxWidth()
+                        .background(colorResource(id = R.color.scrollable_view))
+                ) {
 
 
-                Box(modifier = Modifier.align(alignment = Alignment.TopStart)) {
-                    Row {
-                        Box(
-                            modifier = Modifier
-                                .weight(2.5f)
-                                .fillMaxHeight()
-                        ) {
-                            Column {
-                                Text(
-                                    modifier = Modifier.padding(
-                                        start = 15.dp,
-                                        top = 10.dp,
-                                        bottom = 10.dp
-                                    ),
-                                    text = Heading,
-                                    color = Color.White,
-                                    fontWeight = FontWeight.Medium
-                                )
+                    Box(modifier = Modifier.align(alignment = Alignment.TopStart)) {
+                        Row {
+                            Box(
+                                modifier = Modifier
+                                    .weight(2.5f)
+                                    .fillMaxHeight()
+                            ) {
+                                Column {
+                                    Text(
+                                        modifier = Modifier.padding(
+                                            start = 15.dp,
+                                            top = 10.dp,
+                                            bottom = 10.dp
+                                        ),
+                                        text = Heading,
+                                        color = Color.White,
+                                        fontWeight = FontWeight.Medium
+                                    )
 
-                                Text(
-                                    modifier = Modifier.padding(start = 15.dp, bottom = 10.dp),
-                                    text = SemiHeading,
-                                    fontSize = 20.sp,
-                                    color = Color.White,
-                                    fontWeight = FontWeight.SemiBold
-                                )
-                                Text(
-                                    modifier = Modifier.padding(start = 15.dp),
-                                    text = stringResource(id = ParaGraphStringID),
-                                    color = Color.White,
-                                    fontSize = 12.sp,
-                                    lineHeight = 17.sp
-                                )
+                                    Text(
+                                        modifier = Modifier.padding(start = 15.dp, bottom = 10.dp),
+                                        text = SemiHeading,
+                                        fontSize = 20.sp,
+                                        color = Color.White,
+                                        fontWeight = FontWeight.SemiBold
+                                    )
+                                    Text(
+                                        modifier = Modifier.padding(start = 15.dp),
+                                        text = stringResource(id = ParaGraphStringID),
+                                        color = Color.White,
+                                        fontSize = 12.sp,
+                                        lineHeight = 17.sp
+                                    )
+                                }
+                            }
+                            Box(modifier = Modifier.weight(1f)) {
+                                //For Some IMAGES
                             }
                         }
-                        Box(modifier = Modifier.weight(1f)) {
-
-                        }
                     }
-                }
 
-                Box(modifier = Modifier.align(alignment = Alignment.BottomStart)) {
-                    Row(
-                        modifier = Modifier
-                            .padding(bottom = 10.dp)
-                            .horizontalScroll(rememberScrollState())
-                    ) {
-                        SmallBoxsRow.forEachIndexed { index, _ ->
-                            val startPadding = if (index == 0) 10 else 2
-                            val endPadding = if (index == SmallBoxsRow.size - 1) 10 else 2
-                            FundsFacilityBoxs(
-                                Label = SmallBoxsRow[index],
-                                StartPadding = startPadding,
-                                EndPadding = endPadding
-                            )
+                    Box(modifier = Modifier.align(alignment = Alignment.BottomStart)) {
+                        LazyRow(modifier = Modifier.padding(bottom = 5.dp)) {
+                            itemsIndexed(SmallBoxsRow) { index, _ ->
+                                val startPadding = if (index == 0) 10 else 2
+                                val endPadding = if (index == SmallBoxsRow.size - 1) 10 else 2
+                                FundsFacilityBoxs(
+                                    Label = SmallBoxsRow[index],
+                                    StartPadding = startPadding,
+                                    EndPadding = endPadding
+                                )
+                            }
                         }
                     }
                 }
             }
 
-            Content()
+            items(FundProviderList) { fundBillers ->
+                FundsSurface(
+                    FundProvider = fundBillers,
+                    SurfaceOnClick = {
+
+                    }
+                )
+            }
         }
 
         BlueTopAppBar(Heading = TopBarHeading)
@@ -677,7 +683,7 @@ fun topAppBarWithSearchBar(PlaceHolder: String): String {
                     Text(
                         modifier = Modifier.padding(start = 10.dp),
                         text = PlaceHolder,
-                        fontSize = 18.sp,
+                        fontSize = 16.sp,
                         lineHeight = 20.sp,
                         color = Color.LightGray
                     )
@@ -748,17 +754,18 @@ fun ButtonsInView(modifier: Modifier, Start: Int, End: Int, IconID: Int, OnClick
  */
 @Composable
 fun SurfaceInView(
-    Height: Int = 90,
+    Height: Int,
     modifier: Modifier = Modifier,
     surfaceColor: Color = colorResource(id = R.color.scrollable_view),
-    InternalContent: @Composable () -> Unit,
+    SurfacePadding: PaddingValues = PaddingValues(top = 10.dp, start = 10.dp, end = 10.dp),
+    InternalContent: @Composable () -> Unit
 ) {
     Surface(
         color = surfaceColor,
         modifier = modifier
             .height(Height.dp)
             .fillMaxWidth()
-            .padding(top = 10.dp, start = 10.dp, end = 10.dp),
+            .padding(SurfacePadding),
         shape = RoundedCornerShape(15.dp)
     ) {
         InternalContent()
@@ -773,13 +780,14 @@ fun SurfaceInView(
 fun SurfaceInView(
     modifier: Modifier = Modifier,
     surfaceColor: Color = colorResource(id = R.color.scrollable_view),
+    SurfacePadding: PaddingValues = PaddingValues(top = 10.dp, start = 10.dp, end = 10.dp),
     InternalContent: @Composable () -> Unit,
 ) {
     Surface(
         color = surfaceColor,
         modifier = modifier
             .fillMaxWidth()
-            .padding(top = 10.dp, start = 10.dp, end = 10.dp),
+            .padding(SurfacePadding),
         shape = RoundedCornerShape(15.dp)
     ) {
         InternalContent()
@@ -848,20 +856,31 @@ fun DrawIconInRow(
  * Use parameter [label] to Write , this function is used all across the app
  */
 @Composable
-fun WriteLabelInRow(modifier: Modifier, label: String) {
+fun WriteLabelInRow(
+    modifier: Modifier,
+    label: String,
+    maxLine: Int = Int.MAX_VALUE,
+    textOverFlow: TextOverflow = TextOverflow.Visible
+) {
     Surface(
         modifier = modifier, color = Color.Transparent
     ) {
         Box(
             contentAlignment = Alignment.Center,
         ) {
-            Text(
-                text = label,
-                color = Color.White,
-                fontSize = 12.sp,
-                textAlign = TextAlign.Center,
-                lineHeight = 15.sp
-            )
+            Box(modifier = Modifier
+                .fillMaxWidth(0.80f),
+                contentAlignment = Alignment.Center) {
+                Text(
+                    text = label,
+                    color = Color.White,
+                    fontSize = 12.sp,
+                    textAlign = TextAlign.Center,
+                    lineHeight = 14.sp,
+                    maxLines = maxLine,
+                    overflow = textOverFlow
+                )
+            }
         }
     }
 }
@@ -872,7 +891,7 @@ fun WriteLabelInRow(modifier: Modifier, label: String) {
  * attached to it and then pass it to the this function
  */
 @Composable
-fun SeeAllButton(modifier: Modifier, boxmodifier: Modifier , onClick: () -> Unit = {}) {
+fun SeeAllButton(modifier: Modifier, boxmodifier: Modifier, onClick: () -> Unit = {}) {
 
     Surface(
         modifier = modifier
@@ -1064,12 +1083,16 @@ fun BlueTopAppBar(Heading: String, BackArrowClick: () -> Unit = { mainNavControl
  * many times but not the topappbar but topappbar's content
  */
 @Composable
-fun BlueTopAppBarScrollStateManaged(Heading:String , scrollstate : () -> Float , BackArrowClick: () -> Unit = { mainNavController.goBack() })
-{
+fun BlueTopAppBarScrollStateManaged(
+    Heading: String,
+    scrollstate: () -> Float,
+    BackArrowClick: () -> Unit = { mainNavController.goBack() }
+) {
     val showTopAppBar: Boolean = scrollstate() > 7
-    val topAppBarColor = if(showTopAppBar) colorResource(id = R.color.top_nav) else Color.Transparent
+    val topAppBarColor =
+        if (showTopAppBar) colorResource(id = R.color.top_nav) else Color.Transparent
 
-    Box{
+    Box {
         TopAppBar(
             modifier = Modifier.height(70.dp),
             backgroundColor = topAppBarColor,
@@ -1089,7 +1112,7 @@ fun BlueTopAppBarScrollStateManaged(Heading:String , scrollstate : () -> Float ,
                 contentDescription = null,
                 tint = Color.White
             )
-            if(showTopAppBar){
+            if (showTopAppBar) {
                 Text(text = Heading, fontSize = 22.sp, color = Color.White)
             }
 
@@ -1098,7 +1121,6 @@ fun BlueTopAppBarScrollStateManaged(Heading:String , scrollstate : () -> Float ,
 
 
 }
-
 
 
 /**
@@ -1174,8 +1196,9 @@ fun ThreeBoxRow(
     firstBoxContent: @Composable () -> Unit,
     secondBoxContent: @Composable () -> Unit,
     thirdBoxContent: @Composable () -> Unit,
-    boxWeightList : List<Float>,
-    alignmentList: List<Alignment>
+    boxWeightList: List<Float>,
+    alignmentList: List<Alignment>,
+    onClick: () -> Unit = {}
 ) {
 
 
@@ -1187,6 +1210,9 @@ fun ThreeBoxRow(
         modifier = Modifier
             .fillMaxWidth()
             .height(80.dp)
+            .clickable(indication = null, interactionSource = MutableInteractionSource()) {
+                onClick()
+            }
     )
     {
 

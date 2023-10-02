@@ -63,6 +63,8 @@ fun InsuranceUnit() {
 
     Column(
         modifier = Modifier
+            .padding(top = 70.dp , bottom = 70.dp)
+            .fillMaxSize()
             .verticalScroll(
                 rememberScrollState()
             )

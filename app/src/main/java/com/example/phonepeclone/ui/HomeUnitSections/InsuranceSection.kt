@@ -23,17 +23,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.phonepeclone.BottomNav
 import com.example.phonepeclone.DrawIconInRow
 import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.Insurance
 import com.example.phonepeclone.R
 import com.example.phonepeclone.WriteLabelInRow
-import com.example.phonepeclone.bottomBarNavController
+import com.example.phonepeclone.mainNavController
+import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
 
 
 @Composable
-fun InsuranceSection(SeeAllButtonOnClick: () -> Unit) {
+fun InsuranceSection() {
     Column {
         Row {
             HeadingTextInSurfaceView(
@@ -168,7 +170,7 @@ fun InsuranceSection(SeeAllButtonOnClick: () -> Unit) {
                                 .size(45.dp)
                                 .clip(RoundedCornerShape(15.dp))
                                 .background(colorResource(id = R.color.TMS_Icon))
-                                .clickable { bottomBarNavController.navigateTo(Route = BottomNav.INSURANCE) },
+                                .clickable { mainNavController.navigateTo(Route = Insurance.ROUTE) },
                             contentAlignment = Alignment.Center
                         ) {
                             Icon(
@@ -189,13 +191,13 @@ fun InsuranceSection(SeeAllButtonOnClick: () -> Unit) {
 
             val surfacemodifier: Modifier = Modifier.weight(1f)
             //Term \n Life
-            WriteLabelInRow(modifier = surfacemodifier, label = "Term\nLife")
+            WriteLabelInRow(modifier = surfacemodifier, label = "Term Life")
 
             //Travel
             WriteLabelInRow(modifier = surfacemodifier, label = "Travel")
 
             //Insurance \n Renewal
-            WriteLabelInRow(modifier = surfacemodifier, label = "Insurance \n Renewal")
+            WriteLabelInRow(modifier = surfacemodifier, label = "Insurance Renewal")
 
             //See All
             WriteLabelInRow(modifier = surfacemodifier, label = "See All")
@@ -203,3 +205,12 @@ fun InsuranceSection(SeeAllButtonOnClick: () -> Unit) {
     }
 }
 
+
+@Preview
+@Composable
+fun PreviewInsuranceScreen()
+{
+    PhonepeCloneTheme {
+        InsuranceSection()
+    }
+}

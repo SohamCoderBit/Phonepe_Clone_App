@@ -5,10 +5,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.phonepeclone.FundsScreenLayout
-import com.example.phonepeclone.FundsSurface
 import com.example.phonepeclone.R
 import com.example.phonepeclone.ScrollableBoxs
-import com.example.phonepeclone.ViewModels.DynamicScreenViewModel
 import com.example.phonepeclone.ViewModels.TopCompaniesViewModel
 import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
 
@@ -22,7 +20,6 @@ fun FundsFacilityBoxs(Label: String, StartPadding: Int, EndPadding: Int) {
 @Composable
 fun TopCompaniesScreen(
     topCompaniesViewModel: TopCompaniesViewModel,
-    dynamicScreenViewModel: DynamicScreenViewModel
 ) {
 
     val heading = "TOP COMPANIES"
@@ -34,24 +31,16 @@ fun TopCompaniesScreen(
     ButtonRowList.add("Long Term")
     ButtonRowList.add("For Beginners")
 
+    //TO Set Onclick event on the each box of that surface we need to add the OnClick on
+    //Data class or into the FundsScreenLayout Function's SurfaceOnClick Function
+    val fundProviderList = topCompaniesViewModel.getFundProvidersList(LocalContext.current)
     FundsScreenLayout(
         TopBarHeading = heading,
         Heading = heading,
         SemiHeading = semiHeading,
         ParaGraphStringID = paragraphStringID,
         SmallBoxsRow = ButtonRowList,
-        Content = {
-            topCompaniesViewModel.getFundProvidersList(LocalContext.current)
-                .forEach { fundBillers ->
-                    FundsSurface(
-                        FundProvider = fundBillers,
-                        SurfaceOnClick = {
-                            dynamicScreenViewModel.HeadingText.value = fundBillers.FundProviderName
-
-                        }
-                    )
-                }
-        }
+        FundProviderList = fundProviderList
     )
 }
 
@@ -59,7 +48,7 @@ fun TopCompaniesScreen(
 @Composable
 fun PreviewTopCompanies() {
     PhonepeCloneTheme {
-        TopCompaniesScreen(viewModel(), viewModel())
+        TopCompaniesScreen(viewModel())
     }
 }
 

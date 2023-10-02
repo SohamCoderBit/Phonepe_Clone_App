@@ -189,14 +189,7 @@ fun LoanPaymentScreen(loanPaymentViewModel: LoanPaymentViewModel) {
 
                     //Have to use the Custom Surface Because of the Vertical Scroll Isuue
 
-                    Surface(
-                        color = colorResource(id = R.color.scrollable_view),
-                        modifier = Modifier
-                            .padding(top = 10.dp, start = 10.dp, end = 10.dp)
-                            .fillMaxHeight()
-                            .fillMaxWidth(),
-                        shape = RoundedCornerShape(15.dp)
-                    ) {
+                    SurfaceInView {
                         Column(
                             modifier = Modifier
                                 .padding(start = 5.dp)

@@ -1,7 +1,11 @@
 package com.example.phonepeclone.Data
 
-import com.example.phonepeclone.BottomNav
+import com.example.phonepeclone.History
+import com.example.phonepeclone.Home
+import com.example.phonepeclone.Insurance
 import com.example.phonepeclone.R
+import com.example.phonepeclone.Store
+import com.example.phonepeclone.Wealth
 
 data class BottomnavItem(
     val label: String,
@@ -19,7 +23,7 @@ class MainScreenRepository {
             BottomnavItem(
                 label = "Home",
                 icon = R.drawable.house_solid,
-                route = BottomNav.HOME
+                route = Home.ROUTE
 
             )
         )
@@ -27,7 +31,7 @@ class MainScreenRepository {
             BottomnavItem(
                 label = "Store",
                 icon = R.drawable.bag_shopping_solid,
-                route = BottomNav.STORE
+                route = Store.ROUTE
 
             )
         )
@@ -35,7 +39,7 @@ class MainScreenRepository {
             BottomnavItem(
                 label = "Insurance",
                 icon = R.drawable.reshot_icon_shield_checkmark_qezhvp8s34,
-                route = BottomNav.INSURANCE
+                route = Insurance.ROUTE
 
             )
         )
@@ -43,7 +47,7 @@ class MainScreenRepository {
             BottomnavItem(
                 label = "Wealth",
                 icon = R.drawable.indian_rupee_sign_solid,
-                route = BottomNav.WEALTH
+                route = Wealth.ROUTE
 
             )
         )
@@ -51,7 +55,7 @@ class MainScreenRepository {
             BottomnavItem(
                 label = "History",
                 icon = R.drawable.folder_solid,
-                route = BottomNav.HISTORY
+                route = History.ROUTE
             )
         )
 

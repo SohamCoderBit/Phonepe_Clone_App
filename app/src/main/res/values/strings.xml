@@ -16,4 +16,7 @@
 
     <string name="T_an_C_Agreement">by continuing , you agree to</string>
     <string name="Phonepe_T_an_C"> Phonepe T&amp;C</string>
+
+    <string name="education_fees_row_1">Send fee amount directly to institute\'s bank account</string>
+    <string name="education_fees_row_2">Choose from the list of institutes</string>
 </resources>

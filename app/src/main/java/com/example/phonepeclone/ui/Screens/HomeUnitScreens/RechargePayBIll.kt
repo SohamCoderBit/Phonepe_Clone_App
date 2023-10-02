@@ -14,6 +14,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -21,9 +22,11 @@ import androidx.compose.ui.unit.dp
 import com.example.phonepeclone.BlueTopAppBar
 import com.example.phonepeclone.DrawIconInRow
 import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.Home
 import com.example.phonepeclone.R
 import com.example.phonepeclone.SurfaceInView
 import com.example.phonepeclone.WriteLabelInRow
+import com.example.phonepeclone.mainNavController
 import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
 
 @Composable
@@ -83,10 +86,10 @@ fun RechargePayBillScreen() {
                         DrawIconInRow(
                             SurfaceModifier = surfacemodifier,
                             BoxModifier = boxmodifier.clickable {
-
+                                mainNavController.navigateTo(Route = Home.CABLE_TV_SCREEN)
                             },
                             IconSize = 45,
-                            IconResource = R.drawable.patient_469444,
+                            IconResource = R.drawable.cable_tv,
                         )
                     }
 
@@ -136,7 +139,7 @@ fun RechargePayBillScreen() {
                         DrawIconInRow(
                             SurfaceModifier = surfacemodifier,
                             BoxModifier = boxmodifier.clickable {
-
+                                mainNavController.navigateTo(Route = Home.PIPED_GAS_SCREEN)
                             },
                             IconSize = 45,
                             IconResource = R.drawable.fluctuation,
@@ -146,10 +149,10 @@ fun RechargePayBillScreen() {
                         DrawIconInRow(
                             SurfaceModifier = surfacemodifier,
                             BoxModifier = boxmodifier.clickable {
-
+                                mainNavController.navigateTo(Route = Home.WATER_SCREEN)
                             },
                             IconSize = 45,
-                            IconResource = R.drawable.piggy_bank,
+                            IconResource = R.drawable.water,
                         )
 
                         //Electricity
@@ -202,17 +205,17 @@ fun RechargePayBillScreen() {
 
                             },
                             IconSize = 45,
-                            IconResource = R.drawable.arrow_4161661,
+                            IconResource = R.drawable.broadband,
                         )
 
                         //Education fees
                         DrawIconInRow(
                             SurfaceModifier = surfacemodifier,
                             BoxModifier = boxmodifier.clickable {
-
+                                mainNavController.navigateTo(Route = Home.EDUCATION_FEES_SCREEN)
                             },
                             IconSize = 45,
-                            IconResource = R.drawable.bulb,
+                            IconResource = R.drawable.education_fees,
                         )
 
                         //Book A cylinder
@@ -258,42 +261,44 @@ fun RechargePayBillScreen() {
                     Row(modifier = Modifier.padding(top = 5.dp)) {
                         val surfacemodifier: Modifier = Modifier.weight(1f)
 
-                        //Health
+                        //Brand Vouchers
                         DrawIconInRow(
                             SurfaceModifier = surfacemodifier,
                             BoxModifier = boxmodifier.clickable {
 
                             },
-                            IconSize = 45,
-                            IconResource = R.drawable.heart_logo,
+                            IconSize = 40,
+                            IconResource = R.drawable.brand_vouchers,
                         )
 
-                        //Super Top-Up
+                        //Google Play
                         DrawIconInRow(
                             SurfaceModifier = surfacemodifier,
                             BoxModifier = boxmodifier.clickable {
 
                             },
-                            IconSize = 45,
-                            IconResource = R.drawable.super_top_up_logo,
+                            IconSize = 40,
+                            IconResource = R.drawable.google_play_store,
+                            IconTint = Color.Unspecified
                         )
 
-                        //Team Life
+                        //Subscriptions
                         DrawIconInRow(
                             SurfaceModifier = surfacemodifier,
                             BoxModifier = boxmodifier,
                             IconSize = 45,
-                            IconResource = R.drawable.hands,
+                            IconResource = R.drawable.subscriptions,
                         )
 
-                        //Accident
+                        //App Store Code
                         DrawIconInRow(
                             SurfaceModifier = surfacemodifier,
                             BoxModifier = boxmodifier.clickable {
 
                             },
-                            IconSize = 45,
-                            IconResource = R.drawable.patient_469444,
+                            IconSize = 50,
+                            IconResource = R.drawable.apple_store_code,
+                            IconTint = Color.Unspecified
                         )
                     }
 
@@ -321,7 +326,7 @@ fun RechargePayBillScreen() {
                 Column {
 
                     HeadingTextInSurfaceView(
-                        HeadingText = "Donations",
+                        HeadingText = "More Services",
                         HeadingTextFontWeight = FontWeight.Normal,
                         SurfacePadding = PaddingValues(start = 20.dp, top = 10.dp)
                     )
@@ -336,7 +341,7 @@ fun RechargePayBillScreen() {
 
                             },
                             IconSize = 45,
-                            IconResource = R.drawable.heart_logo,
+                            IconResource = R.drawable.new_group,
                         )
 
                         //Super Top-Up
@@ -354,7 +359,7 @@ fun RechargePayBillScreen() {
                             SurfaceModifier = surfacemodifier,
                             BoxModifier = boxmodifier,
                             IconSize = 45,
-                            IconResource = R.drawable.hands,
+                            IconResource = R.drawable.apartment,
                         )
 
                         //Accident
@@ -372,7 +377,7 @@ fun RechargePayBillScreen() {
 
                         val surfacemodifier: Modifier = Modifier.weight(1f)
                         //Health
-                        WriteLabelInRow(modifier = surfacemodifier, label = "Donate")
+                        WriteLabelInRow(modifier = surfacemodifier, label = "Clubs and \n Associations")
 
                         //Super Top-Up
                         WriteLabelInRow(modifier = surfacemodifier, label = "HP & UK \nFloods")

@@ -48,7 +48,9 @@ import androidx.compose.ui.unit.sp
 import com.example.phonepeclone.DrawIconInRow
 import com.example.phonepeclone.R
 import com.example.phonepeclone.SurfaceInView
+import com.example.phonepeclone.Wealth
 import com.example.phonepeclone.WriteLabelInRow
+import com.example.phonepeclone.mainNavController
 import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
 
 
@@ -175,6 +177,8 @@ fun WealthUnit() {
 
     Column(
         modifier = Modifier
+            .padding(top = 70.dp, bottom = 70.dp)
+            .fillMaxSize()
             .verticalScroll(
                 rememberScrollState()
             )
@@ -477,6 +481,7 @@ fun WealthUnit() {
                     DrawIconInRow(
                         SurfaceModifier = surfacemodifier,
                         BoxModifier = boxmodifier.clickable {
+                            mainNavController.navigateTo(Route = Wealth.GOLD_SCREEN)
                         },
                         IconSize = 45,
                         IconResource = R.drawable.gold_inget,
@@ -486,7 +491,7 @@ fun WealthUnit() {
                     DrawIconInRow(
                         SurfaceModifier = surfacemodifier,
                         BoxModifier = boxmodifier.clickable {
-
+                            mainNavController.navigateTo(Route = Wealth.TOP_COMPANIES_SCREEN)
                         },
                         IconSize = 45,
                         IconResource = R.drawable.fluctuation,
@@ -496,7 +501,7 @@ fun WealthUnit() {
                     DrawIconInRow(
                         SurfaceModifier = surfacemodifier,
                         BoxModifier = boxmodifier.clickable {
-
+                            mainNavController.navigateTo(Route = Wealth.TAX_SAVING_FUND_SCREEN)
                         },
                         IconSize = 45,
                         IconResource = R.drawable.piggy_bank,
@@ -506,6 +511,7 @@ fun WealthUnit() {
                     DrawIconInRow(
                         SurfaceModifier = surfacemodifier,
                         BoxModifier = boxmodifier.clickable {
+                            mainNavController.navigateTo(Route = Wealth.START_WITH_100_SCREEN)
                         },
                         IconSize = 45,
                         IconResource = R.drawable.rupee_100,
@@ -664,7 +670,7 @@ fun WealthUnit() {
         }
 
 
-        SurfaceInView(Height = 170) {
+        SurfaceInView(Height = 170, SurfacePadding = PaddingValues(10.dp)) {
 
             val boxmodifier: Modifier = Modifier
                 .size(60.dp)
@@ -686,6 +692,7 @@ fun WealthUnit() {
                     DrawIconInRow(
                         SurfaceModifier = surfacemodifier,
                         BoxModifier = boxmodifier.clickable {
+                            mainNavController.navigateTo(Route = Wealth.LARGE_CAP_FUND_SCREEN)
                         },
                         IconSize = 45,
                         IconResource = R.drawable.gold_inget,
@@ -695,6 +702,7 @@ fun WealthUnit() {
                     DrawIconInRow(
                         SurfaceModifier = surfacemodifier,
                         BoxModifier = boxmodifier.clickable {
+                            mainNavController.navigateTo(Route = Wealth.MID_CAP_FUND_SCREEN)
                         },
                         IconSize = 45,
                         IconResource = R.drawable.fluctuation,
@@ -704,6 +712,7 @@ fun WealthUnit() {
                     DrawIconInRow(
                         SurfaceModifier = surfacemodifier,
                         BoxModifier = boxmodifier.clickable {
+                            mainNavController.navigateTo(Route = Wealth.SMALL_CAP_SCREEN)
                         },
                         IconSize = 45,
                         IconResource = R.drawable.piggy_bank,
@@ -713,6 +722,7 @@ fun WealthUnit() {
                     DrawIconInRow(
                         SurfaceModifier = surfacemodifier,
                         BoxModifier = boxmodifier.clickable {
+                            mainNavController.navigateTo(Route = Wealth.INDEX_FUND_SCREEN)
                         },
                         IconSize = 45,
                         IconResource = R.drawable.rupee_100,

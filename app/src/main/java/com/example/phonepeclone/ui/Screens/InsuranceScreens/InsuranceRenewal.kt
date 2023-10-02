@@ -62,8 +62,9 @@ fun InsuranceRenewalScreen(insuranceRenewalViewModel: InsuranceRenewalViewModel)
                         .forEach { item ->
                             RowWithDividerElements(
                                 Content = item.BillerName,
-                                IconSource = R.drawable.user_regular,
-                                IconBoxModifier = iconboxmodifier
+                                IconSource = R.drawable.building_columns_solid,
+                                IconBoxModifier = iconboxmodifier,
+                                IconTint = Color.LightGray
                             )
                         }
                 }

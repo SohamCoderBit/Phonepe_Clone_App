@@ -3,15 +3,12 @@ package com.example.phonepeclone.ui.Screens.WealthScreens
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import com.example.phonepeclone.FundsScreenLayout
-import com.example.phonepeclone.FundsSurface
 import com.example.phonepeclone.R
-import com.example.phonepeclone.ViewModels.DynamicScreenViewModel
 import com.example.phonepeclone.ViewModels.TopCompaniesViewModel
 
 @Composable
 fun LargeCapFundsScreen(
-    topCompaniesViewModel: TopCompaniesViewModel,
-    dynamicScreenViewModel: DynamicScreenViewModel
+    topCompaniesViewModel: TopCompaniesViewModel
 )
 {
     val heading = "LARGE CAP FUNDS"
@@ -22,30 +19,22 @@ fun LargeCapFundsScreen(
     ButtonRowList.add("No Lock-in")
     ButtonRowList.add("Long Term")
 
+    val fundProviderList = topCompaniesViewModel.getFundProvidersList(LocalContext.current)
     FundsScreenLayout(
-        TopBarHeading = "Large Cap Funds",
+        TopBarHeading = heading,
         Heading = heading,
         SemiHeading = semiHeading,
         ParaGraphStringID = paragraphStringID,
         SmallBoxsRow = ButtonRowList,
-        Content = {
-            topCompaniesViewModel.getFundProvidersList(LocalContext.current)
-                .forEach { fundBillers ->
-                    FundsSurface(
-                        FundProvider = fundBillers,
-                        SurfaceOnClick = {
-                            dynamicScreenViewModel.HeadingText.value = fundBillers.FundProviderName
-                        }
-                    )
-                }
-        }
+        FundProviderList = fundProviderList
     )
+
+
 }
 
 @Composable
 fun MidCapFundsScreen(
-    topCompaniesViewModel: TopCompaniesViewModel,
-    dynamicScreenViewModel: DynamicScreenViewModel
+    topCompaniesViewModel: TopCompaniesViewModel
 )
 {
     val heading = "MID CAP FUNDS"
@@ -56,31 +45,23 @@ fun MidCapFundsScreen(
     ButtonRowList.add("No Lock-in")
     ButtonRowList.add("Long Term")
 
+
+    val fundProviderList = topCompaniesViewModel.getFundProvidersList(LocalContext.current)
     FundsScreenLayout(
-        TopBarHeading = "Mid Cap Funds",
+        TopBarHeading = heading,
         Heading = heading,
         SemiHeading = semiHeading,
         ParaGraphStringID = paragraphStringID,
         SmallBoxsRow = ButtonRowList,
-        Content = {
-            topCompaniesViewModel.getFundProvidersList(LocalContext.current)
-                .forEach { fundBillers ->
-                    FundsSurface(
-                        FundProvider = fundBillers,
-                        SurfaceOnClick = {
-                            dynamicScreenViewModel.HeadingText.value = fundBillers.FundProviderName
-
-                        }
-                    )
-                }
-        }
+        FundProviderList = fundProviderList
     )
+
+
 }
 
 @Composable
 fun SmallCapFundsScreen(
-    topCompaniesViewModel: TopCompaniesViewModel,
-    dynamicScreenViewModel: DynamicScreenViewModel
+    topCompaniesViewModel: TopCompaniesViewModel
 )
 {
     val heading = "SMALL CAP FUNDS"
@@ -91,31 +72,21 @@ fun SmallCapFundsScreen(
     ButtonRowList.add("No Lock-in")
     ButtonRowList.add("Long Term")
 
+    val fundProviderList = topCompaniesViewModel.getFundProvidersList(LocalContext.current)
     FundsScreenLayout(
         TopBarHeading = heading,
         Heading = heading,
         SemiHeading = semiHeading,
         ParaGraphStringID = paragraphStringID,
         SmallBoxsRow = ButtonRowList,
-        Content = {
-            topCompaniesViewModel.getFundProvidersList(LocalContext.current)
-                .forEach { fundBillers ->
-                    FundsSurface(
-                        FundProvider = fundBillers,
-                        SurfaceOnClick = {
-                            dynamicScreenViewModel.HeadingText.value = fundBillers.FundProviderName
-
-                        }
-                    )
-                }
-        }
+        FundProviderList = fundProviderList
     )
+
 }
 
 @Composable
 fun IndexFundsScreen(
-    topCompaniesViewModel: TopCompaniesViewModel,
-    dynamicScreenViewModel: DynamicScreenViewModel
+    topCompaniesViewModel: TopCompaniesViewModel
 )
 {
     val heading = "INDEX FUNDS"
@@ -127,23 +98,14 @@ fun IndexFundsScreen(
     ButtonRowList.add("Long Term")
     ButtonRowList.add("For Beginners")
 
+    val fundProviderList = topCompaniesViewModel.getFundProvidersList(LocalContext.current)
     FundsScreenLayout(
         TopBarHeading = heading,
         Heading = heading,
         SemiHeading = semiHeading,
         ParaGraphStringID = paragraphStringID,
         SmallBoxsRow = ButtonRowList,
-        Content = {
-            topCompaniesViewModel.getFundProvidersList(LocalContext.current)
-                .forEach { fundBillers ->
-                    FundsSurface(
-                        FundProvider = fundBillers,
-                        SurfaceOnClick = {
-                            dynamicScreenViewModel.HeadingText.value = fundBillers.FundProviderName
-
-                        }
-                    )
-                }
-        }
+        FundProviderList = fundProviderList
     )
+
 }

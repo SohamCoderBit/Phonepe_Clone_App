@@ -30,7 +30,7 @@ fun RentalList() {
         .size(45.dp)
         .border(0.5.dp, Color(72, 60, 80, 255), RoundedCornerShape(20))
 
-    val IconColor: Color = Color(144, 93, 198, 255)
+    val IconColor = Color(144, 93, 198, 255)
 
     RowWithDividerElements(
         Content = "Society Maintenance",

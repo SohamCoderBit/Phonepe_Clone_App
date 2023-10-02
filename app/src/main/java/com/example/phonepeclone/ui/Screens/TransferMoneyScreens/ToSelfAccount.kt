@@ -28,18 +28,22 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import com.example.phonepeclone.BlueTopAppBar
 import com.example.phonepeclone.DrawIconInRow
 import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.Home
 import com.example.phonepeclone.R
 import com.example.phonepeclone.RowWithDividerElements
 import com.example.phonepeclone.SearchBar
 import com.example.phonepeclone.SurfaceInView
 import com.example.phonepeclone.ViewModels.AddBankAccountVIewModel
 import com.example.phonepeclone.WriteLabelInRow
+import com.example.phonepeclone.mainNavController
 import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
 
 @Composable
@@ -57,6 +61,7 @@ fun SelfAccountScreen() {
                     .align(Alignment.BottomCenter)
                     .height(60.dp)
                     .clickable {
+                        mainNavController.navigateTo(Route = Home.ADD_BANK_SCREEN)
                     },
                 containerColor = colorResource(id = R.color.bottom_nav)
             ) {
@@ -136,7 +141,12 @@ fun AddBankAccount(addBankAccountViewModel: AddBankAccountVIewModel) {
 
                     Row(modifier = Modifier.padding(top = 10.dp)) {
                         val surfacemodifier: Modifier = Modifier.weight(1f)
-                        WriteLabelInRow(modifier = surfacemodifier, label = "State Bank Of ...")
+                        WriteLabelInRow(
+                            modifier = surfacemodifier,
+                            label = "State Bank Of India",
+                            maxLine = 1,
+                            textOverFlow = TextOverflow.Ellipsis
+                        )
 
                         WriteLabelInRow(modifier = surfacemodifier, label = "Bank Baroda")
 
@@ -211,11 +221,24 @@ fun AddBankAccount(addBankAccountViewModel: AddBankAccountVIewModel) {
 
                     Row(modifier = Modifier.padding(top = 10.dp)) {
                         val surfacemodifier: Modifier = Modifier.weight(1f)
-                        WriteLabelInRow(modifier = surfacemodifier, label = "Paytm Payme...")
+                        WriteLabelInRow(
+                            modifier = surfacemodifier,
+                            label = "Paytm Payment",
+                            maxLine = 1,
+                            textOverFlow = TextOverflow.Ellipsis
+                        )
 
-                        WriteLabelInRow(modifier = surfacemodifier, label = "Kotak Mahind...")
+                        WriteLabelInRow(
+                            modifier = surfacemodifier, label = "Kotak Mahindra Bank",
+                            maxLine = 1,
+                            textOverFlow = TextOverflow.Ellipsis
+                        )
 
-                        WriteLabelInRow(modifier = surfacemodifier, label = "Union Bank Of...")
+                        WriteLabelInRow(
+                            modifier = surfacemodifier, label = "Union Bank Of India",
+                            maxLine = 1,
+                            textOverFlow = TextOverflow.Ellipsis
+                        )
                     }
 
 
@@ -243,7 +266,12 @@ fun AddBankAccount(addBankAccountViewModel: AddBankAccountVIewModel) {
 
         }
 
-        BlueTopAppBar(Heading = "Select Bank", BackArrowClick = {})
+        BlueTopAppBar(Heading = "Select Bank", BackArrowClick = {
+            mainNavController.getNavigationController()?.navigate(Home.ROUTE) {
+                mainNavController.getNavigationController()?.graph?.findStartDestination()
+                    ?.let { popUpTo(it.id) }
+            }
+        })
     }
 }
 

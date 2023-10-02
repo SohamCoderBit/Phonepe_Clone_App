@@ -41,7 +41,14 @@ import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
 @Composable
 fun HomeScreenUnit() {
 
-    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+    Column(
+        modifier = Modifier
+            .padding(top = 70.dp, bottom = 70.dp)
+            .verticalScroll(
+                rememberScrollState()
+            )
+    ) {
+
 
         //Transfer Money Section
         SurfaceInView(Height = 170, InternalContent = @Composable {
@@ -63,21 +70,21 @@ fun HomeScreenUnit() {
                     .height(90.dp)
                     .weight(1.1f)
                 ButtonsInView(modifier, 10, 5, R.drawable.wallet, OnClick = {
-
+                    mainNavController.navigateTo(Route = Home.PHONEPE_WALLET_SCREEN)
                 })
 
                 modifier = Modifier
                     .height(90.dp)
                     .weight(1f)
                 ButtonsInView(modifier, 5, 5, R.drawable.gift, OnClick = {
-
+                    mainNavController.navigateTo(Route = Home.REWARD_SCREEN)
                 })
 
                 modifier = Modifier
                     .height(90.dp)
                     .weight(1.1f)
                 ButtonsInView(modifier, 5, 10, R.drawable.link, OnClick = {
-
+                    mainNavController.navigateTo(Route = Home.REFER_AND_GET_SCREEN)
                 })
             }
             Row(
@@ -104,7 +111,7 @@ fun HomeScreenUnit() {
 
         //UPI Lite Button Main View
         val modifier: Modifier =
-            Modifier.clickable { mainNavController.navigateTo(Route = Home.UPI_LITE_SCREEN)}
+            Modifier.clickable { mainNavController.navigateTo(Route = Home.UPI_LITE_SCREEN) }
         SurfaceInView(
             Height = 80,
             modifier = modifier,
@@ -149,7 +156,7 @@ fun HomeScreenUnit() {
             RechargePayBillSection()
         })
         SurfaceInView(Height = 260, InternalContent = @Composable {
-            InsuranceSection(SeeAllButtonOnClick = {})
+            InsuranceSection()
         })
         SurfaceInView(Height = 150, InternalContent = @Composable {
             TravelBookingSection()
@@ -157,9 +164,11 @@ fun HomeScreenUnit() {
         SurfaceInView(Height = 150, InternalContent = @Composable {
             SwitchSection()
         })
-        SurfaceInView(Height = 150, InternalContent = @Composable {
-            SubscriptionSection()
-        })
+        SurfaceInView(
+            SurfacePadding = PaddingValues(10.dp),
+            InternalContent = @Composable {
+                SubscriptionSection()
+            })
     }
 
 }

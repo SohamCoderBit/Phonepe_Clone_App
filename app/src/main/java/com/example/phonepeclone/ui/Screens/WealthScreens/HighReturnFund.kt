@@ -3,15 +3,12 @@ package com.example.phonepeclone.ui.Screens.WealthScreens
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import com.example.phonepeclone.FundsScreenLayout
-import com.example.phonepeclone.FundsSurface
 import com.example.phonepeclone.R
-import com.example.phonepeclone.ViewModels.DynamicScreenViewModel
 import com.example.phonepeclone.ViewModels.TopCompaniesViewModel
 
 @Composable
 fun HighReturnsScreen(
-    topCompaniesViewModel: TopCompaniesViewModel,
-    dynamicScreenViewModel: DynamicScreenViewModel
+    topCompaniesViewModel: TopCompaniesViewModel
 ) {
 
     val heading = "HIGH RETURNS FUNDS"
@@ -23,22 +20,14 @@ fun HighReturnsScreen(
     ButtonRowList.add("Long Term")
     ButtonRowList.add("High Risk")
 
+    val fundProviderList = topCompaniesViewModel.getFundProvidersList(LocalContext.current)
     FundsScreenLayout(
         TopBarHeading = heading,
         Heading = heading,
         SemiHeading = semiHeading,
         ParaGraphStringID = paragraphStringID,
         SmallBoxsRow = ButtonRowList,
-        Content = {
-            topCompaniesViewModel.getFundProvidersList(LocalContext.current)
-                .forEach { fundBillers ->
-                    FundsSurface(
-                        FundProvider = fundBillers,
-                        SurfaceOnClick = {
-                            dynamicScreenViewModel.HeadingText.value = fundBillers.FundProviderName
-                        }
-                    )
-                }
-        })
+        FundProviderList = fundProviderList
+    )
 }
 

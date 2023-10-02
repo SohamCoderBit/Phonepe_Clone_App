@@ -43,7 +43,7 @@ fun SubscriptionSection() {
         )
 
         //Switch Section Icon in Row
-        Row(modifier = Modifier.padding(top = 10.dp)) {
+        Row(modifier = Modifier.padding(top = 5.dp)) {
             val surfacemodifier: Modifier = Modifier.weight(1f)
 
             //Hotstar
@@ -87,7 +87,7 @@ fun SubscriptionSection() {
 
 
         //Text Under Their Icons Which Are in The Row
-        Row {
+        Row(modifier = Modifier.padding(bottom = 5.dp)) {
 
             val surfacemodifier: Modifier = Modifier.weight(1f)
 
@@ -117,7 +117,7 @@ fun PreviewSubscriptions() {
             color = colorResource(id = R.color.background)
         ) {
             Column {
-                SurfaceInView(Height = 150) {
+                SurfaceInView {
                     SubscriptionSection()
                 }
             }

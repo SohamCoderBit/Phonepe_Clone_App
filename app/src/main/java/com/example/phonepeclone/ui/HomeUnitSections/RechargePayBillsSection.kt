@@ -23,10 +23,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.phonepeclone.DrawIconInRow
 import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.Home
 import com.example.phonepeclone.R
 import com.example.phonepeclone.SeeAllButton
 import com.example.phonepeclone.SurfaceInView
 import com.example.phonepeclone.WriteLabelInRow
+import com.example.phonepeclone.mainNavController
 import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
 
 
@@ -46,7 +48,7 @@ fun RechargePayBillSectionIcon() {
         DrawIconInRow(
             SurfaceModifier = surfacemodifier,
             BoxModifier = boxmodifier.clickable {
-
+                mainNavController.navigateTo(Route = Home.MOBILE_RECHARGE_SCREEN)
             },
             IconSize = 45,
             IconResource = R.drawable.mobile,
@@ -56,7 +58,7 @@ fun RechargePayBillSectionIcon() {
         DrawIconInRow(
             SurfaceModifier = surfacemodifier,
             BoxModifier = boxmodifier.clickable {
-
+                mainNavController.navigateTo(Route = Home.DTH_SCREEN)
             },
             IconSize = 45,
             IconResource = R.drawable.dth_recharge,
@@ -66,7 +68,7 @@ fun RechargePayBillSectionIcon() {
         DrawIconInRow(
             SurfaceModifier = surfacemodifier,
             BoxModifier = boxmodifier.clickable {
-
+                mainNavController.navigateTo(Route = Home.ELECTRICITY_SCREEN)
             },
             IconSize = 45,
             IconResource = R.drawable.bulb,
@@ -76,7 +78,7 @@ fun RechargePayBillSectionIcon() {
         DrawIconInRow(
             SurfaceModifier = surfacemodifier,
             BoxModifier = boxmodifier.clickable {
-
+                mainNavController.navigateTo(Route = Home.CREDIT_CARD_BILL_PAYMENT_SCREEN)
             },
             IconSize = 45,
             IconResource = R.drawable.credit_card,
@@ -88,7 +90,7 @@ fun RechargePayBillSectionIcon() {
 
         val surfacemodifier: Modifier = Modifier.weight(1f)
         //Mobile \n Recharge
-        WriteLabelInRow(modifier = surfacemodifier, label = "Mobile\nRecharge")
+        WriteLabelInRow(modifier = surfacemodifier, label = "Mobile Recharge")
 
         //DTH \nRecharge
         WriteLabelInRow(modifier = surfacemodifier, label = "DTH")
@@ -97,7 +99,7 @@ fun RechargePayBillSectionIcon() {
         WriteLabelInRow(modifier = surfacemodifier, label = "Electricity")
 
         //Credit Card \n Bill Payment
-        WriteLabelInRow(modifier = surfacemodifier, label = "Credit Card\n Bill Payment")
+        WriteLabelInRow(modifier = surfacemodifier, label = "Credit Card Bill Payment")
     }
 
 
@@ -110,7 +112,7 @@ fun RechargePayBillSectionIcon() {
         DrawIconInRow(
             SurfaceModifier = surfacemodifier,
             BoxModifier = boxmodifier.clickable() {
-
+                mainNavController.navigateTo(Route = Home.RENT_PAYMENT_SCREEN)
             },
             IconSize = 50,
             IconResource = R.drawable.building,
@@ -120,6 +122,7 @@ fun RechargePayBillSectionIcon() {
         DrawIconInRow(
             SurfaceModifier = surfacemodifier,
             BoxModifier = boxmodifier.clickable {
+                mainNavController.navigateTo(Route = Home.LOAN_PAYMENT_SCREEN)
             },
             IconSize = 45,
             IconResource = R.drawable.rupee,
@@ -130,13 +133,15 @@ fun RechargePayBillSectionIcon() {
         DrawIconInRow(
             SurfaceModifier = surfacemodifier,
             BoxModifier = boxmodifier.clickable {
+                mainNavController.navigateTo(Route = Home.BOOK_A_CYLINDER_SCREEN)
             },
             IconSize = 50,
             IconResource = R.drawable.gas_cylinder,
         )
 
         //See All Button
-        SeeAllButton(modifier = surfacemodifier, boxmodifier = boxmodifier , onClick = {
+        SeeAllButton(modifier = surfacemodifier, boxmodifier = boxmodifier, onClick = {
+            mainNavController.navigateTo(Route = Home.RECHARGE_PAY_BILL_SCREEN)
         })
 
     }
@@ -146,13 +151,13 @@ fun RechargePayBillSectionIcon() {
         val surfacemodifier: Modifier = Modifier.weight(1f)
 
         //Rent\nPayment
-        WriteLabelInRow(modifier = surfacemodifier, label = "Rent\nPayment")
+        WriteLabelInRow(modifier = surfacemodifier, label = "Rent Payment")
 
         //Loan\nPayment
-        WriteLabelInRow(modifier = surfacemodifier, label = "Loan\nPayment")
+        WriteLabelInRow(modifier = surfacemodifier, label = "Loan Payment")
 
         //Book A Cylinder
-        WriteLabelInRow(modifier = surfacemodifier, label = "Book A \nCylinder")
+        WriteLabelInRow(modifier = surfacemodifier, label = "Book A  Cylinder")
 
         //See All
         WriteLabelInRow(modifier = surfacemodifier, label = "See All")
