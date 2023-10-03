@@ -628,7 +628,8 @@ fun WealthUnit() {
         }
 
 
-        val modifier: Modifier = Modifier.clickable { println("Explore all funds") }
+        val modifier: Modifier =
+            Modifier.clickable { mainNavController.navigateTo(Route = Wealth.EXPLORE_ALL_FUNDS) }
         SurfaceInView(Height = 79, modifier = modifier) {
 
 

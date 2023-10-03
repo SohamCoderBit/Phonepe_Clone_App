@@ -1,41 +1,12 @@
 [
-  {
-    "BillerName" : "Adani Gas"
-  }
-,
-  {
-    "BillerName" : "AGP CGD India Pvt Ltd"
-  }
-,
-  {
-    "BillerName" : "AGP City gas Pvt Ltd"
-  }
-,
-  {
-    "BillerName" : "Bhagyanagar Gas Limited"
-  }
-,
-  {
-    "BillerName" : "GAIL Gas Limited"
-  }
-,
-  {
-    "BillerName" : "GAIL India"
-  }
-,
-  {
-    "BillerName" : "Gujarat Gas"
-  }
-,
-  {
-    "BillerName" : "Megha Gas"
-  }
-,
-  {
-    "BillerName" : "Sabarmati Gas Limited (SGL)"
-  }
-,
-  {
-    "BillerName" : "Vadodara Gas Limited"
-  }
+  "Adani Gas",
+  "AGP CGD India Pvt Ltd",
+  "AGP City gas Pvt Ltd",
+  "Bhagyanagar Gas Limited",
+  "GAIL Gas Limited",
+  "GAIL India",
+  "Gujarat Gas",
+  "Megha Gas",
+  "Sabarmati Gas Limited (SGL)",
+  "Vadodara Gas Limited"
 ]

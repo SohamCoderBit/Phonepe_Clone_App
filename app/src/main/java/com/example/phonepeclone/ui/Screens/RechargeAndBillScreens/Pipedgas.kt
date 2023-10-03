@@ -10,8 +10,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.example.phonepeclone.DataListLayout
-import com.example.phonepeclone.R
-import com.example.phonepeclone.RowWithDividerElements
 import com.example.phonepeclone.ViewModels.PipedgasViewModel
 
 @Composable
@@ -23,18 +21,8 @@ fun PipedGasScreen(pipedgasViewModel: PipedgasViewModel) {
         .background(Color.White)
 
     DataListLayout(
-        content =
-        {
-            pipedgasViewModel.getPipedGasBillerList(LocalContext.current)
-                .forEach { item ->
-                    RowWithDividerElements(
-                        Content = item.BillerName,
-                        IconSource = R.drawable.building_columns_solid,
-                        IconBoxModifier = iconboxmodifier,
-                        IconTint = Color.LightGray
-                    )
-                }
-        },
-        topAppBarPlaceHolder = "Select Provider"
+        topAppBarPlaceHolder = "Select Provider",
+        billersList = pipedgasViewModel.getPipedGasBillerList(LocalContext.current),
+        iconBoxModifier = iconboxmodifier
     )
 }

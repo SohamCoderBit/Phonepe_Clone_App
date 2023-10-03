@@ -1,41 +1,22 @@
 [
-  {
-    "BillerName" : "ACT TV"
-  }
-,
-  {
-    "BillerName" : "Asianet Digital"
-  }
-,
-  {
-    "BillerName" : "Alka Vishwadarshan"
-  }
-,
-  {
-    "BillerName" : "Amrita Cable Network"
-  }
-,
-  {
-    "BillerName" : "Ambiga Digital Vision"
-  }
-,
-  {
-    "BillerName" : "Aryan Cable"
-  }
-,
-  {
-    "BillerName" : "Catv Digital"
-  }
-,
-  {
-    "BillerName" : "COCHIN CABLE VISION"
-  }
-,
-  {
-    "BillerName" : "Deetech cable Network"
-  }
-,
-  {
-    "BillerName" : "Dishergarh Cable TV"
-  }
+  "ACT TV",
+  "Asianet Digital",
+  "Alka Vishwadarshan",
+  "Amrita Cable Network",
+  "Ambiga Digital Vision",
+  "Aryan Cable",
+  "Catv Digital",
+  "COCHIN CABLE VISION",
+  "Deetech cable Network",
+  "Dishergarh Cable TV",
+  "ACT TV",
+  "Asianet Digital",
+  "Alka Vishwadarshan",
+  "Amrita Cable Network",
+  "Ambiga Digital Vision",
+  "Aryan Cable",
+  "Catv Digital",
+  "COCHIN CABLE VISION",
+  "Deetech cable Network",
+  "Dishergarh Cable TV"
 ]

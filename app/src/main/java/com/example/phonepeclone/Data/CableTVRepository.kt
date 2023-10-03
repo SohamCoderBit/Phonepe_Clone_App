@@ -2,12 +2,11 @@ package com.example.phonepeclone.Data
 
 import android.content.Context
 
-data class CableTvBiller(val BillerName : String)
 class CableTVRepository {
-    private var cableTVBillerList : List<CableTvBiller>? = null
+    private var cableTVBillerList : List<String>? = null
 
-    fun getCableTVBillerList(context: Context): List<CableTvBiller> {
+    fun getCableTVBillerList(context: Context): List<String> {
         cableTVBillerList = parseJson(context , FilePath = "CableTvBillerList.json")
-        return cableTVBillerList as List<CableTvBiller>
+        return cableTVBillerList as List<String>
     }
 }

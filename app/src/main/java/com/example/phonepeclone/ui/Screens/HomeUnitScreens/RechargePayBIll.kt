@@ -41,7 +41,9 @@ fun RechargePayBillScreen() {
             .fillMaxSize(),
         color = colorResource(id = R.color.background)
     ) {
-        Column(modifier = Modifier.padding(top = 70.dp).verticalScroll(rememberScrollState())) {
+        Column(modifier = Modifier
+            .padding(top = 70.dp)
+            .verticalScroll(rememberScrollState())) {
             SurfaceInView(Height = 165) {
                 Column {
 
@@ -354,10 +356,12 @@ fun RechargePayBillScreen() {
                             IconResource = R.drawable.super_top_up_logo,
                         )
 
-                        //Team Life
+                        //Apartments
                         DrawIconInRow(
                             SurfaceModifier = surfacemodifier,
-                            BoxModifier = boxmodifier,
+                            BoxModifier = boxmodifier.clickable {
+                                mainNavController.navigateTo(Route = Home.APARTMENTS_SCREEN)
+                            },
                             IconSize = 45,
                             IconResource = R.drawable.apartment,
                         )
@@ -377,13 +381,16 @@ fun RechargePayBillScreen() {
 
                         val surfacemodifier: Modifier = Modifier.weight(1f)
                         //Health
-                        WriteLabelInRow(modifier = surfacemodifier, label = "Clubs and \n Associations")
+                        WriteLabelInRow(
+                            modifier = surfacemodifier,
+                            label = "Clubs and \n Associations"
+                        )
 
                         //Super Top-Up
                         WriteLabelInRow(modifier = surfacemodifier, label = "HP & UK \nFloods")
 
-                        //Term Life
-                        WriteLabelInRow(modifier = surfacemodifier, label = "Girl Child\nEducation")
+                        //Apartments
+                        WriteLabelInRow(modifier = surfacemodifier, label = "Apartments")
 
                         //Accident
                         WriteLabelInRow(modifier = surfacemodifier, label = "Donate\nmeals")

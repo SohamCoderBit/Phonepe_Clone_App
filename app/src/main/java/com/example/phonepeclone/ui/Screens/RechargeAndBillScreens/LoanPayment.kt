@@ -56,6 +56,9 @@ import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
 import kotlinx.coroutines.launch
 
 
+/**
+ * In here i can't Use the LazyColumn Because of Layout Error Of Infinite Height
+ */
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun LoanPaymentScreen(loanPaymentViewModel: LoanPaymentViewModel) {

@@ -1,0 +1,118 @@
+{
+  "Equity": [
+    {
+      "CategoryName": "Dividend Yield Fund",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Flexi Cap Fund",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Focused Fund",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Large & Mid Cap Fund",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Large Cap Funds",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Mid Cap Funds",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Multi Fund",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Sectoral Funds",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Tax Saving Funds",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "value Funds",
+      "isSelecteed": "false"
+    }
+  ],
+  "Debt": [
+    {
+      "CategoryName": "Banking & PSU Funds",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Corporate Bond Funds",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Liquid Fund",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Low Duration Fund",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Money Market Fund",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Short Duration Funds",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Ultra Short Duration Funds",
+      "isSelecteed": "false"
+    }
+  ],
+  "Hybrid": [
+    {
+      "CategoryName": "Aggressive Hybrid",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Arbitrage Funds",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Conservative Hybrid",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Dynamic Asset  Allocation",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Equity Savings Funds",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Multi Asset Allocation Funds",
+      "isSelecteed": "false"
+    }
+  ],
+  "Other Funds": [
+    {
+      "CategoryName": "Fund of funds",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Gold Fund",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Index Funds",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "International Funds",
+      "isSelecteed": "false"
+    }
+  ]
+}

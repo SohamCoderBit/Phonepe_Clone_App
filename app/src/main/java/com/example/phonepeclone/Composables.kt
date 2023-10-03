@@ -400,9 +400,15 @@ fun animatedLabelTextField(
     val labelLowerOffset = 0
     val purpleColor: Color = colorResource(id = R.color.button_purple)
     var isFocused by remember { mutableStateOf(false) }
-    val labelOffset by animateDpAsState(targetValue = if (isFocused || !textFromUser.isEmpty()) labelUpperOffset.dp else labelLowerOffset.dp)
-    val fontSize by animateFloatAsState(targetValue = if (isFocused || !textFromUser.isEmpty()) 13f else 20f)
-    val BorderColor = if (isFocused) purpleColor else Color(157, 149, 162, 255)
+    val labelOffset by animateDpAsState(
+        targetValue = if (isFocused || textFromUser.isNotEmpty()) labelUpperOffset.dp else labelLowerOffset.dp,
+        label = "LabelAnimation"
+    )
+    val fontSize by animateFloatAsState(
+        targetValue = if (isFocused || textFromUser.isNotEmpty()) 13f else 20f,
+        label = "FontSizeAnimation"
+    )
+    val borderColor = if (isFocused) purpleColor else Color(157, 149, 162, 255)
 
     Box(
         modifier = Modifier
@@ -456,7 +462,7 @@ fun animatedLabelTextField(
                 .align(Alignment.BottomCenter)
                 .fillMaxWidth()
                 .height(if (isFocused) 2.dp else 1.dp)
-                .background(BorderColor)
+                .background(borderColor)
         )
     }
     return textFromUser
@@ -868,9 +874,11 @@ fun WriteLabelInRow(
         Box(
             contentAlignment = Alignment.Center,
         ) {
-            Box(modifier = Modifier
-                .fillMaxWidth(0.80f),
-                contentAlignment = Alignment.Center) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth(0.80f),
+                contentAlignment = Alignment.Center
+            ) {
                 Text(
                     text = label,
                     color = Color.White,

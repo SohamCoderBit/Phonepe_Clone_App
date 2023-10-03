@@ -1,17 +1,6 @@
 [
-  {
-    "BillerName" : "GRAMPANCHAYAT NEVARI"
-  }
-,
-  {
-    "BillerName" : "Grampanchayat Ambegaon"
-  }
-,
-  {
-    "BillerName" : "Grampanachayat Kheradewangi"
-  }
-,
-  {
-    "BillerName" : "Surat Municipal Corporation - Water"
-  }
+  "GRAMPANCHAYAT NEVARI",
+  "Grampanchayat Ambegaon",
+  "Grampanachayat Kheradewangi",
+  "Surat Municipal Corporation - Water"
 ]

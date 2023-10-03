@@ -2,14 +2,13 @@ package com.example.phonepeclone.Data
 
 import android.content.Context
 
-data class PipedGasBiller(val BillerName:String)
 class PipedGasRepository{
-    private var pipedGasBillerList: List<PipedGasBiller>?= null
+    private var pipedGasBillerList: List<String>?= null
 
-    fun getPipedGasBillerList(context: Context) : List<PipedGasBiller>
+    fun getPipedGasBillerList(context: Context) : List<String>
     {
         pipedGasBillerList = parseJson(context =  context , FilePath =  "PipedgasBillerList.json")
-        return pipedGasBillerList as List<PipedGasBiller>
+        return pipedGasBillerList as List<String>
     }
 
 

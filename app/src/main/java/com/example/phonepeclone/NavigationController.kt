@@ -22,10 +22,12 @@ import com.example.phonepeclone.ui.Screens.HomeUnitScreens.ReferAndGetButtonScre
 import com.example.phonepeclone.ui.Screens.HomeUnitScreens.RewardScreen
 import com.example.phonepeclone.ui.Screens.HomeUnitScreens.UPILiteScreen
 import com.example.phonepeclone.ui.Screens.InsuranceScreens.TravelScreen
+import com.example.phonepeclone.ui.Screens.RechargeAndBillScreens.ApartmentScreen
 import com.example.phonepeclone.ui.Screens.RechargeAndBillScreens.CableTVScreen
 import com.example.phonepeclone.ui.Screens.RechargeAndBillScreens.EducationFeesScreen
 import com.example.phonepeclone.ui.Screens.RechargeAndBillScreens.PipedGasScreen
 import com.example.phonepeclone.ui.Screens.RechargeAndBillScreens.WaterScreen
+import com.example.phonepeclone.ui.Screens.WealthScreens.ExploreAllFundsScreen
 import com.example.phonepeclone.ui.Screens.WealthScreens.GoldScreen
 import com.example.phonepeclone.ui.Screens.WealthScreens.HighReturnsScreen
 import com.example.phonepeclone.ui.Screens.WealthScreens.IndexFundsScreen
@@ -141,6 +143,7 @@ fun NavGraphBuilder.HomeGraph() {
         composable(route = Home.PIPED_GAS_SCREEN) { PipedGasScreen(pipedgasViewModel = viewModel()) }
         composable(route = Home.WATER_SCREEN) { WaterScreen(waterViewModel = viewModel()) }
         composable(route = Home.EDUCATION_FEES_SCREEN){ EducationFeesScreen() }
+        composable(route = Home.APARTMENTS_SCREEN) { ApartmentScreen() }
 
         composable(route = Home.PHONEPE_WALLET_SCREEN) { PhonepeWalletScreen() }
         composable(route = Home.REWARD_SCREEN){ RewardScreen() }
@@ -206,6 +209,9 @@ fun NavGraphBuilder.WealthGraph(navController: NavController) {
             val topCompaniesViewModel = it.topCompaniesViewModel<TopCompaniesViewModel>(navController = navController)
             IndexFundsScreen(topCompaniesViewModel)
         }
+        composable(route = Wealth.EXPLORE_ALL_FUNDS){
+            ExploreAllFundsScreen()
+        }
     }
 
 }
@@ -265,6 +271,7 @@ object Home {
     const val PIPED_GAS_SCREEN = "PipedGasScreen"
     const val WATER_SCREEN = "WaterScreen"
     const val EDUCATION_FEES_SCREEN = "EducatinFees"
+    const val APARTMENTS_SCREEN = "ApartmentsScreen"
 
     const val PHONEPE_WALLET_SCREEN = "PhonepWallet"
     const val REWARD_SCREEN = "RewardScreen"
@@ -295,6 +302,7 @@ object Wealth {
     const val SMALL_CAP_SCREEN = "SmallCapFundsScreen"
     const val INDEX_FUND_SCREEN = "IndexFundsScreen"
     const val GOLD_SCREEN = "GoldScreen"
+    const val EXPLORE_ALL_FUNDS = "ExploreAllFunds"
 }
 
 object History {
