@@ -1,20 +1,13 @@
 package com.example.phonepeclone.ViewModels
 
 import android.content.Context
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.phonepeclone.ui.Screens.WealthScreens.CategoryElements
-import com.example.phonepeclone.ui.Screens.WealthScreens.ExploreAllFundsBottomSheetScreens
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import kotlin.io.path.fileVisitor
 
 
 class AllFundsViewModel : ViewModel() {
@@ -28,10 +21,15 @@ class AllFundsViewModel : ViewModel() {
     )
 
     var categoryCount = mutableIntStateOf(0)
-    var categoryList = mutableListOf<String>()
+    var categoryTypeList = mutableListOf<String>()
+
+    private var checkedCategoryList = mutableListOf<String>()
 
     var filterCount = mutableIntStateOf(0)
-    var filterList = mutableListOf<String>()
+    var filterTypeList = mutableListOf<String>()
+
+    private var checkedFilterList = mutableListOf<String>()
+
 
 
     val categoryMap: LiveData<LinkedHashMap<String, MutableList<CategoryElements>>>
@@ -46,36 +44,93 @@ class AllFundsViewModel : ViewModel() {
      * Find a New Solution
      */
 
+    //when the updateMap and the innerlist cast to Mutable Then and only then it works , why ?
     fun toggleCheckCategory(category: String, index: Int, onCheckValue: CategoryElements) {
         val updatedMap = _categoryMap.value?.toMutableMap()!!
-        val newList = updatedMap[category]?.toMutableList()!!
-        newList[index] = onCheckValue
-        updatedMap[category] = newList
+        toggleChecked(
+            updatedMap = updatedMap,
+            category = category,
+            index = index,
+            onCheckValue = onCheckValue
+        )
         _categoryMap.value = LinkedHashMap(updatedMap)
     }
 
-    fun clearAllCategory()
-    {
-        categoryCount.value = 0
-        val newMap = _categoryMap.value!!.toMutableMap()
-        for ((key) in newMap) {
-            val newList = newMap[key]?.toMutableList()!!
-            newMap[key]?.forEachIndexed { index, _ ->
-                newList[index] = CategoryElements(
-                    CategoryName = newList[index].CategoryName,
-                    isSelected = false
-                )
+    fun setCheckedCategoryList() {
+        val internalMap = _categoryMap.value!!
+        val categoryList: MutableList<String> = mutableListOf()
+        for( (key) in internalMap){
+            internalMap[key]?.forEach { item ->
+                if(item.isSelected) {
+                    categoryList.add(item.CategoryName)
+                }
             }
-            newMap[key] = newList
         }
-        _categoryMap.value = LinkedHashMap(newMap)
+
+        checkedCategoryList = categoryList
+    }
+
+    fun setCheckedFilterList()
+    {
+        val internalMap = _filterMap.value!!
+        val filterList : MutableList<String> = mutableListOf()
+        for((key) in internalMap){
+            internalMap[key]?.forEach { item ->
+                if(item.isSelected){
+                    filterList.add(item.CategoryName)
+                }
+            }
+        }
+
+        checkedFilterList = filterList
+        println(checkedFilterList)
+    }
+
+
+    fun toggleCheckFilter(category: String, index: Int, onCheckValue: CategoryElements) {
+        val updatedMap = _filterMap.value?.toMutableMap()!!
+        toggleChecked(
+            updatedMap = updatedMap,
+            category = category,
+            index = index,
+            onCheckValue = onCheckValue
+        )
+        _filterMap.value = LinkedHashMap(updatedMap)
+    }
+
+
+    private fun toggleChecked(
+        updatedMap: MutableMap<String, MutableList<CategoryElements>>,
+        category: String,
+        index: Int,
+        onCheckValue: CategoryElements
+    ) {
+        val newList = updatedMap[category]?.toMutableList()!!
+        newList[index] = onCheckValue
+        updatedMap[category] = newList
     }
 
 
 
 
+    fun clearAllCategory() {
+        categoryCount.value = 0
+        val newMap = _categoryMap.value!!.toMutableMap()
+        clearAllCheckBox(newMap)
+        _categoryMap.value = LinkedHashMap(newMap)
+    }
 
-    private fun clearAllCheckBox(internalMap: LinkedHashMap<String, MutableList<CategoryElements>>) {
+    fun clearAllFilter() {
+        filterCount.value = 0
+        val newMap = _filterMap.value!!.toMutableMap()
+        clearAllCheckBox(newMap)
+        _filterMap.value = LinkedHashMap(newMap)
+    }
+
+
+
+
+    private fun clearAllCheckBox(internalMap: MutableMap<String, MutableList<CategoryElements>>) {
 
         for ((key) in internalMap) {
             val newList = internalMap[key]?.toMutableList()!!
@@ -119,7 +174,7 @@ class AllFundsViewModel : ViewModel() {
             _categoryMap.value = getJson(context = context, filePath = "CategoryBottomSheet.json")
 
             for ((key) in _categoryMap.value!!) {
-                categoryList.add(key)
+                categoryTypeList.add(key)
             }
         }
     }
@@ -129,7 +184,7 @@ class AllFundsViewModel : ViewModel() {
             _filterMap.value = getJson(context = context, filePath = "FilterBottomSheet.json")
 
             for ((key) in _filterMap.value!!) {
-                filterList.add(key)
+                filterTypeList.add(key)
             }
         }
     }
