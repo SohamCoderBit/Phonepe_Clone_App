@@ -1,0 +1,70 @@
+{
+  "AMC Name": [
+    {
+      "CategoryName": "Aditya Birla Sun Life Mutual Fund",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Axis Mutual Fund",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "DSP Mutual Fund",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Edelweiss Mutual Fund",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "HDFC Mutual Fund",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "ICICI Prudential Mutual Fund",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "IDFC Mutual Fund",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Invesco Mutual Fund",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Kotak Mutual Fund",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Mirae Asset Mutual Fund",
+      "isSelecteed": "false"
+    }
+  ],
+  "Risk": [
+    {
+      "CategoryName": "High",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Low",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Moderate",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Moderately High",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Moderately Low",
+      "isSelecteed": "false"
+    },
+    {
+      "CategoryName": "Very High",
+      "isSelecteed": "false"
+    }
+  ]
+}

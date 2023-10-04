@@ -27,6 +27,7 @@ import androidx.compose.material3.Divider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -45,6 +46,7 @@ import com.example.phonepeclone.BlueTopAppBar
 import com.example.phonepeclone.HeadingTextInSurfaceView
 import com.example.phonepeclone.R
 import com.example.phonepeclone.ViewModels.AllFundsViewModel
+import com.example.phonepeclone.ui.Screens.RechargeAndBillScreens.bottomSheetScreens
 import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
 import kotlinx.coroutines.launch
 
@@ -56,28 +58,21 @@ sealed class ExploreAllFundsBottomSheetScreens {
 
 
 data class CategoryElements(
-    val CategoryName: String,
-    var isSelected: Boolean = false
+    val CategoryName: String, var isSelected: Boolean = false
 )
 
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun CategoryBottomSheetScreen(
-    sheetState: ModalBottomSheetState,
-    allFundsViewModel: AllFundsViewModel
+    sheetState: ModalBottomSheetState, allFundsViewModel: AllFundsViewModel
 ) {
 
-    var currentContext = LocalContext.current
-    var categoryMap = allFundsViewModel.getAllTheCategoryList(currentContext)
-    val newCategoryMap by allFundsViewModel.newCategoryMap.collectAsState()
-    val categoryList = listOf("Equity", "Debt", "Hybrid", "Other Funds")
+    val newCategoryMap by allFundsViewModel.categoryMap.observeAsState()
+    val categoryList = allFundsViewModel.categoryList
 
     var currentlySelectedCategroy by remember {
         mutableStateOf(categoryList[0])
-    }
-    var categoryCount by remember {
-        allFundsViewModel.categoryCount
     }
 
     var scope = rememberCoroutineScope()
@@ -111,6 +106,7 @@ fun CategoryBottomSheetScreen(
                 contentAlignment = Alignment.Center
             ) {
                 Button(onClick = {
+                    allFundsViewModel.clearAllCategory()
                 }) {
                     Text("CLEAR ALL", color = Color.White)
                 }
@@ -136,20 +132,16 @@ fun CategoryBottomSheetScreen(
                             Color.Transparent
                         }
 
-                        Box(
-                            modifier = Modifier
-                                .padding(start = 15.dp)
-                                .fillMaxWidth()
-                                .height(50.dp)
-                                .clickable(
-                                    indication = null,
-                                    interactionSource = MutableInteractionSource()
-                                ) {
-                                    currentlySelectedCategroy = categoryList[index]
-                                }
-                                .background(boxColor),
-                            contentAlignment = Alignment.CenterStart
-                        ) {
+                        Box(modifier = Modifier
+                            .padding(start = 15.dp)
+                            .fillMaxWidth()
+                            .height(50.dp)
+                            .clickable(
+                                indication = null, interactionSource = MutableInteractionSource()
+                            ) {
+                                currentlySelectedCategroy = categoryList[index]
+                            }
+                            .background(boxColor), contentAlignment = Alignment.CenterStart) {
                             HeadingTextInSurfaceView(
                                 HeadingText = categoryList[index],
                                 SurfacePadding = PaddingValues(start = 10.dp),
@@ -170,7 +162,7 @@ fun CategoryBottomSheetScreen(
                 Column(modifier = Modifier.padding(top = 15.dp)) {
 
 
-                    newCategoryMap[currentlySelectedCategroy]?.forEachIndexed { index, item ->
+                    newCategoryMap?.get(currentlySelectedCategroy)?.forEachIndexed { index, item ->
 
                         Row(
                             modifier = Modifier
@@ -199,18 +191,13 @@ fun CategoryBottomSheetScreen(
                                 contentAlignment = Alignment.Center
                             ) {
                                 Checkbox(
-                                    checked = item.isSelected,
-                                    onCheckedChange = {
-                                        allFundsViewModel.toggleChecked(
-                                            currentlySelectedCategroy,
-                                            index,
-                                            item.copy(
+                                    checked = item.isSelected, onCheckedChange = {
+                                        allFundsViewModel.toggleCheckCategory(
+                                            currentlySelectedCategroy, index, item.copy(
                                                 isSelected = it
                                             )
                                         )
-
-                                    },
-                                    colors = checkBoxColors
+                                    }, colors = checkBoxColors
                                 )
                             }
                         }
@@ -232,8 +219,7 @@ fun CategoryBottomSheetScreen(
             ) {
                 Text(
                     modifier = Modifier.clickable(
-                        indication = null,
-                        interactionSource = MutableInteractionSource()
+                        indication = null, interactionSource = MutableInteractionSource()
                     ) {
                         scope.launch {
                             sheetState.hide()
@@ -256,45 +242,48 @@ fun CategoryBottomSheetScreen(
 
         }
     }
+
 }
+
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun ExploreAllFundsScreen() {
 
-    var currentBottomSheetScreen: ExploreAllFundsBottomSheetScreens? by remember {
-        mutableStateOf(null)
-    }
-
-
-
-    val categoryScrrenViewModel = viewModel<AllFundsViewModel>()
+    val allFundScreenViewModel = viewModel<AllFundsViewModel>()
+    allFundScreenViewModel.setCategoryMap(LocalContext.current)
+    allFundScreenViewModel.setFilterMap(LocalContext.current)
 
     val sheetState =
-        rememberModalBottomSheetState(ModalBottomSheetValue.Hidden, skipHalfExpanded = true)
+        rememberModalBottomSheetState(ModalBottomSheetValue.Expanded, skipHalfExpanded = true)
+
+    var currentBottomSheetScreen: ExploreAllFundsBottomSheetScreens? by remember {
+        mutableStateOf(ExploreAllFundsBottomSheetScreens.Category)
+    }
 
 
     var corutineScope = rememberCoroutineScope()
 
-    ModalBottomSheetLayout(
-        sheetState = sheetState,
-        sheetBackgroundColor = Color(33, 24, 43, 255),
+    ModalBottomSheetLayout(sheetState = sheetState, sheetBackgroundColor = Color(33, 24, 43, 255),
         //Sheet Content
         sheetContent = {
 
-            CategoryBottomSheetScreen(sheetState, allFundsViewModel = categoryScrrenViewModel)
-        }
-    ) {
+            if (currentBottomSheetScreen == ExploreAllFundsBottomSheetScreens.Category) {
+                CategoryBottomSheetScreen(sheetState, allFundsViewModel = allFundScreenViewModel)
+            }
+        }) {
 
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            Button(onClick = {
-                corutineScope.launch {
-                    sheetState.show()
+            Column {
+                Button(onClick = {
+                    currentBottomSheetScreen = ExploreAllFundsBottomSheetScreens.Category
+                    corutineScope.launch {
+                        sheetState.show()
+                    }
+                }) {
+                    Text("Show Category Bottom Sheet", color = Color.White)
                 }
-            }) {
-                Text("Show Bottom Sheet", color = Color.White)
             }
-
 
 
         }
