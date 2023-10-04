@@ -25,11 +25,11 @@ import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -61,29 +61,24 @@ data class CategoryElements(
 )
 
 
-@Composable
-fun checkBoxes() {
-
-}
-
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun CategoryBottomSheetScreen(
     sheetState: ModalBottomSheetState,
-    allFundsViewModel: AllFundsViewModel = viewModel()
+    allFundsViewModel: AllFundsViewModel
 ) {
 
     var currentContext = LocalContext.current
     var categoryMap = allFundsViewModel.getAllTheCategoryList(currentContext)
-
-
+    val newCategoryMap by allFundsViewModel.newCategoryMap.collectAsState()
     val categoryList = listOf("Equity", "Debt", "Hybrid", "Other Funds")
 
-    var currentlySelectedCategroy by rememberSaveable {
+    var currentlySelectedCategroy by remember {
         mutableStateOf(categoryList[0])
     }
-
-
+    var categoryCount by remember {
+        allFundsViewModel.categoryCount
+    }
 
     var scope = rememberCoroutineScope()
 
@@ -112,9 +107,13 @@ fun CategoryBottomSheetScreen(
             Box(
                 modifier = Modifier
                     .fillMaxHeight()
-                    .weight(0.5f)
+                    .weight(0.5f),
+                contentAlignment = Alignment.Center
             ) {
-                //CLEAR ALL Button
+                Button(onClick = {
+                }) {
+                    Text("CLEAR ALL", color = Color.White)
+                }
             }
 
         }
@@ -170,7 +169,8 @@ fun CategoryBottomSheetScreen(
             ) {
                 Column(modifier = Modifier.padding(top = 15.dp)) {
 
-                    categoryMap[currentlySelectedCategroy]?.forEach {item ->
+
+                    newCategoryMap[currentlySelectedCategroy]?.forEachIndexed { index, item ->
 
                         Row(
                             modifier = Modifier
@@ -201,14 +201,22 @@ fun CategoryBottomSheetScreen(
                                 Checkbox(
                                     checked = item.isSelected,
                                     onCheckedChange = {
-                                        item.isSelected = it
-                                        println(item)
+                                        allFundsViewModel.toggleChecked(
+                                            currentlySelectedCategroy,
+                                            index,
+                                            item.copy(
+                                                isSelected = it
+                                            )
+                                        )
+
                                     },
                                     colors = checkBoxColors
                                 )
                             }
                         }
                     }
+
+
                 }
             }
         }
@@ -258,8 +266,13 @@ fun ExploreAllFundsScreen() {
         mutableStateOf(null)
     }
 
+
+
+    val categoryScrrenViewModel = viewModel<AllFundsViewModel>()
+
     val sheetState =
-        rememberModalBottomSheetState(ModalBottomSheetValue.Expanded, skipHalfExpanded = true)
+        rememberModalBottomSheetState(ModalBottomSheetValue.Hidden, skipHalfExpanded = true)
+
 
     var corutineScope = rememberCoroutineScope()
 
@@ -268,7 +281,8 @@ fun ExploreAllFundsScreen() {
         sheetBackgroundColor = Color(33, 24, 43, 255),
         //Sheet Content
         sheetContent = {
-            CategoryBottomSheetScreen(sheetState)
+
+            CategoryBottomSheetScreen(sheetState, allFundsViewModel = categoryScrrenViewModel)
         }
     ) {
 
@@ -280,6 +294,9 @@ fun ExploreAllFundsScreen() {
             }) {
                 Text("Show Bottom Sheet", color = Color.White)
             }
+
+
+
         }
 
         BlueTopAppBar(Heading = "All Funds")
