@@ -43,7 +43,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.phonepeclone.BlueTopAppBarScrollStateManaged
-import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.HeadingText
 import com.example.phonepeclone.R
 import com.example.phonepeclone.SurfaceInView
 import com.example.phonepeclone.textfield
@@ -254,7 +254,7 @@ fun HealthScreen() {
                 }
                 Column {
 
-                    HeadingTextInSurfaceView(
+                    HeadingText(
                         HeadingText = "Select the members you want to insure",
                         TextFontSize = 15,
                         HeadingTextFontWeight = FontWeight.SemiBold,
@@ -323,7 +323,7 @@ fun HealthScreen() {
                     //If Two are selected
                     if (checkIfSelected(Members.MySelf) && checkIfSelected(Members.Spouse)) {
 
-                        HeadingTextInSurfaceView(
+                        HeadingText(
                             HeadingText = "age of the elder member (among self & spouse)",
                             TextFontSize = 15,
                             HeadingTextFontWeight = FontWeight.Medium,
@@ -338,7 +338,7 @@ fun HealthScreen() {
 
                     //If Only MySelf is selcted
                     if (checkIfSelected(Members.MySelf) && !checkIfSelected(Members.Spouse)) {
-                        HeadingTextInSurfaceView(
+                        HeadingText(
                             HeadingText = "Your age",
                             TextFontSize = 15,
                             HeadingTextFontWeight = FontWeight.Medium,
@@ -353,7 +353,7 @@ fun HealthScreen() {
 
                     //If Only Spouse is selcted
                     if (checkIfSelected(Members.Spouse) && !checkIfSelected(Members.MySelf)) {
-                        HeadingTextInSurfaceView(
+                        HeadingText(
                             HeadingText = "age of your spouse",
                             TextFontSize = 15,
                             HeadingTextFontWeight = FontWeight.Medium,
@@ -367,7 +367,7 @@ fun HealthScreen() {
                     }
 
 
-                    HeadingTextInSurfaceView(
+                    HeadingText(
                         HeadingText = "Your pincode",
                         TextFontSize = 15,
                         HeadingTextFontWeight = FontWeight.Medium,
@@ -417,7 +417,7 @@ fun HealthScreen() {
                         }
 
                         for (i in 1..parentsCount) {
-                            HeadingTextInSurfaceView(
+                            HeadingText(
                                 HeadingText = "Age of Parent/In-laws $i",
                                 TextFontSize = 15,
                                 HeadingTextFontWeight = FontWeight.Normal,

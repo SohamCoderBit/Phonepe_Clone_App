@@ -45,7 +45,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.phonepeclone.Data.CategoryItem
-import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.HeadingText
 import com.example.phonepeclone.R
 import com.example.phonepeclone.RowWithDividerElements
 import com.example.phonepeclone.SelectionButton
@@ -199,7 +199,7 @@ fun LoanPaymentScreen(loanPaymentViewModel: LoanPaymentViewModel) {
                                 .fillMaxHeight()
                         ) {
 
-                            HeadingTextInSurfaceView(
+                            HeadingText(
                                 HeadingText = surfaceLabel,
                                 SurfacePadding = PaddingValues(
                                     start = 20.dp,

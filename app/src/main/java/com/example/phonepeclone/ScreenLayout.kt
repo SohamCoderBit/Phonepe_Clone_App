@@ -46,7 +46,7 @@ fun DataListLayout(topAppBarPlaceHolder: String, billersList: List<String> , ico
         ) {
             SurfaceInView(modifier = Modifier.fillMaxHeight()) {
                 Column {
-                    HeadingTextInSurfaceView(
+                    HeadingText(
                         HeadingText = "Billers In Gujarat",
                         SurfacePadding = PaddingValues(start = 20.dp, top = 10.dp, bottom = 10.dp)
                     )

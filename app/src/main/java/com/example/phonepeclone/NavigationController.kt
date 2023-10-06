@@ -2,8 +2,12 @@ package com.example.phonepeclone
 
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.core.FastOutLinearInEasing
+import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.lifecycle.ViewModel
@@ -17,14 +21,18 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import com.example.phonepeclone.ViewModels.TopCompaniesViewModel
 import com.example.phonepeclone.ui.Screens.HomeUnitScreens.PhonepeWalletScreen
+import com.example.phonepeclone.ui.Screens.HomeUnitScreens.Profile
 import com.example.phonepeclone.ui.Screens.HomeUnitScreens.RechargePayBillScreen
 import com.example.phonepeclone.ui.Screens.HomeUnitScreens.ReferAndGetButtonScreen
 import com.example.phonepeclone.ui.Screens.HomeUnitScreens.RewardScreen
 import com.example.phonepeclone.ui.Screens.HomeUnitScreens.UPILiteScreen
+import com.example.phonepeclone.ui.Screens.InsuranceScreens.SuperTopUpScreen
+import com.example.phonepeclone.ui.Screens.InsuranceScreens.TermLifeScreen
 import com.example.phonepeclone.ui.Screens.InsuranceScreens.TravelScreen
 import com.example.phonepeclone.ui.Screens.RechargeAndBillScreens.ApartmentScreen
 import com.example.phonepeclone.ui.Screens.RechargeAndBillScreens.CableTVScreen
 import com.example.phonepeclone.ui.Screens.RechargeAndBillScreens.EducationFeesScreen
+import com.example.phonepeclone.ui.Screens.RechargeAndBillScreens.PhonepeGiftCardScreen
 import com.example.phonepeclone.ui.Screens.RechargeAndBillScreens.PipedGasScreen
 import com.example.phonepeclone.ui.Screens.RechargeAndBillScreens.WaterScreen
 import com.example.phonepeclone.ui.Screens.WealthScreens.ExploreAllFundsScreen
@@ -38,6 +46,7 @@ import com.example.phonepeclone.ui.Screens.WealthScreens.StartWithScreen
 import com.example.phonepeclone.ui.Screens.WealthScreens.TaxSavingFundScreen
 import com.example.phonepeclone.ui.Screens.WealthScreens.TopCompaniesScreen
 import com.example.phonepeclone.ui.Units.HistoryUnit
+import com.example.phonepeclone.ui.theme.Screens.InsuranceScreens.AccidentScreen
 import com.example.phonepeclone.ui.theme.Screens.InsuranceScreens.BikeScreen
 import com.example.phonepeclone.ui.theme.Screens.InsuranceScreens.CarScreen
 import com.example.phonepeclone.ui.theme.Screens.InsuranceScreens.HealthScreen
@@ -142,12 +151,42 @@ fun NavGraphBuilder.HomeGraph() {
         composable(route = Home.CABLE_TV_SCREEN) { CableTVScreen(cableTvViewModel = viewModel()) }
         composable(route = Home.PIPED_GAS_SCREEN) { PipedGasScreen(pipedgasViewModel = viewModel()) }
         composable(route = Home.WATER_SCREEN) { WaterScreen(waterViewModel = viewModel()) }
-        composable(route = Home.EDUCATION_FEES_SCREEN){ EducationFeesScreen() }
+        composable(route = Home.EDUCATION_FEES_SCREEN) { EducationFeesScreen() }
         composable(route = Home.APARTMENTS_SCREEN) { ApartmentScreen() }
+        composable(route = Home.GIFT_CARD_SCREEN) { PhonepeGiftCardScreen() }
 
         composable(route = Home.PHONEPE_WALLET_SCREEN) { PhonepeWalletScreen() }
-        composable(route = Home.REWARD_SCREEN){ RewardScreen() }
-        composable(route = Home.REFER_AND_GET_SCREEN){ ReferAndGetButtonScreen() }
+        composable(route = Home.REWARD_SCREEN) { RewardScreen() }
+        composable(route = Home.REFER_AND_GET_SCREEN) { ReferAndGetButtonScreen() }
+
+        composable(
+            route = Home.PROFILE_SCREEN,
+            enterTransition = {
+                fadeIn(
+                    animationSpec = tween(
+                        durationMillis = 300,
+                        easing = FastOutLinearInEasing
+                    )
+                ) + scaleIn(
+                    animationSpec = tween(
+                        durationMillis = 200,
+                        easing = FastOutLinearInEasing
+                    ), initialScale = 0.5f
+                )
+            },
+            exitTransition = {
+                fadeOut(
+                    animationSpec = tween(
+                        durationMillis = 100,
+                        easing = FastOutLinearInEasing
+                    )
+                ) + scaleOut(
+                    animationSpec = tween(
+                        durationMillis = 300,
+                        easing = FastOutLinearInEasing
+                    ), targetScale = 0.5f
+                )
+            }) { Profile() }
 
     }
 
@@ -165,6 +204,9 @@ fun NavGraphBuilder.InsuranceGraph() {
         composable(route = Insurance.CAR_SCREEN) { CarScreen() }
         composable(route = Insurance.BIKE_SCREEN) { BikeScreen() }
         composable(route = Insurance.TRAVEL_SCREEN) { TravelScreen() }
+        composable(route = Insurance.SUPER_TOP_UP_SCREEN) { SuperTopUpScreen() }
+        composable(route = Insurance.TERM_LIFE_SCREEN) { TermLifeScreen() }
+        composable(route = Insurance.ACCIDENT_SCREEN) { AccidentScreen() }
     }
 }
 
@@ -179,37 +221,44 @@ fun NavGraphBuilder.WealthGraph(navController: NavController) {
         composable(route = Wealth.SCREEN) { WealthUnit() }
         composable(route = Wealth.GOLD_SCREEN) { GoldScreen() }
         composable(route = Wealth.TOP_COMPANIES_SCREEN) {
-            val topCompaniesViewModel = it.topCompaniesViewModel<TopCompaniesViewModel>(navController = navController)
+            val topCompaniesViewModel =
+                it.topCompaniesViewModel<TopCompaniesViewModel>(navController = navController)
             TopCompaniesScreen(topCompaniesViewModel)
         }
-        composable(route = Wealth.HIGH_RETURN_FUND_SCREEN){
-            val topCompaniesViewModel = it.topCompaniesViewModel<TopCompaniesViewModel>(navController = navController)
+        composable(route = Wealth.HIGH_RETURN_FUND_SCREEN) {
+            val topCompaniesViewModel =
+                it.topCompaniesViewModel<TopCompaniesViewModel>(navController = navController)
             HighReturnsScreen(topCompaniesViewModel)
         }
         composable(route = Wealth.START_WITH_100_SCREEN) {
-            val topCompaniesViewModel = it.topCompaniesViewModel<TopCompaniesViewModel>(navController = navController)
+            val topCompaniesViewModel =
+                it.topCompaniesViewModel<TopCompaniesViewModel>(navController = navController)
             StartWithScreen(topCompaniesViewModel)
         }
-        composable(route = Wealth.TAX_SAVING_FUND_SCREEN){
+        composable(route = Wealth.TAX_SAVING_FUND_SCREEN) {
             TaxSavingFundScreen(taxSavingFundViewModel = viewModel())
         }
-        composable(route = Wealth.LARGE_CAP_FUND_SCREEN){
-            val topCompaniesViewModel = it.topCompaniesViewModel<TopCompaniesViewModel>(navController = navController)
+        composable(route = Wealth.LARGE_CAP_FUND_SCREEN) {
+            val topCompaniesViewModel =
+                it.topCompaniesViewModel<TopCompaniesViewModel>(navController = navController)
             LargeCapFundsScreen(topCompaniesViewModel)
         }
-        composable(route = Wealth.MID_CAP_FUND_SCREEN){
-            val topCompaniesViewModel = it.topCompaniesViewModel<TopCompaniesViewModel>(navController = navController)
+        composable(route = Wealth.MID_CAP_FUND_SCREEN) {
+            val topCompaniesViewModel =
+                it.topCompaniesViewModel<TopCompaniesViewModel>(navController = navController)
             MidCapFundsScreen(topCompaniesViewModel)
         }
-        composable(route = Wealth.SMALL_CAP_SCREEN){
-            val topCompaniesViewModel = it.topCompaniesViewModel<TopCompaniesViewModel>(navController = navController)
+        composable(route = Wealth.SMALL_CAP_SCREEN) {
+            val topCompaniesViewModel =
+                it.topCompaniesViewModel<TopCompaniesViewModel>(navController = navController)
             SmallCapFundsScreen(topCompaniesViewModel)
         }
-        composable(route = Wealth.INDEX_FUND_SCREEN){
-            val topCompaniesViewModel = it.topCompaniesViewModel<TopCompaniesViewModel>(navController = navController)
+        composable(route = Wealth.INDEX_FUND_SCREEN) {
+            val topCompaniesViewModel =
+                it.topCompaniesViewModel<TopCompaniesViewModel>(navController = navController)
             IndexFundsScreen(topCompaniesViewModel)
         }
-        composable(route = Wealth.EXPLORE_ALL_FUNDS){
+        composable(route = Wealth.EXPLORE_ALL_FUNDS) {
             ExploreAllFundsScreen()
         }
     }
@@ -240,8 +289,7 @@ fun NavGraphBuilder.HistoryGraph() {
 
 
 @Composable
-inline fun<reified T : ViewModel> NavBackStackEntry.topCompaniesViewModel(navController: NavController) : T
-{
+inline fun <reified T : ViewModel> NavBackStackEntry.topCompaniesViewModel(navController: NavController): T {
     val navGraphRoute = destination.parent?.route ?: return viewModel()
     val parentEntry = remember(this) {
         navController.getBackStackEntry(navGraphRoute)
@@ -272,10 +320,13 @@ object Home {
     const val WATER_SCREEN = "WaterScreen"
     const val EDUCATION_FEES_SCREEN = "EducatinFees"
     const val APARTMENTS_SCREEN = "ApartmentsScreen"
+    const val GIFT_CARD_SCREEN = "PhonepeGiftCardScreen"
 
     const val PHONEPE_WALLET_SCREEN = "PhonepWallet"
     const val REWARD_SCREEN = "RewardScreen"
     const val REFER_AND_GET_SCREEN = "ReferAndGetScreen"
+
+    const val PROFILE_SCREEN = "ProfileScreen"
 }
 
 object Insurance {
@@ -285,6 +336,9 @@ object Insurance {
     const val CAR_SCREEN = "CarScreen"
     const val TRAVEL_SCREEN = "TravelScreen"
     const val HEALTH_SCREEN = "HealthScreen"
+    const val SUPER_TOP_UP_SCREEN = "SuperTopUpScreen"
+    const val TERM_LIFE_SCREEN = "TermLifeScreen"
+    const val ACCIDENT_SCREEN = "AccidentScreen"
 }
 
 object Wealth {

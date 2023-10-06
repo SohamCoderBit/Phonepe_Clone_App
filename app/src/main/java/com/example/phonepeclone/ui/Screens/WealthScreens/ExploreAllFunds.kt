@@ -45,7 +45,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.phonepeclone.BlueTopAppBar
-import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.HeadingText
 import com.example.phonepeclone.R
 import com.example.phonepeclone.ViewModels.AllFundsViewModel
 import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
@@ -76,7 +76,7 @@ fun CategoryBottomSheetScreen(
         mutableStateOf(categoryList[0])
     }
 
-    var scope = rememberCoroutineScope()
+    val scope = rememberCoroutineScope()
 
     val checkBoxColors = CheckboxDefaults.colors(
         checkedColor = Color.Green,
@@ -93,7 +93,7 @@ fun CategoryBottomSheetScreen(
                     .weight(0.4f),
                 contentAlignment = Alignment.Center
             ) {
-                HeadingTextInSurfaceView(
+                HeadingText(
                     HeadingText = "Category",
                     TextFontSize = 30,
                     HeadingTextFontWeight = FontWeight.Bold,
@@ -108,7 +108,7 @@ fun CategoryBottomSheetScreen(
                 contentAlignment = Alignment.Center
             ) {
                 Button(onClick = {
-                    allFundsViewModel.clearAllCategory()
+                    allFundsViewModel.clearAllCategoryCheckBoxes()
                 }) {
                     Text("CLEAR ALL", color = Color.White)
                 }
@@ -145,7 +145,7 @@ fun CategoryBottomSheetScreen(
                                 currentlySelectedCategroy = categoryList[index]
                             }
                             .background(boxColor), contentAlignment = Alignment.CenterStart) {
-                            HeadingTextInSurfaceView(
+                            HeadingText(
                                 HeadingText = categoryList[index],
                                 SurfacePadding = PaddingValues(start = 10.dp),
                                 HeadingTextFontWeight = FontWeight.Normal
@@ -179,7 +179,7 @@ fun CategoryBottomSheetScreen(
                                     .fillMaxHeight(),
                                 contentAlignment = Alignment.CenterStart
                             ) {
-                                HeadingTextInSurfaceView(
+                                HeadingText(
                                     HeadingText = item.CategoryName,
                                     SurfacePadding = PaddingValues(start = 10.dp),
                                     TextFontSize = 15
@@ -224,7 +224,7 @@ fun CategoryBottomSheetScreen(
                     modifier = Modifier.clickable(
                         indication = null, interactionSource = MutableInteractionSource()
                     ) {
-                        allFundsViewModel.clearAllCategory()
+                        allFundsViewModel.clearAllCategoryCheckBoxes()
                         scope.launch {
                             sheetState.hide()
                         }
@@ -267,7 +267,7 @@ fun FilterBottomSheetScreen(
         mutableStateOf(filterList[0])
     }
 
-    var scope = rememberCoroutineScope()
+    val scope = rememberCoroutineScope()
 
     val checkBoxColors = CheckboxDefaults.colors(
         checkedColor = Color.Green,
@@ -284,7 +284,7 @@ fun FilterBottomSheetScreen(
                     .weight(0.4f),
                 contentAlignment = Alignment.Center
             ) {
-                HeadingTextInSurfaceView(
+                HeadingText(
                     HeadingText = "Filters",
                     TextFontSize = 30,
                     HeadingTextFontWeight = FontWeight.Bold,
@@ -299,7 +299,7 @@ fun FilterBottomSheetScreen(
                 contentAlignment = Alignment.Center
             ) {
                 Button(onClick = {
-                    allFundsViewModel.clearAllFilter()
+                    allFundsViewModel.clearAllFilterCheckBoxes()
                 }) {
                     Text("CLEAR ALL", color = Color.White)
                 }
@@ -336,7 +336,7 @@ fun FilterBottomSheetScreen(
                                 currentlySelectedFilter = filterList[index]
                             }
                             .background(boxColor), contentAlignment = Alignment.CenterStart) {
-                            HeadingTextInSurfaceView(
+                            HeadingText(
                                 HeadingText = filterList[index],
                                 SurfacePadding = PaddingValues(start = 10.dp),
                                 HeadingTextFontWeight = FontWeight.Normal
@@ -370,7 +370,7 @@ fun FilterBottomSheetScreen(
                                     .fillMaxHeight(),
                                 contentAlignment = Alignment.CenterStart
                             ) {
-                                HeadingTextInSurfaceView(
+                                HeadingText(
                                     HeadingText = item.CategoryName,
                                     SurfacePadding = PaddingValues(start = 10.dp),
                                     TextFontSize = 15
@@ -396,8 +396,6 @@ fun FilterBottomSheetScreen(
                             }
                         }
                     }
-
-
                 }
             }
         }
@@ -415,7 +413,7 @@ fun FilterBottomSheetScreen(
                     modifier = Modifier.clickable(
                         indication = null, interactionSource = MutableInteractionSource()
                     ) {
-                        allFundsViewModel.clearAllFilter()
+                        allFundsViewModel.clearAllFilterCheckBoxes()
                         scope.launch {
                             sheetState.hide()
                         }
@@ -476,7 +474,7 @@ fun ReturnsBottomSheetScreen(
                 .height(70.dp)
         ) {
             Box(modifier = Modifier.weight(0.9f)) {
-                HeadingTextInSurfaceView(
+                HeadingText(
                     HeadingText = "Sort by",
                     HeadingTextFontWeight = FontWeight.Bold,
                     TextFontSize = 30,

@@ -37,7 +37,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.phonepeclone.DrawIconInRow
-import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.HeadingText
 import com.example.phonepeclone.Insurance
 import com.example.phonepeclone.R
 import com.example.phonepeclone.SurfaceInView
@@ -63,7 +63,7 @@ fun InsuranceUnit() {
 
     Column(
         modifier = Modifier
-            .padding(top = 70.dp , bottom = 70.dp)
+            .padding(top = 70.dp, bottom = 70.dp)
             .fillMaxSize()
             .verticalScroll(
                 rememberScrollState()
@@ -94,7 +94,7 @@ fun InsuranceUnit() {
 
                     //Heading Vehicle Insurance
                     Row {
-                        HeadingTextInSurfaceView(
+                        HeadingText(
                             HeadingText = "Vehicle Insurance",
                             TextFontSize = 18,
                             SurfacePadding = PaddingValues(start = 20.dp, top = 15.dp)
@@ -154,7 +154,7 @@ fun InsuranceUnit() {
 
                 //Heading Motor And Travel
                 Row {
-                    HeadingTextInSurfaceView(
+                    HeadingText(
                         HeadingText = "Motor and Travel",
                         SurfacePadding = PaddingValues(start = 20.dp, top = 10.dp),
                         HeadingTextFontWeight = FontWeight.Normal
@@ -227,7 +227,7 @@ fun InsuranceUnit() {
         SurfaceInView(Height = 150) {
             Column {
                 //Heading Health and Life
-                HeadingTextInSurfaceView(
+                HeadingText(
                     HeadingText = "Health and Life",
                     HeadingTextFontWeight = FontWeight.Normal,
                     SurfacePadding = PaddingValues(start = 20.dp, top = 10.dp)
@@ -251,16 +251,18 @@ fun InsuranceUnit() {
                     DrawIconInRow(
                         SurfaceModifier = surfacemodifier,
                         BoxModifier = boxmodifier.clickable {
-
+                            mainNavController.navigateTo(Route = Insurance.SUPER_TOP_UP_SCREEN)
                         },
                         IconSize = 45,
                         IconResource = R.drawable.super_top_up_logo,
                     )
 
-                    //Team Life
+                    //Term Life
                     DrawIconInRow(
                         SurfaceModifier = surfacemodifier,
-                        BoxModifier = boxmodifier,
+                        BoxModifier = boxmodifier.clickable {
+                            mainNavController.navigateTo(Route = Insurance.TERM_LIFE_SCREEN)
+                        },
                         IconSize = 45,
                         IconResource = R.drawable.hands,
                     )
@@ -269,7 +271,7 @@ fun InsuranceUnit() {
                     DrawIconInRow(
                         SurfaceModifier = surfacemodifier,
                         BoxModifier = boxmodifier.clickable {
-
+                            mainNavController.navigateTo(Route = Insurance.ACCIDENT_SCREEN)
                         },
                         IconSize = 45,
                         IconResource = R.drawable.patient_469444,

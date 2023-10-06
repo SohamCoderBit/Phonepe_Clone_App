@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.phonepeclone.BlueTopAppBar
 import com.example.phonepeclone.FullPurpleButton
-import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.HeadingText
 import com.example.phonepeclone.R
 import com.example.phonepeclone.SurfaceInView
 import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
@@ -32,9 +32,9 @@ fun TravelScreen()
         Column(modifier = Modifier.padding(top = 70.dp)) {
             SurfaceInView {
                 Column{
-                    HeadingTextInSurfaceView(HeadingText = "Stay Secure on your next trip abroad")
+                    HeadingText(HeadingText = "Stay Secure on your next trip abroad")
 
-                    HeadingTextInSurfaceView(
+                    HeadingText(
                         HeadingText = "Includes Covid-19 coverage & 24/7 customer support with Allianz Assist",
                         TextFontSize = 14,
                         HeadingTextFontWeight = FontWeight.Light,

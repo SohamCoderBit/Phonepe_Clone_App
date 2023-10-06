@@ -40,7 +40,7 @@ import androidx.compose.ui.unit.sp
 import com.example.phonepeclone.BlueTopAppBar
 import com.example.phonepeclone.ClickableSurface
 import com.example.phonepeclone.FullPurpleButton
-import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.HeadingText
 import com.example.phonepeclone.R
 import com.example.phonepeclone.SurfaceInView
 import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
@@ -63,7 +63,7 @@ fun UPILiteScreen() {
         Column(modifier = Modifier.padding(top = 70.dp)) {
             SurfaceInView(Height = 320) {
                 Column {
-                    HeadingTextInSurfaceView(
+                    HeadingText(
                         HeadingText = "Add money",
                         SurfacePadding = PaddingValues(start = 20.dp, top = 10.dp, bottom = 10.dp)
                     )

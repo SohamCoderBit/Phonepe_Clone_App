@@ -22,7 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.phonepeclone.BlueTopAppBar
-import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.HeadingText
 import com.example.phonepeclone.R
 import com.example.phonepeclone.SurfaceInView
 import com.example.phonepeclone.ThreeBoxRow
@@ -45,7 +45,7 @@ fun EducationFeesScreen()
         Column(modifier = Modifier.padding(top = 70.dp)) {
             SurfaceInView {
                 Column{
-                    HeadingTextInSurfaceView(HeadingText = "Select to proceed", TextFontSize = 18)
+                    HeadingText(HeadingText = "Select to proceed", TextFontSize = 18)
 
                     ThreeBoxRow(
                         firstBoxContent = {

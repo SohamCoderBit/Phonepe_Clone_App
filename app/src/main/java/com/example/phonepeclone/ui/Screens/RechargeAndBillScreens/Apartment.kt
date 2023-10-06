@@ -45,7 +45,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.phonepeclone.BlueTopAppBar
 import com.example.phonepeclone.FullPurpleButton
-import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.HeadingText
 import com.example.phonepeclone.R
 import com.example.phonepeclone.SurfaceInView
 import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
@@ -235,8 +235,8 @@ fun cityBottomSheetScreen(
 fun ApartmentScreen() {
 
 
-
-    val sheetState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden , skipHalfExpanded = true)
+    val sheetState =
+        rememberModalBottomSheetState(ModalBottomSheetValue.Hidden, skipHalfExpanded = true)
     val coroutineScope = rememberCoroutineScope()
     var currentlySelectedScreen: bottomSheetScreens? by remember {
         mutableStateOf(bottomSheetScreens.stateScreen)
@@ -250,7 +250,7 @@ fun ApartmentScreen() {
     var stateName by remember {
         mutableStateOf(currentlyselectedState)
     }
-    var cityName by remember{
+    var cityName by remember {
         mutableStateOf(currentlyselecetedCity)
     }
     val labelUpperOffset = 23
@@ -260,9 +260,9 @@ fun ApartmentScreen() {
         targetValue = if (stateName.isNotEmpty()) labelUpperOffset.dp else labelLowerOffset.dp,
         label = "stateField"
     )
-    
+
     val cityFieldLabelOffset by animateDpAsState(
-        targetValue = if(cityName.isNotEmpty()) labelUpperOffset.dp else labelLowerOffset.dp,
+        targetValue = if (cityName.isNotEmpty()) labelUpperOffset.dp else labelLowerOffset.dp,
         label = "cityField"
     )
 
@@ -271,15 +271,16 @@ fun ApartmentScreen() {
         sheetState = sheetState,
         sheetBackgroundColor = Color(33, 24, 43, 255),
 
-         //-------------------- Sheet Content--------------------------
+        //-------------------- Sheet Content--------------------------
 
         sheetContent = {
+
 
             if (currentlySelectedScreen == bottomSheetScreens.stateScreen) {
                 stateBottomSheetScreen(sheetState, onChangeState = {
                     currentlyselectedState = it
                     stateName = currentlyselectedState
-                    cityName = if(stateTocityMap[currentlyselectedState]?.size == 1) {
+                    cityName = if (stateTocityMap[currentlyselectedState]?.size  == 1) {
                         stateTocityMap[currentlyselectedState]?.get(0).toString()
                     } else {
                         ""
@@ -318,13 +319,14 @@ fun ApartmentScreen() {
                             .fillMaxSize()
                             .padding(start = 20.dp, end = 20.dp)
                     ) {
-                        HeadingTextInSurfaceView(
+                        HeadingText(
                             HeadingText = "Select state and city",
                             TextFontSize = 20,
                             SurfacePadding = PaddingValues(top = 10.dp)
                         )
 
-                        //-------------------State Field--------------------------
+                        //-------------------Static Text Field--------------------------
+                        //-------------------Which is Clickable-------------------------
                         Box(
                             modifier = Modifier
                                 .padding(top = 40.dp)
@@ -376,7 +378,7 @@ fun ApartmentScreen() {
                                 .fillMaxWidth()
                         ) {
 
-                            if(cityName.isNotEmpty()){
+                            if (cityName.isNotEmpty()) {
                                 Text(
                                     text = "City",
                                     color = Color.White,
@@ -387,7 +389,7 @@ fun ApartmentScreen() {
                             }
 
 
-                            if(cityName.isEmpty()){
+                            if (cityName.isEmpty()) {
                                 Text(
                                     text = "Select City",
                                     color = Color(159, 144, 174, 255),

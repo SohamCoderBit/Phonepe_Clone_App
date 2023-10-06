@@ -943,14 +943,13 @@ fun SeeAllButton(modifier: Modifier, boxmodifier: Modifier, onClick: () -> Unit 
 
 
 /**
- *To Draw Icon in Button (Reward , Phonepe Wallet , Refer & Get ₹100 => This are the buttons On A Screen)
+ *To Draw Icon in With Tint White and IconSize
  */
 @Composable
-fun DrawIconInButton(IconID: Int) {
+fun DrawIcon(IconID: Int , IconSize : Int = 28) {
     Icon(
         modifier = Modifier
-            .height(28.dp)
-            .padding(start = 5.dp, end = 10.dp),
+            .size(IconSize.dp),
         painter = painterResource(id = IconID),
         contentDescription = null,
         tint = Color.White
@@ -1076,7 +1075,20 @@ fun BlueTopAppBar(Heading: String, BackArrowClick: () -> Unit = { mainNavControl
                 contentDescription = null,
                 tint = Color.White
             )
-            Text(text = Heading, fontSize = 22.sp, color = Color.White)
+            Box(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .fillMaxWidth(0.7f),
+                contentAlignment = Alignment.CenterStart
+            ) {
+                Text(
+                    text = Heading,
+                    fontSize = 22.sp,
+                    color = Color.White,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1
+                )
+            }
 
         }
     }
@@ -1135,7 +1147,7 @@ fun BlueTopAppBarScrollStateManaged(
  * Heading Text Usually inside the function SurfaceInView Function Calls
  */
 @Composable
-fun HeadingTextInSurfaceView(
+fun HeadingText(
     HeadingText: String,
     HeadingTextColor: Color = Color.White,
     TextFontSize: Int = 16,
@@ -1199,6 +1211,7 @@ fun ScrollableBoxs(Label: String, StartPadding: Int = 10, EndPadding: Int = 10) 
 }
 
 
+
 @Composable
 fun ThreeBoxRow(
     firstBoxContent: @Composable () -> Unit,
@@ -1206,7 +1219,8 @@ fun ThreeBoxRow(
     thirdBoxContent: @Composable () -> Unit,
     boxWeightList: List<Float>,
     alignmentList: List<Alignment>,
-    onClick: () -> Unit = {}
+    onClick: () -> Unit = {} ,
+    doRipple : Boolean = false
 ) {
 
 
@@ -1218,7 +1232,7 @@ fun ThreeBoxRow(
         modifier = Modifier
             .fillMaxWidth()
             .height(80.dp)
-            .clickable(indication = null, interactionSource = MutableInteractionSource()) {
+            .addClickable(doRipple = doRipple) {
                 onClick()
             }
     )

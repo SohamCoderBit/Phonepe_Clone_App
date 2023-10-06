@@ -83,7 +83,7 @@ fun BankAccount() {
                     top = 5.dp,
                     bottom = 5.dp
                 ),
-                colors = ButtonDefaults.outlinedButtonColors(Color(163, 99, 235, 255))
+                colors = ButtonDefaults.outlinedButtonColors(colorResource(id = R.color.light_purple_color))
             ) {
                 Text(
                     text = "ADD  RECIEPINT BANK \nACCOUNT",

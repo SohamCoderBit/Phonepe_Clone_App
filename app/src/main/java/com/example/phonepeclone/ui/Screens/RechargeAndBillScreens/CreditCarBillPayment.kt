@@ -30,7 +30,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.phonepeclone.BlueTopAppBar
-import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.HeadingText
 import com.example.phonepeclone.R
 import com.example.phonepeclone.SurfaceInView
 import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
@@ -51,7 +51,7 @@ fun CreditCardBillPayment() {
             SurfaceInView(Height = 150) {
                 Column {
 
-                    HeadingTextInSurfaceView(
+                    HeadingText(
                         HeadingText = "Enter the credit card number to pay your bill",
                         TextFontSize = 15,
                         HeadingTextFontWeight = FontWeight.Normal

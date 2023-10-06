@@ -35,7 +35,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import com.example.phonepeclone.BlueTopAppBar
 import com.example.phonepeclone.DrawIconInRow
-import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.HeadingText
 import com.example.phonepeclone.Home
 import com.example.phonepeclone.R
 import com.example.phonepeclone.RowWithDividerElements
@@ -109,7 +109,7 @@ fun AddBankAccount(addBankAccountViewModel: AddBankAccountVIewModel) {
             SurfaceInView(Height = 370) {
 
                 Column {
-                    HeadingTextInSurfaceView(HeadingText = "Popular banks")
+                    HeadingText(HeadingText = "Popular banks")
 
                     //Icons of SBI , BOB , HDFC
                     Row(modifier = Modifier.padding(top = 10.dp)) {
@@ -249,7 +249,7 @@ fun AddBankAccount(addBankAccountViewModel: AddBankAccountVIewModel) {
             SurfaceInView(Height = 1000) {
 
                 Column {
-                    HeadingTextInSurfaceView(HeadingText = "Other Banks")
+                    HeadingText(HeadingText = "Other Banks")
 
                     addBankAccountViewModel.getBanksList(LocalContext.current).forEach { banks ->
                         RowWithDividerElements(

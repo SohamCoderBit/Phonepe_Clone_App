@@ -22,7 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.phonepeclone.DrawIconInRow
-import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.HeadingText
 import com.example.phonepeclone.Home
 import com.example.phonepeclone.R
 import com.example.phonepeclone.SeeAllButton
@@ -85,20 +85,19 @@ fun RechargePayBillSectionIcon() {
         )
     }
 
-
     Row(modifier = Modifier.padding(top = 5.dp)) {
 
         val surfacemodifier: Modifier = Modifier.weight(1f)
-        //Mobile \n Recharge
+        //Mobile Recharge
         WriteLabelInRow(modifier = surfacemodifier, label = "Mobile Recharge")
 
-        //DTH \nRecharge
+        //DTH
         WriteLabelInRow(modifier = surfacemodifier, label = "DTH")
 
         //Electricity
         WriteLabelInRow(modifier = surfacemodifier, label = "Electricity")
 
-        //Credit Card \n Bill Payment
+        //Credit Card  Bill Payment
         WriteLabelInRow(modifier = surfacemodifier, label = "Credit Card Bill Payment")
     }
 
@@ -150,14 +149,14 @@ fun RechargePayBillSectionIcon() {
 
         val surfacemodifier: Modifier = Modifier.weight(1f)
 
-        //Rent\nPayment
+        //Rent Payment
         WriteLabelInRow(modifier = surfacemodifier, label = "Rent Payment")
 
-        //Loan\nPayment
+        //Loan Payment
         WriteLabelInRow(modifier = surfacemodifier, label = "Loan Payment")
 
         //Book A Cylinder
-        WriteLabelInRow(modifier = surfacemodifier, label = "Book A  Cylinder")
+        WriteLabelInRow(modifier = surfacemodifier, label = "Book A Cylinder")
 
         //See All
         WriteLabelInRow(modifier = surfacemodifier, label = "See All")
@@ -170,7 +169,7 @@ fun RechargePayBillSectionIcon() {
 fun RechargePayBillSection() {
     Column {
         Row {
-            HeadingTextInSurfaceView(
+            HeadingText(
                 HeadingText = "Recharge & Pay Bills",
                 SurfacePadding = PaddingValues(start = 20.dp, top = 10.dp),
                 HeadingTextFontWeight = FontWeight.Normal

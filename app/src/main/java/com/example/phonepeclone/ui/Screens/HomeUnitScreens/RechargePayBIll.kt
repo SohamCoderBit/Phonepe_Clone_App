@@ -21,7 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.phonepeclone.BlueTopAppBar
 import com.example.phonepeclone.DrawIconInRow
-import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.HeadingText
 import com.example.phonepeclone.Home
 import com.example.phonepeclone.R
 import com.example.phonepeclone.SurfaceInView
@@ -41,13 +41,15 @@ fun RechargePayBillScreen() {
             .fillMaxSize(),
         color = colorResource(id = R.color.background)
     ) {
-        Column(modifier = Modifier
-            .padding(top = 70.dp)
-            .verticalScroll(rememberScrollState())) {
+        Column(
+            modifier = Modifier
+                .padding(top = 70.dp)
+                .verticalScroll(rememberScrollState())
+        ) {
             SurfaceInView(Height = 165) {
                 Column {
 
-                    HeadingTextInSurfaceView(
+                    HeadingText(
                         HeadingText = "Recharge",
                         HeadingTextFontWeight = FontWeight.Normal,
                         SurfacePadding = PaddingValues(start = 20.dp, top = 10.dp)
@@ -118,7 +120,7 @@ fun RechargePayBillScreen() {
             SurfaceInView(Height = 270) {
                 Column {
 
-                    HeadingTextInSurfaceView(
+                    HeadingText(
                         HeadingText = "Utilities",
                         SurfacePadding = PaddingValues(start = 20.dp, top = 10.dp),
                         HeadingTextFontWeight = FontWeight.Normal
@@ -254,7 +256,7 @@ fun RechargePayBillScreen() {
             SurfaceInView(Height = 165) {
                 Column {
 
-                    HeadingTextInSurfaceView(
+                    HeadingText(
                         HeadingText = "Purchase",
                         HeadingTextFontWeight = FontWeight.Normal,
                         SurfacePadding = PaddingValues(start = 20.dp, top = 10.dp)
@@ -327,7 +329,7 @@ fun RechargePayBillScreen() {
             SurfaceInView(Height = 165) {
                 Column {
 
-                    HeadingTextInSurfaceView(
+                    HeadingText(
                         HeadingText = "More Services",
                         HeadingTextFontWeight = FontWeight.Normal,
                         SurfacePadding = PaddingValues(start = 20.dp, top = 10.dp)
@@ -370,7 +372,7 @@ fun RechargePayBillScreen() {
                         DrawIconInRow(
                             SurfaceModifier = surfacemodifier,
                             BoxModifier = boxmodifier.clickable {
-
+                                mainNavController.navigateTo(Route = Home.GIFT_CARD_SCREEN)
                             },
                             IconSize = 45,
                             IconResource = R.drawable.patient_469444,
@@ -393,7 +395,7 @@ fun RechargePayBillScreen() {
                         WriteLabelInRow(modifier = surfacemodifier, label = "Apartments")
 
                         //Accident
-                        WriteLabelInRow(modifier = surfacemodifier, label = "Donate\nmeals")
+                        WriteLabelInRow(modifier = surfacemodifier, label = "Gift Card")
 
                     }
 

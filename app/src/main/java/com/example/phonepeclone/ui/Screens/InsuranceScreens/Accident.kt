@@ -30,7 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.phonepeclone.BlueTopAppBar
 import com.example.phonepeclone.BottomAppBarAsButton
-import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.HeadingText
 import com.example.phonepeclone.R
 import com.example.phonepeclone.SurfaceInView
 import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
@@ -147,7 +147,7 @@ fun AccidentScreen() {
 
         Column(modifier = Modifier.padding(top = 70.dp)) {
             SurfaceInView(Height = 150) {
-                HeadingTextInSurfaceView(
+                HeadingText(
                     HeadingText = "Accident Insurance",
                     HeadingTextFontWeight = FontWeight.Normal
                 )
@@ -158,7 +158,7 @@ fun AccidentScreen() {
                 surfaceColor = colorResource(id = R.color.scrollable_view),
             ) {
                 Column {
-                    HeadingTextInSurfaceView(
+                    HeadingText(
                         HeadingText = "Select sum insured",
                         SurfacePadding = PaddingValues(start = 20.dp, top = 15.dp, bottom = 20.dp)
                     )

@@ -19,4 +19,6 @@
 
     <string name="education_fees_row_1">Send fee amount directly to institute\'s bank account</string>
     <string name="education_fees_row_2">Choose from the list of institutes</string>
+
+    <string name="gift_card">Total Cashback and Gift Card Balance</string>
 </resources>

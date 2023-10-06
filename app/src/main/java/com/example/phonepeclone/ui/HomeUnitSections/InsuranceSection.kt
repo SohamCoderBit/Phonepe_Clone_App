@@ -26,7 +26,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.phonepeclone.DrawIconInRow
-import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.HeadingText
 import com.example.phonepeclone.Insurance
 import com.example.phonepeclone.R
 import com.example.phonepeclone.WriteLabelInRow
@@ -38,7 +38,7 @@ import com.example.phonepeclone.ui.theme.PhonepeCloneTheme
 fun InsuranceSection() {
     Column {
         Row {
-            HeadingTextInSurfaceView(
+            HeadingText(
                 HeadingText = "Insurance",
                 SurfacePadding = PaddingValues(start = 20.dp, top = 10.dp),
                 HeadingTextFontWeight = FontWeight.Normal

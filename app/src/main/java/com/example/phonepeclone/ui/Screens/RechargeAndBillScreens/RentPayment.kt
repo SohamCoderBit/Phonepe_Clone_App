@@ -16,7 +16,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.phonepeclone.BlueTopAppBar
-import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.HeadingText
 import com.example.phonepeclone.R
 import com.example.phonepeclone.RowWithDividerElements
 import com.example.phonepeclone.SurfaceInView
@@ -80,7 +80,7 @@ fun RentPaymentScreen() {
 
                 Column {
 
-                    HeadingTextInSurfaceView(
+                    HeadingText(
                         HeadingText = "Pay for Rentals",
                         SurfacePadding = PaddingValues(start = 15.dp, top = 10.dp),
                         HeadingTextFontWeight = FontWeight.Normal

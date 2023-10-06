@@ -25,7 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.phonepeclone.BlueTopAppBar
-import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.HeadingText
 import com.example.phonepeclone.R
 import com.example.phonepeclone.ScrollableBoxs
 import com.example.phonepeclone.SurfaceInView
@@ -58,7 +58,7 @@ fun GoldScreen() {
             ) {
 
                 Column {
-                    HeadingTextInSurfaceView(
+                    HeadingText(
                         HeadingText = "Buy 24K Gold with ease",
                         TextFontSize = 22
                     )

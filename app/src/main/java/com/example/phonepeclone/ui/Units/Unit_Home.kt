@@ -23,7 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.phonepeclone.ButtonsInView
-import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.HeadingText
 import com.example.phonepeclone.Home
 import com.example.phonepeclone.R
 import com.example.phonepeclone.SurfaceInView
@@ -53,7 +53,7 @@ fun HomeScreenUnit() {
         //Transfer Money Section
         SurfaceInView(Height = 170, InternalContent = @Composable {
             Column {
-                HeadingTextInSurfaceView(
+                HeadingText(
                     HeadingText = "Transfer Money",
                     SurfacePadding = PaddingValues(start = 20.dp, top = 10.dp),
                     HeadingTextFontWeight = FontWeight.Normal

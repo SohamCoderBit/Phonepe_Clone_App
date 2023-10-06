@@ -1,7 +1,9 @@
 package com.example.phonepeclone.ViewModels
 
 import android.content.Context
+import android.util.Log
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -30,14 +32,15 @@ class AllFundsViewModel : ViewModel() {
 
     private var checkedFilterList = mutableListOf<String>()
 
-
-
     val categoryMap: LiveData<LinkedHashMap<String, MutableList<CategoryElements>>>
         get() = _categoryMap
 
     val filterMap: LiveData<LinkedHashMap<String, MutableList<CategoryElements>>>
         get() = _filterMap
 
+    var categoryMapping = mutableStateOf<LinkedHashMap<String , MutableList<CategoryElements>>>(
+        linkedMapOf()
+    )
 
     /**
      * Creating new Map and list Every time ,
@@ -68,6 +71,7 @@ class AllFundsViewModel : ViewModel() {
         }
 
         checkedCategoryList = categoryList
+        Log.d("Checked Filter List" , "$checkedCategoryList")
     }
 
     fun setCheckedFilterList()
@@ -83,7 +87,7 @@ class AllFundsViewModel : ViewModel() {
         }
 
         checkedFilterList = filterList
-        println(checkedFilterList)
+        Log.d("Checked Filter List" , "$checkedFilterList")
     }
 
 
@@ -113,22 +117,19 @@ class AllFundsViewModel : ViewModel() {
 
 
 
-    fun clearAllCategory() {
+    fun clearAllCategoryCheckBoxes() {
         categoryCount.value = 0
         val newMap = _categoryMap.value!!.toMutableMap()
         clearAllCheckBox(newMap)
         _categoryMap.value = LinkedHashMap(newMap)
     }
 
-    fun clearAllFilter() {
+    fun clearAllFilterCheckBoxes() {
         filterCount.value = 0
         val newMap = _filterMap.value!!.toMutableMap()
         clearAllCheckBox(newMap)
         _filterMap.value = LinkedHashMap(newMap)
     }
-
-
-
 
     private fun clearAllCheckBox(internalMap: MutableMap<String, MutableList<CategoryElements>>) {
 
@@ -149,7 +150,7 @@ class AllFundsViewModel : ViewModel() {
         context: Context,
         filePath: String
     ): LinkedHashMap<String, MutableList<CategoryElements>> {
-        var newMap: LinkedHashMap<String, MutableList<CategoryElements>> = linkedMapOf()
+        var newMap: LinkedHashMap<String, MutableList<CategoryElements>>
         return try {
             val jsonFile = context.assets.open(filePath)
             val size = jsonFile.available()
@@ -172,7 +173,7 @@ class AllFundsViewModel : ViewModel() {
     fun setCategoryMap(context: Context) {
         if (_categoryMap.value?.isEmpty() == true) {
             _categoryMap.value = getJson(context = context, filePath = "CategoryBottomSheet.json")
-
+            categoryMapping.value = _categoryMap.value!!
             for ((key) in _categoryMap.value!!) {
                 categoryTypeList.add(key)
             }

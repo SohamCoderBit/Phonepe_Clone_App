@@ -1,7 +1,5 @@
 package com.example.phonepeclone.ui.Screens.InsuranceScreens
 
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -33,7 +31,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.phonepeclone.BlueTopAppBar
-import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.HeadingText
 import com.example.phonepeclone.R
 import com.example.phonepeclone.SurfaceInView
 import com.example.phonepeclone.ThreeBoxRow
@@ -74,7 +72,7 @@ fun SuperTopUpScreen() {
             SurfaceInView {
                 Column {
 
-                    HeadingTextInSurfaceView(HeadingText = "Select the persons you want to insure")
+                    HeadingText(HeadingText = "Select the persons you want to insure")
 
                     ThreeBoxRow(
                         firstBoxContent = {
@@ -215,14 +213,7 @@ fun SuperTopUpScreen() {
                     var iconSource = toggleIcon(showChildrenInsuranceSection)
 
                     //Children Insurance
-                    Box(
-                        modifier = Modifier.clickable(
-                            indication = null,
-                            interactionSource = MutableInteractionSource()
-                        ) {
-                            showChildrenInsuranceSection = !showChildrenInsuranceSection
-                        }
-                    ) {
+                    Box{
                         ThreeBoxRow(
                             firstBoxContent = {
                                 //Children Icon
@@ -267,7 +258,10 @@ fun SuperTopUpScreen() {
                                 Alignment.Center,
                                 Alignment.CenterStart,
                                 Alignment.Center
-                            )
+                            ),
+                            onClick = {
+                                showChildrenInsuranceSection = !showChildrenInsuranceSection
+                            }
                         )
                     }
 
@@ -310,14 +304,7 @@ fun SuperTopUpScreen() {
                     iconSource = toggleIcon(showParentsInsuranceSection)
 
                     //Parents Insurance
-                    Box(
-                        modifier = Modifier.clickable(
-                            indication = null,
-                            interactionSource = MutableInteractionSource()
-                        ) {
-                            showParentsInsuranceSection = !showParentsInsuranceSection
-                        }
-                    ) {
+                    Box{
                         ThreeBoxRow(
                             firstBoxContent = {
                                 //Parents Icon
@@ -352,7 +339,10 @@ fun SuperTopUpScreen() {
                                 Alignment.Center,
                                 Alignment.CenterStart,
                                 Alignment.Center
-                            )
+                            ),
+                            onClick = {
+                                showParentsInsuranceSection = !showParentsInsuranceSection
+                            }
                         )
                     }
 

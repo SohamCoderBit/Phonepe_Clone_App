@@ -22,4 +22,8 @@
     <color name="divider_color">#453c4f</color>
     <color name="layout_color_light_grey">#2c2338</color>
     <color name="divider_color_2">#332a3d</color>
+    <color name="light_purple_color">#a363eb</color>
+    <color name="bottom_nav_icon_color">#a28eb4</color>
+    <color name="bottom_nav_icon_box_color">#3f2562</color>
+    <color name="bottom_nav_text_color">#9b7fb9</color>
 </resources>

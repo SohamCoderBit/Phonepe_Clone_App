@@ -43,7 +43,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.phonepeclone.BlueTopAppBar
 import com.example.phonepeclone.ClickableSurface
-import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.HeadingText
 import com.example.phonepeclone.R
 import com.example.phonepeclone.SurfaceInView
 import com.example.phonepeclone.ViewModels.DynamicScreenViewModel
@@ -173,7 +173,7 @@ fun DynamicScreen(dynamicScreenViewModel:DynamicScreenViewModel) {
                         color = Color(42, 33, 52, 255)
                     )
 
-                    HeadingTextInSurfaceView(
+                    HeadingText(
                         HeadingText = "Investment type",
                         SurfacePadding = PaddingValues(start = 10.dp, top = 10.dp),
                         TextFontSize = 12,
@@ -242,7 +242,7 @@ fun DynamicScreen(dynamicScreenViewModel:DynamicScreenViewModel) {
                         color = Color(42, 33, 52, 255)
                     )
 
-                    HeadingTextInSurfaceView(
+                    HeadingText(
                         HeadingText = "Investment Amount",
                         SurfacePadding = PaddingValues(start = 10.dp, top = 10.dp),
                         TextFontSize = 12,
@@ -286,7 +286,7 @@ fun DynamicScreen(dynamicScreenViewModel:DynamicScreenViewModel) {
                     )
 
 
-                    HeadingTextInSurfaceView(
+                    HeadingText(
                         HeadingText = "Popular amounts",
                         SurfacePadding = PaddingValues(start = 10.dp, top = 10.dp , bottom = 10.dp),
                         TextFontSize = 12,

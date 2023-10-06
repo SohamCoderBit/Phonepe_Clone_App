@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.sp
 import com.example.phonepeclone.BlueTopAppBar
 import com.example.phonepeclone.BottomAppBarAsButton
 import com.example.phonepeclone.ClickableSurface
-import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.HeadingText
 import com.example.phonepeclone.R
 import com.example.phonepeclone.SurfaceInView
 import com.example.phonepeclone.animatedLabelTextField
@@ -81,7 +81,7 @@ fun TermLifeScreen() {
         Column(modifier = Modifier.padding(top = 70.dp)) {
             SurfaceInView(Height = 450) {
                 Column {
-                    HeadingTextInSurfaceView(HeadingText = "Personal Details")
+                    HeadingText(HeadingText = "Personal Details")
 
 
                     var dob_Date by remember {
@@ -112,7 +112,7 @@ fun TermLifeScreen() {
                         PlaceHolder = ""
                     )
 
-                    HeadingTextInSurfaceView(HeadingText = "Gender")
+                    HeadingText(HeadingText = "Gender")
 
                     Row(modifier = Modifier.padding(start = 20.dp, top = 10.dp)) {
                         GendersList.forEach { gender ->
@@ -134,7 +134,7 @@ fun TermLifeScreen() {
                     }
 
 
-                    HeadingTextInSurfaceView(
+                    HeadingText(
                         HeadingText = "Smoked / consumed tobacco in last 12 months ?",
                         SurfacePadding = PaddingValues(start = 20.dp, top = 20.dp)
                     )

@@ -24,7 +24,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.phonepeclone.HeadingTextInSurfaceView
+import com.example.phonepeclone.HeadingText
 import com.example.phonepeclone.R
 import com.example.phonepeclone.RowWithDividerElements
 import com.example.phonepeclone.SurfaceInView
@@ -48,7 +48,7 @@ fun InsuranceRenewalScreen(insuranceRenewalViewModel: InsuranceRenewalViewModel)
         Column(modifier = Modifier.padding(top = 70.dp)) {
             SurfaceInView(modifier = Modifier.fillMaxHeight()) {
                 Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-                    HeadingTextInSurfaceView(
+                    HeadingText(
                         HeadingText = "All billers",
                         SurfacePadding = PaddingValues(start = 20.dp, top = 10.dp, bottom = 10.dp)
                     )
